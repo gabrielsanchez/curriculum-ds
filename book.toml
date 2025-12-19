@@ -1,0 +1,13 @@
+[book]
+title = "Applied Data Science"
+authors = ["Gabriel Sanchez"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "book"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "github-dark"
+highlightjs-theme = "github"
