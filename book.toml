@@ -8,6 +8,4 @@ src = "src"
 build-dir = "book"
 
 [output.html]
-default-theme = "light"
-preferred-dark-theme = "github-dark"
-highlightjs-theme = "github"
+default-theme = "rust"

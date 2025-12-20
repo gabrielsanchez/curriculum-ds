@@ -18,15 +18,11 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [Collaboratory notebook](https://colab.research.google.com/drive/1UGBxHR7q9b-C39se9Nln-p2FAcxfLQfI?usp=sharing) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/drive/1UGBxHR7q9b-C39se9Nln-p2FAcxfLQfI?usp=sharing) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Introduction
 
-[Plotly](https://plotly.com/python-api-reference/) is a tool that helps you create interactive charts and graphs easily. Unlike regular charts, Plotly charts let you zoom in, hover over points to see details, and even turn data on or off by clicking the legend. Plotly allows data scientists to explore and present data in a visually engaging and interactive way. Think of it as a "smart" graph maker that lets you play with your data instead of just looking at it!
-
-The following video provides an introduction to Plotly. After watching the video, proceed with the lesson.
-
-TODO - Video: [video script](videoscript.md)
+[*Plotly*](https://plotly.com/python-api-reference/) is a tool that helps you create interactive charts and graphs easily. Unlike regular charts, Plotly charts let you zoom in, hover over points to see details, and even turn data on or off by clicking the legend. Plotly allows data scientists to explore and present data in a visually engaging and interactive way. Think of it as a "smart" graph maker that lets you play with your data instead of just looking at it!
 
 ## Installing and Importing Plotly
 
@@ -153,8 +149,6 @@ The code above takes data from the table (df_bar), puts values from the "Group" 
 
 ![A grouped bar chart](barchart.png)
 
-Plotly offers a [wide range of chart types](https://plotly.com/python/basic-charts/), and you’ll have the opportunity to explore more of them in upcoming lessons as part of this program. For now, feel free to check out [Plotly’s documentation](https://plotly.com/python/basic-charts/) to discover its diverse graphical capabilities.
-
 ## Customizing Plots
 
 ### Adding Titles, Labels, and Legends
@@ -186,7 +180,7 @@ fig.show()
 
 ## Conclusion
 
-In this lesson, you learned how to create interactive visualizations using Plotly. You explored how to create scatter plots, line charts, and grouped bar charts, and how to customize them with titles, labels, legends, colors, and annotations. Plotly's interactive features make it a powerful tool for data exploration and presentation, allowing you to create engaging and user-friendly visualizations.
+In this lesson, you learned how to create interactive visualizations using Plotly. You explored how to create scatter plots, line charts, and grouped bar charts, and how to customize them with titles, labels, legends, colors, and annotations. Plotly offers a [wide range of chart types](https://plotly.com/python/basic-charts/), and you’ll have the opportunity to explore more of them in upcoming lessons as part of this program. For now, feel free to check out [Plotly’s documentation](https://plotly.com/python/basic-charts/) to discover its diverse graphical capabilities.
 
 ## Practice
 
