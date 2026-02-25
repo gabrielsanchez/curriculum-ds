@@ -2,7 +2,7 @@
 
 ## Overview
 
-Matplotlib is one of the most popular data visualization libraries in Python. In this lesson, you'll learn how to create a variety of charts and plots using matplotlib, a foundational tool for exploring and presenting data visually.
+In the previous lesson, you learned about the principles of data visualization and which chart types are best suited to different questions and data types. Now it's time to put those principles into practice. In this lesson, you'll learn how to create a variety of charts and plots using **Matplotlib**, the foundational Python library for building precise, publication-quality static visualizations.
 
 ## Learning Objective
 
