@@ -42,7 +42,7 @@
 
 - [06 Relational Databases](./06-relational-databases/README.md)
 	- [Introduction to SQL](./06-relational-databases/introduction-to-sql.md)
-	- [Setting Up Postgres](./06-relational-databases/setting-up-postgres.md)
+	- [Setting Up SQLite](./06-relational-databases/setting-up-postgres.md)
 	- [Tables, Data Types, and Fields](./06-relational-databases/tables-data-types-fields.md)
 	- [Querying Data](./06-relational-databases/querying-data.md)
 	- [Advanced Queries](./06-relational-databases/advanced-queries.md)
