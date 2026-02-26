@@ -9,6 +9,5 @@ build-dir = "book"
 
 [output.html]
 default-theme = "rust"
-additional-js = ["quiz.js"]
-
-[preprocessor.quiz]
+additional-js = ["theme/quiz.js"]
+additional-css = ["theme/quiz.css"]

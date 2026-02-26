@@ -228,42 +228,80 @@ Google Colab is the environment you'll use for every hands-on exercise in this c
 
 ### Knowledge Check
 
-#### **Question 1: You define a variable `total = 500` in cell 3 of your notebook. You then delete cell 3 and run cell 5, which uses `total`. What happens?**
-1. Python raises a `NameError` because `total` is no longer defined in the notebook.
-2. `total` is still available because variables persist in the kernel's memory until the runtime is restarted — deleting a cell doesn't remove its previously executed variables.
-3. The notebook automatically reruns cell 3 to restore the variable.
-4. `total` defaults to 0 when the cell that defined it is deleted.
+<div class="quiz-container" data-correct="1" data-explanation="Colab (and Jupyter) maintains a running kernel that holds all variables in memory. Deleting a cell from the notebook removes it from the display, but it doesn't undo the code that was already executed. The variable `total` was loaded into memory when cell 3 was run and will remain there until the runtime is restarted. This is a common source of confusion — the notebook's visual appearance and the kernel's state can diverge. 'Restart and run all' is the safest way to ensure they match.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You define a variable `total = 500` in cell 3 of your notebook. You then delete cell 3 and run cell 5, which uses `total`. What happens?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Python raises a `NameError` because `total` is no longer defined in the notebook.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`total` is still available because variables persist in the kernel's memory until the runtime is restarted — deleting a cell doesn't remove its previously executed variables.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The notebook automatically reruns cell 3 to restore the variable.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`total` defaults to 0 when the cell that defined it is deleted.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `total` is still available because variables persist in the kernel's memory until the runtime is restarted — deleting a cell doesn't remove its previously executed variables.
+<div class="quiz-container" data-correct="2" data-explanation="When you mount Google Drive, it is attached to the Colab filesystem at `/content/drive`. Your personal Drive files are located at `/content/drive/My Drive/`. To read a file named `my_data.csv` stored at the root of your Drive, the correct path is `/content/drive/My Drive/my_data.csv`. Files in subfolders follow the same pattern: `/content/drive/My Drive/project/data/my_data.csv`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You need to analyze a large CSV file stored in your Google Drive. After running `drive.mount("/content/drive")` and authorizing access, which path correctly reads the file?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`pd.read_csv("my_data.csv")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`pd.read_csv("/drive/my_data.csv")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`pd.read_csv("/content/drive/My Drive/my_data.csv")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>`pd.read_csv("https://drive.google.com/my_data.csv")`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Explanation:**
-Colab (and Jupyter) maintains a running kernel that holds all variables in memory. Deleting a cell from the notebook removes it from the display, but it doesn't undo the code that was already executed. The variable `total` was loaded into memory when cell 3 was run and will remain there until the runtime is restarted. This is a common source of confusion — the notebook's visual appearance and the kernel's state can diverge. "Restart and run all" is the safest way to ensure they match.
-
----
-
-#### **Question 2: You need to analyze a large CSV file stored in your Google Drive. After running `drive.mount("/content/drive")` and authorizing access, which path correctly reads the file?**
-1. `pd.read_csv("my_data.csv")`
-2. `pd.read_csv("/drive/my_data.csv")`
-3. `pd.read_csv("/content/drive/My Drive/my_data.csv")`
-4. `pd.read_csv("https://drive.google.com/my_data.csv")`
-
-**Correct Answer:**
-3. `pd.read_csv("/content/drive/My Drive/my_data.csv")`
-
-**Explanation:**
-When you mount Google Drive, it is attached to the Colab filesystem at `/content/drive`. Your personal Drive files are located at `/content/drive/My Drive/`. To read a file named `my_data.csv` stored at the root of your Drive, the correct path is `/content/drive/My Drive/my_data.csv`. Files in subfolders follow the same pattern: `/content/drive/My Drive/project/data/my_data.csv`.
-
----
-
-#### **Question 3: What is the correct way to install a Python library that is not pre-installed in Colab?**
-1. `import install plotly`
-2. `pip install plotly` (typed directly in a code cell)
-3. `!pip install plotly` (typed in a code cell, using the `!` prefix to run a shell command)
-4. Libraries must be installed through the Colab settings menu — they cannot be installed via code.
-
-**Correct Answer:**
-3. `!pip install plotly` (typed in a code cell, using the `!` prefix to run a shell command)
-
-**Explanation:**
-In a Jupyter or Colab code cell, the `!` prefix runs a shell command rather than Python code. `pip` is a shell tool (Python's package manager), not a Python function, so it must be called with `!pip install`. Writing `pip install plotly` without the `!` will raise a `SyntaxError` because Python doesn't recognize `pip` as a valid keyword or function. After installation, the library is available for `import` in the same runtime session.
+<div class="quiz-container" data-correct="2" data-explanation="In a Jupyter or Colab code cell, the `!` prefix runs a shell command rather than Python code. `pip` is a shell tool (Python's package manager), not a Python function, so it must be called with `!pip install`. Writing `pip install plotly` without the `!` will raise a `SyntaxError` because Python doesn't recognize `pip` as a valid keyword or function. After installation, the library is available for `import` in the same runtime session.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the correct way to install a Python library that is not pre-installed in Colab?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`import install plotly`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`pip install plotly` (typed directly in a code cell)</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`!pip install plotly` (typed in a code cell, using the `!` prefix to run a shell command)</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Libraries must be installed through the Colab settings menu — they cannot be installed via code.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>

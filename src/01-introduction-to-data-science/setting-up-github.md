@@ -191,38 +191,80 @@ GitHub is where your data science work lives. Every notebook you complete in thi
 
 ### Knowledge Check
 
-```quiz
-type: "multipleChoice"
-question: "You've finished a notebook in Colab and want to save it to GitHub. You go to File → Save a copy in GitHub and complete the process. What actually happened behind the scenes?"
-answers:
-  - "Colab uploaded the notebook to GitHub using FTP (File Transfer Protocol)."
-  - "Colab executed a `git add`, `git commit`, and `git push` on your behalf — creating a new commit in your repository with the notebook as its content."
-  - "Colab saved the notebook as a private gist, not directly to your repository."
-  - "GitHub downloaded the notebook from Google Drive and imported it automatically."
-correct: 1
-explanation: "The 'Save a copy in GitHub' feature is a convenience wrapper around the standard Git workflow. Colab stages the `.ipynb` file, creates a commit with the message you provided, and pushes it to the specified branch of your repository. You can verify this by checking the commit history on GitHub — you'll see a new commit with your message and the notebook file added or updated."
-```
+<div class="quiz-container" data-correct="1" data-explanation="The 'Save a copy in GitHub' feature is a convenience wrapper around the standard Git workflow. Colab stages the `.ipynb` file, creates a commit with the message you provided, and pushes it to the specified branch of your repository. You can verify this by checking the commit history on GitHub — you'll see a new commit with your message and the notebook file added or updated.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You've finished a notebook in Colab and want to save it to GitHub. You go to File → Save a copy in GitHub and complete the process. What actually happened behind the scenes?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Colab uploaded the notebook to GitHub using FTP (File Transfer Protocol).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Colab executed a `git add`, `git commit`, and `git push` on your behalf — creating a new commit in your repository with the notebook as its content.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Colab saved the notebook as a private gist, not directly to your repository.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>GitHub downloaded the notebook from Google Drive and imported it automatically.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-```quiz
-type: "multipleChoice"
-question: "What is the difference between `git commit` and `git push`?"
-answers:
-  - "`git commit` saves changes to GitHub; `git push` saves changes locally."
-  - "`git commit` creates a local snapshot of staged changes with a message; `git push` sends those local commits to the remote repository on GitHub so others can see them."
-  - "`git commit` and `git push` do the same thing — either one saves your work to GitHub."
-  - "`git push` must be run before `git commit`, or the commit won't be saved."
-correct: 1
-explanation: "Git operates in two stages. `git commit` saves a snapshot to your **local** repository — at this point, the change exists only on your machine (or your Colab session). `git push` transmits those local commits to the **remote** repository on GitHub, making them visible to collaborators and backed up in the cloud. It's common to make many local commits and push them all at once. Forgetting to push is a frequent mistake — your work appears saved locally but isn't on GitHub."
-```
+<div class="quiz-container" data-correct="1" data-explanation="Git operates in two stages. `git commit` saves a snapshot to your **local** repository — at this point, the change exists only on your machine (or your Colab session). `git push` transmits those local commits to the **remote** repository on GitHub, making them visible to collaborators and backed up in the cloud. It's common to make many local commits and push them all at once. Forgetting to push is a frequent mistake — your work appears saved locally but isn't on GitHub.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What is the difference between `git commit` and `git push`?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`git commit` saves changes to GitHub; `git push` saves changes locally.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`git commit` creates a local snapshot of staged changes with a message; `git push` sends those local commits to the remote repository on GitHub so others can see them.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`git commit` and `git push` do the same thing — either one saves your work to GitHub.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>`git push` must be run before `git commit`, or the commit won't be saved.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-```quiz
-type: "multipleChoice"
-question: "Your instructor asks you to submit your Module 2 notebook. Which submission is most appropriate?"
-answers:
-  - "Attach the `.ipynb` file as an email attachment."
-  - "Share a screenshot of the notebook outputs."
-  - "Submit the GitHub URL pointing to the notebook file in your repository (e.g., `github.com/yourname/curriculum/blob/main/module2.ipynb`)."
-  - "Share your Google Drive link so the instructor can open it in Colab."
-correct: 2
-explanation: "A GitHub URL gives instructors access to the complete notebook — code, outputs, and markdown — rendered directly in the browser without needing to run it. It also shows the commit history, which provides evidence of when the work was done and how it evolved. Google Drive links require Drive permissions to be set correctly and don't display notebooks as well as GitHub. Email attachments don't include commit history and create version management problems."
-```
+<div class="quiz-container" data-correct="2" data-explanation="A GitHub URL gives instructors access to the complete notebook — code, outputs, and markdown — rendered directly in the browser without needing to run it. It also shows the commit history, which provides evidence of when the work was done and how it evolved. Google Drive links require Drive permissions to be set correctly and don't display notebooks as well as GitHub. Email attachments don't include commit history and create version management problems.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Your instructor asks you to submit your Module 2 notebook. Which submission is most appropriate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Attach the `.ipynb` file as an email attachment.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Share a screenshot of the notebook outputs.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Submit the GitHub URL pointing to the notebook file in your repository (e.g., `github.com/yourname/curriculum/blob/main/module2.ipynb`).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Share your Google Drive link so the instructor can open it in Colab.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
