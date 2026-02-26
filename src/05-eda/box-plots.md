@@ -215,42 +215,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: In a box plot, what does the height of the box represent?**
-1. The range from the minimum to the maximum value.
-2. The standard deviation of the distribution.
-3. The interquartile range (IQR) — the spread of the middle 50% of the data.
-4. The distance between the mean and the median.
+<div class="quiz-container" data-correct="2" data-explanation="The box in a box plot spans from Q1 (25th percentile) to Q3 (75th percentile). Its height is therefore Q3 − Q1, which is the IQR. A taller box means greater variability in the middle of the data. The whiskers extend further to capture non-outlier values beyond the box.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> In a box plot, what does the height of the box represent?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The range from the minimum to the maximum value.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The standard deviation of the distribution.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The interquartile range (IQR) — the spread of the middle 50% of the data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The distance between the mean and the median.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. The interquartile range (IQR) — the spread of the middle 50% of the data.
-
-**Explanation:**
-The box in a box plot spans from Q1 (25th percentile) to Q3 (75th percentile). Its height is therefore Q3 − Q1, which is the IQR. A taller box means greater variability in the middle of the data. The whiskers extend further to capture non-outlier values beyond the box.
 
 ---
 
-#### **Question 2: A box plot shows a data point plotted as an individual dot far below the lower whisker. What does this indicate?**
-1. The dot represents the minimum value in the dataset regardless of how far it is.
-2. The dot is a value that falls more than 1.5 × IQR below Q1 and is flagged as a potential outlier.
-3. The dot represents the mean of the distribution.
-4. The plotting library made an error — data points should never appear outside the whiskers.
+<div class="quiz-container" data-correct="1" data-explanation="Box plot whiskers extend to the furthest data point that is still within 1.5 × IQR of the box edges. Any value beyond that boundary is considered a **potential outlier** and plotted as an individual dot. It doesn&#039;t mean the value is definitely wrong — it just flags it for investigation. It could be a legitimate extreme value or a data error.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A box plot shows a data point plotted as an individual dot far below the lower whisker. What does this indicate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The dot represents the minimum value in the dataset regardless of how far it is.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The dot is a value that falls more than 1.5 × IQR below Q1 and is flagged as a potential outlier.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The dot represents the mean of the distribution.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The plotting library made an error — data points should never appear outside the whiskers.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The dot is a value that falls more than 1.5 × IQR below Q1 and is flagged as a potential outlier.
-
-**Explanation:**
-Box plot whiskers extend to the furthest data point that is still within 1.5 × IQR of the box edges. Any value beyond that boundary is considered a **potential outlier** and plotted as an individual dot. It doesn't mean the value is definitely wrong — it just flags it for investigation. It could be a legitimate extreme value or a data error.
 
 ---
 
-#### **Question 3: You have a dataset of test scores for students from four different schools and want to compare their distributions. Which visualization is most appropriate?**
-1. Four separate histograms plotted one above the other.
-2. A grouped box plot with one box per school.
-3. A single line chart with four lines.
-4. A pie chart showing the proportion of students per school.
+<div class="quiz-container" data-correct="1" data-explanation="A grouped box plot is the ideal tool for comparing distributions across multiple groups. Each box shows the median, IQR, and outliers of one school&#039;s scores, and placing them side by side makes it immediately clear which school has the highest median, the most consistent scores (smallest IQR), or the most outliers. Four separate histograms would require more effort to compare, and line charts and pie charts are not designed for comparing distributions.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You have a dataset of test scores for students from four different schools and want to compare their distributions. Which visualization is most appropriate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Four separate histograms plotted one above the other.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>A grouped box plot with one box per school.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>A single line chart with four lines.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>A pie chart showing the proportion of students per school.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. A grouped box plot with one box per school.
-
-**Explanation:**
-A grouped box plot is the ideal tool for comparing distributions across multiple groups. Each box shows the median, IQR, and outliers of one school's scores, and placing them side by side makes it immediately clear which school has the highest median, the most consistent scores (smallest IQR), or the most outliers. Four separate histograms would require more effort to compare, and line charts and pie charts are not designed for comparing distributions.

@@ -80,46 +80,91 @@ Use `pd.read_sql_query()` to load the results of your three-table join into a Da
 
 ## Knowledge Check
 
-#### **Question 1: You need to find all movies that have never been rented. Write the correct SQL approach:**
-1. `SELECT * FROM movies WHERE rental_count = 0`
-2. `SELECT m.title FROM movies m INNER JOIN rentals r ON m.movie_id = r.movie_id WHERE r.rental_id IS NULL`
-3. `SELECT m.title FROM movies m LEFT JOIN rentals r ON m.movie_id = r.movie_id WHERE r.rental_id IS NULL`
-4. `SELECT * FROM movies WHERE movie_id NOT IN (SELECT movie_id FROM rentals) OR movie_id IS NULL`
+<div class="quiz-container" data-correct="2" data-explanation="The `LEFT JOIN ... WHERE right_key IS NULL` pattern is the standard SQL idiom for finding rows with no match in the related table. Option 1 assumes a `rental_count` column that doesn&#039;t exist. Option 2 uses `INNER JOIN`, which would only return movies that have been rented, making the `IS NULL` condition impossible. Option 4 is close but the `OR movie_id IS NULL` adds an unnecessary condition. Option 3 is the clean, correct approach.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You need to find all movies that have never been rented. Write the correct SQL approach:
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`SELECT * FROM movies WHERE rental_count = 0`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`SELECT m.title FROM movies m INNER JOIN rentals r ON m.movie_id = r.movie_id WHERE r.rental_id IS NULL`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`SELECT m.title FROM movies m LEFT JOIN rentals r ON m.movie_id = r.movie_id WHERE r.rental_id IS NULL`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`SELECT * FROM movies WHERE movie_id NOT IN (SELECT movie_id FROM rentals) OR movie_id IS NULL`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `SELECT m.title FROM movies m LEFT JOIN rentals r ON m.movie_id = r.movie_id WHERE r.rental_id IS NULL`
-
-**Explanation:**
-The `LEFT JOIN ... WHERE right_key IS NULL` pattern is the standard SQL idiom for finding rows with no match in the related table. Option 1 assumes a `rental_count` column that doesn't exist. Option 2 uses `INNER JOIN`, which would only return movies that have been rented, making the `IS NULL` condition impossible. Option 4 is close but the `OR movie_id IS NULL` adds an unnecessary condition. Option 3 is the clean, correct approach.
-
----
-
-#### **Question 2: What is wrong with the following Python code that inserts a customer?**
-```python
-name = input("Enter customer name: ")
-cursor.execute(f"INSERT INTO customers (name) VALUES ('{name}')")
-```
-1. `input()` cannot be used in a Python database script.
-2. The f-string embeds user input directly into the SQL string, creating a SQL injection vulnerability. Use `?` placeholders instead.
-3. `cursor.execute()` does not support `INSERT` statements.
-4. The `VALUES` clause needs parentheses around the column name.
-
-**Correct Answer:**
-2. The f-string embeds user input directly into the SQL string, creating a SQL injection vulnerability. Use `?` placeholders instead.
-
-**Explanation:**
-If a user types `'); DROP TABLE customers; --` as their name, the f-string produces `INSERT INTO customers (name) VALUES (''); DROP TABLE customers; --')`, which could destroy the entire table. The safe version is: `cursor.execute("INSERT INTO customers (name) VALUES (?)", (name,))`. The `sqlite3` driver then treats `name` as data, never as executable SQL.
 
 ---
 
-#### **Question 3: A query using `GROUP BY genre` returns one row per genre. You then want to filter to show only genres with more than 5 rentals. Which clause do you add and where?**
-1. Add `WHERE rental_count > 5` before `GROUP BY`.
-2. Add `HAVING COUNT(*) > 5` after `GROUP BY`.
-3. Add `WHERE COUNT(*) > 5` after `GROUP BY`.
-4. Add `FILTER (WHERE COUNT(*) > 5)` at the end of the query.
+<div class="quiz-container" data-correct="1" data-explanation="If a user types `&#039;); DROP TABLE customers; --` as their name, the f-string produces `INSERT INTO customers (name) VALUES (&#039;&#039;); DROP TABLE customers; --&#039;)`, which could destroy the entire table. The safe version is: `cursor.execute(&quot;INSERT INTO customers (name) VALUES (?)&quot;, (name,))`. The `sqlite3` driver then treats `name` as data, never as executable SQL.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What is wrong with the following Python code that inserts a customer?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>name = input(&quot;Enter customer name: &quot;)
+cursor.execute(f&quot;INSERT INTO customers (name) VALUES (&#039;{name}&#039;)&quot;)</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`input()` cannot be used in a Python database script.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The f-string embeds user input directly into the SQL string, creating a SQL injection vulnerability. Use `?` placeholders instead.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`cursor.execute()` does not support `INSERT` statements.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The `VALUES` clause needs parentheses around the column name.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Add `HAVING COUNT(*) > 5` after `GROUP BY`.
 
-**Explanation:**
-`HAVING` is the correct clause for filtering based on aggregate results. It executes after `GROUP BY` has collapsed rows into groups. `WHERE` executes before grouping and cannot reference aggregate functions like `COUNT(*)` — using it would cause a SQL error. The `HAVING` clause is placed after `GROUP BY` and before `ORDER BY` in the query.
+---
+
+<div class="quiz-container" data-correct="1" data-explanation="`HAVING` is the correct clause for filtering based on aggregate results. It executes after `GROUP BY` has collapsed rows into groups. `WHERE` executes before grouping and cannot reference aggregate functions like `COUNT(*)` — using it would cause a SQL error. The `HAVING` clause is placed after `GROUP BY` and before `ORDER BY` in the query.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A query using `GROUP BY genre` returns one row per genre. You then want to filter to show only genres with more than 5 rentals. Which clause do you add and where?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Add `WHERE rental_count > 5` before `GROUP BY`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Add `HAVING COUNT(*) > 5` after `GROUP BY`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Add `WHERE COUNT(*) > 5` after `GROUP BY`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Add `FILTER (WHERE COUNT(*) > 5)` at the end of the query.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
+

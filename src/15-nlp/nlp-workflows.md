@@ -550,45 +550,87 @@ End-to-end NLP workflows follow consistent patterns regardless of task: prepare 
 
 ### Knowledge Check
 
-#### **Question 1: You build a customer support classifier using TF-IDF + logistic regression with 90% accuracy. A product manager asks why some tickets are misrouted. How would you investigate and what would you show them?**
+<div class="quiz-container" data-correct="1" data-explanation="TF-IDF + logistic regression is one of the most interpretable text classifiers available. The coefficients directly show which words push a document toward each class — `lr.coef_[class_idx]` is a weight vector over the vocabulary. High-confidence misclassifications are particularly revealing: if the model is 95% confident that a shipping complaint is a billing complaint, the coefficients will show why (perhaps the word &quot;charge&quot; has a very high weight for &quot;billing&quot;). The confusion matrix shows which class pairs are most often confused — a high confusion between &quot;returns&quot; and &quot;shipping&quot; suggests those categories share vocabulary. This investigation often reveals opportunities for feature engineering (adding bigrams that disambiguate confused categories) or labeling issues (some tickets genuinely belong to multiple categories).">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You build a customer support classifier using TF-IDF + logistic regression with 90% accuracy. A product manager asks why some tickets are misrouted. How would you investigate and what would you show them?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Retrain the model with more data — misrouting is always caused by insufficient training examples, so no investigation is needed.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Examine the model's confidence scores for misrouted tickets. Print the logistic regression coefficients for the confused categories to show which words the model associates with each class. Analyze examples where the model predicts with high confidence but incorrectly — these reveal systematic biases (e.g., "charge" predicts "billing" even when the context is about delivery charges, which should be "shipping"). Show the product manager the top features per category and the confusion matrix.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Use SHAP (SHapley Additive exPlanations) to explain every individual prediction — this is the only acceptable method for explaining model decisions.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The model is a black box and cannot be explained. You should switch to a decision tree for interpretability.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Retrain the model with more data — misrouting is always caused by insufficient training examples, so no investigation is needed.
-2. Examine the model's confidence scores for misrouted tickets. Print the logistic regression coefficients for the confused categories to show which words the model associates with each class. Analyze examples where the model predicts with high confidence but incorrectly — these reveal systematic biases (e.g., "charge" predicts "billing" even when the context is about delivery charges, which should be "shipping"). Show the product manager the top features per category and the confusion matrix.
-3. Use SHAP (SHapley Additive exPlanations) to explain every individual prediction — this is the only acceptable method for explaining model decisions.
-4. The model is a black box and cannot be explained. You should switch to a decision tree for interpretability.
-
-**Correct Answer:**
-2. Examine confidence scores, logistic regression coefficients (top features per category), confusion matrix, and systematic error patterns — particularly high-confidence misclassifications that reveal specific word-to-class associations that differ from business logic.
-
-**Explanation:**
-TF-IDF + logistic regression is one of the most interpretable text classifiers available. The coefficients directly show which words push a document toward each class — `lr.coef_[class_idx]` is a weight vector over the vocabulary. High-confidence misclassifications are particularly revealing: if the model is 95% confident that a shipping complaint is a billing complaint, the coefficients will show why (perhaps the word "charge" has a very high weight for "billing"). The confusion matrix shows which class pairs are most often confused — a high confusion between "returns" and "shipping" suggests those categories share vocabulary. This investigation often reveals opportunities for feature engineering (adding bigrams that disambiguate confused categories) or labeling issues (some tickets genuinely belong to multiple categories).
 
 ---
 
-#### **Question 2: A news aggregation platform wants to tag every article with named entities (people, organizations, locations) and store them in a database for search and trend analysis. They process 50,000 articles per day. What architecture would you recommend?**
+<div class="quiz-container" data-correct="2" data-explanation="50,000 articles per day is ~35 articles per minute — not a real-time requirement, but throughput matters. spaCy&#039;s NER is optimized for production: it processes text at thousands of tokens per second on CPU, uses efficient batch processing, and produces consistently good NER output. A Transformer-based NER model (BERT-NER) is 10–50× slower per article but more accurate — the right tradeoff depends on the application. A practical architecture: run spaCy on all 50,000 articles in batch jobs, run Transformer NER only on high-priority sources (major news outlets, financial filings). Processing in batches (not one-by-one) is the single most important throughput optimization for both spaCy and Transformer pipelines.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A news aggregation platform wants to tag every article with named entities (people, organizations, locations) and store them in a database for search and trend analysis. They process 50,000 articles per day. What architecture would you recommend?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Use a fine-tuned Transformer NER model with GPU acceleration for maximum entity extraction accuracy. Process articles in real-time as they arrive.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Run the Hugging Face NER pipeline on each article one at a time using a single CPU server. It will complete within a few minutes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Use a spaCy NER model for high-throughput batch processing (spaCy is optimized for production throughput), processing articles in batches with multiple workers. For high-accuracy entities (e.g., financial amounts, company names in business news), consider a fine-tuned Transformer model running on GPU for the higher-value subset of articles.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Use regular expressions to extract entities — NER models are too slow for production use.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Use a fine-tuned Transformer NER model with GPU acceleration for maximum entity extraction accuracy. Process articles in real-time as they arrive.
-2. Run the Hugging Face NER pipeline on each article one at a time using a single CPU server. It will complete within a few minutes.
-3. Use a spaCy NER model for high-throughput batch processing (spaCy is optimized for production throughput), processing articles in batches with multiple workers. For high-accuracy entities (e.g., financial amounts, company names in business news), consider a fine-tuned Transformer model running on GPU for the higher-value subset of articles.
-4. Use regular expressions to extract entities — NER models are too slow for production use.
-
-**Correct Answer:**
-3. Use spaCy for high-throughput batch processing of the full corpus, and optionally a fine-tuned Transformer for high-value subsets where accuracy matters most.
-
-**Explanation:**
-50,000 articles per day is ~35 articles per minute — not a real-time requirement, but throughput matters. spaCy's NER is optimized for production: it processes text at thousands of tokens per second on CPU, uses efficient batch processing, and produces consistently good NER output. A Transformer-based NER model (BERT-NER) is 10–50× slower per article but more accurate — the right tradeoff depends on the application. A practical architecture: run spaCy on all 50,000 articles in batch jobs, run Transformer NER only on high-priority sources (major news outlets, financial filings). Processing in batches (not one-by-one) is the single most important throughput optimization for both spaCy and Transformer pipelines.
 
 ---
 
-#### **Question 3: You use `pipeline("summarization")` to summarize medical research abstracts. A physician notices that one summary states a drug "reduces" side effects when the original abstract says it "does not significantly reduce" side effects. What is happening and how would you address it?**
+<div class="quiz-container" data-correct="1" data-explanation="Hallucination is a well-documented failure mode of abstractive summarization models. The model generates text token by token based on probability distributions — it doesn&#039;t &quot;check&quot; factual accuracy against the source. Negations (&quot;not,&quot; &quot;no,&quot; &quot;without&quot;) are particularly vulnerable because they are short, common, and their removal produces grammatically correct (but factually opposite) text. In high-stakes domains (medicine, law, finance), hallucination risk must be explicitly managed. Strategies: extractive summarization returns exact sentences from the source (factually faithful but less fluent); human-in-the-loop review for critical summaries; domain-specific models evaluated on medical hallucination benchmarks; or fact-checking models that compare generated text against the source passage. The standard `pipeline(&quot;summarization&quot;)` models are not safe for unsupervised medical use.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You use `pipeline("summarization")` to summarize medical research abstracts. A physician notices that one summary states a drug "reduces" side effects when the original abstract says it "does not significantly reduce" side effects. What is happening and how would you address it?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The summarization model made a spelling error — the word "not" was dropped accidentally. Update to a newer version of the model to fix this bug.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>This is a hallucination — the model generated a factually incorrect summary. Abstractive summarization models (like BART, T5) generate new text rather than copying from the source, and can drop negations, change quantifiers, or fabricate supporting details. For medical content, hallucinations are dangerous. Mitigations: use extractive summarization (which copies sentences verbatim, preventing hallucination), add a human review step for medical summaries, or use a model specifically validated on medical text with known hallucination rates.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>This is a tokenization error — "not" was tokenized out of the sentence. Use a different tokenizer to fix it.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The model is working as intended — all summarization models simplify content for readability, which may require omitting qualifiers.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The summarization model made a spelling error — the word "not" was dropped accidentally. Update to a newer version of the model to fix this bug.
-2. This is a hallucination — the model generated a factually incorrect summary. Abstractive summarization models (like BART, T5) generate new text rather than copying from the source, and can drop negations, change quantifiers, or fabricate supporting details. For medical content, hallucinations are dangerous. Mitigations: use extractive summarization (which copies sentences verbatim, preventing hallucination), add a human review step for medical summaries, or use a model specifically validated on medical text with known hallucination rates.
-3. This is a tokenization error — "not" was tokenized out of the sentence. Use a different tokenizer to fix it.
-4. The model is working as intended — all summarization models simplify content for readability, which may require omitting qualifiers.
-
-**Correct Answer:**
-2. This is a hallucination — the model generated factually incorrect text by dropping a critical negation. For medical applications, use extractive summarization, human review, or models with known medical validation.
-
-**Explanation:**
-Hallucination is a well-documented failure mode of abstractive summarization models. The model generates text token by token based on probability distributions — it doesn't "check" factual accuracy against the source. Negations ("not," "no," "without") are particularly vulnerable because they are short, common, and their removal produces grammatically correct (but factually opposite) text. In high-stakes domains (medicine, law, finance), hallucination risk must be explicitly managed. Strategies: extractive summarization returns exact sentences from the source (factually faithful but less fluent); human-in-the-loop review for critical summaries; domain-specific models evaluated on medical hallucination benchmarks; or fact-checking models that compare generated text against the source passage. The standard `pipeline("summarization")` models are not safe for unsupervised medical use.

@@ -320,28 +320,58 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ---
 
-#### **Question 2: Why can't you use `WHERE city = NULL` to find rows with a missing city?**
-1. `NULL` is a reserved keyword that cannot appear after `=`.
-2. `NULL` represents the absence of a value — comparing anything to `NULL` with `=` always evaluates to `NULL` (not `TRUE`), so no rows are returned. Use `IS NULL` instead.
-3. You need to use `WHERE city == NULL` (double equals) to find NULL values.
-4. SQLite automatically converts `NULL` to an empty string, so you should use `WHERE city = ''`.
+<div class="quiz-container" data-correct="1" data-explanation="In SQL, `NULL` means &quot;unknown.&quot; Any comparison involving `NULL` — including `NULL = NULL` — evaluates to `NULL`, which is treated as false in a `WHERE` clause. This is why SQL provides the special `IS NULL` and `IS NOT NULL` operators specifically for testing for missing values.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Why can't you use `WHERE city = NULL` to find rows with a missing city?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`NULL` is a reserved keyword that cannot appear after `=`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`NULL` represents the absence of a value — comparing anything to `NULL` with `=` always evaluates to `NULL` (not `TRUE`), so no rows are returned. Use `IS NULL` instead.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>You need to use `WHERE city == NULL` (double equals) to find NULL values.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>SQLite automatically converts `NULL` to an empty string, so you should use `WHERE city = ''`.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `NULL` represents the absence of a value — comparing anything to `NULL` with `=` always evaluates to `NULL` (not `TRUE`), so no rows are returned. Use `IS NULL` instead.
-
-**Explanation:**
-In SQL, `NULL` means "unknown." Any comparison involving `NULL` — including `NULL = NULL` — evaluates to `NULL`, which is treated as false in a `WHERE` clause. This is why SQL provides the special `IS NULL` and `IS NOT NULL` operators specifically for testing for missing values.
 
 ---
 
-#### **Question 3: What does `WHERE genre IN ('Statistics', 'Data Science')` do?**
-1. It filters rows where genre equals both 'Statistics' and 'Data Science' simultaneously.
-2. It filters rows where genre is either 'Statistics' or 'Data Science'.
-3. It excludes rows where genre is 'Statistics' or 'Data Science'.
-4. It creates a new column containing both genre values.
+<div class="quiz-container" data-correct="1" data-explanation="`IN` checks whether the column&#039;s value matches **any** item in the list. `WHERE genre IN (&#039;Statistics&#039;, &#039;Data Science&#039;)` is equivalent to `WHERE genre = &#039;Statistics&#039; OR genre = &#039;Data Science&#039;`. It returns rows matching either value — not both at once. To exclude these genres, you would use `NOT IN`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does `WHERE genre IN ('Statistics', 'Data Science')` do?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It filters rows where genre equals both 'Statistics' and 'Data Science' simultaneously.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>It filters rows where genre is either 'Statistics' or 'Data Science'.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>It excludes rows where genre is 'Statistics' or 'Data Science'.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>It creates a new column containing both genre values.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It filters rows where genre is either 'Statistics' or 'Data Science'.
-
-**Explanation:**
-`IN` checks whether the column's value matches **any** item in the list. `WHERE genre IN ('Statistics', 'Data Science')` is equivalent to `WHERE genre = 'Statistics' OR genre = 'Data Science'`. It returns rows matching either value — not both at once. To exclude these genres, you would use `NOT IN`.

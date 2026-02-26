@@ -456,45 +456,87 @@ Word embeddings (Word2Vec, GloVe) solved the synonym problem of TF-IDF by giving
 
 ### Knowledge Check
 
-#### **Question 1: Word2Vec represents "king − man + woman ≈ queen." What does this arithmetic demonstrate about the embedding space?**
+<div class="quiz-container" data-correct="1" data-explanation="This emergent structure is the most striking property of word embeddings. The model trained only to predict context words from target words, yet its internal representations captured gender, nationality, tense, and many other semantic axes as geometric directions. This happens because words used in similar contexts get similar vectors (the distributional hypothesis: &quot;you shall know a word by the company it keeps&quot;). &quot;King&quot; and &quot;queen&quot; appear in similar contexts except for gender-related contexts where they differ — exactly the gender direction. This geometric structure is why embeddings transfer well: the gender direction learned from English royalty generalizes to president/female-president, actor/actress, etc.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Word2Vec represents "king − man + woman ≈ queen." What does this arithmetic demonstrate about the embedding space?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Word2Vec performs grammatical substitution: it replaces "king" with "queen" when "man" is changed to "woman."</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The arithmetic demonstrates that semantic relationships are encoded as consistent directions (vectors) in the embedding space. The direction from "man" to "woman" (the gender direction) is approximately the same as the direction from "king" to "queen." By adding the gender direction to "king," we arrive near "queen." This geometric structure emerges from training on co-occurrence patterns — the model was never explicitly told that gender is a meaningful axis.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Word2Vec uses a mathematical formula where antonyms cancel and synonyms reinforce — the formula king − man + woman is a built-in rule for gendered nouns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The arithmetic shows that Word2Vec stores all words as fractions of other words — "queen" is literally stored as "king − man + woman" in the vocabulary.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Word2Vec performs grammatical substitution: it replaces "king" with "queen" when "man" is changed to "woman."
-2. The arithmetic demonstrates that semantic relationships are encoded as consistent directions (vectors) in the embedding space. The direction from "man" to "woman" (the gender direction) is approximately the same as the direction from "king" to "queen." By adding the gender direction to "king," we arrive near "queen." This geometric structure emerges from training on co-occurrence patterns — the model was never explicitly told that gender is a meaningful axis.
-3. Word2Vec uses a mathematical formula where antonyms cancel and synonyms reinforce — the formula king − man + woman is a built-in rule for gendered nouns.
-4. The arithmetic shows that Word2Vec stores all words as fractions of other words — "queen" is literally stored as "king − man + woman" in the vocabulary.
-
-**Correct Answer:**
-2. The arithmetic demonstrates that semantic relationships are encoded as consistent vector directions. The gender direction (man→woman) is the same as (king→queen), so adding the gender direction to the king vector produces a vector near queen.
-
-**Explanation:**
-This emergent structure is the most striking property of word embeddings. The model trained only to predict context words from target words, yet its internal representations captured gender, nationality, tense, and many other semantic axes as geometric directions. This happens because words used in similar contexts get similar vectors (the distributional hypothesis: "you shall know a word by the company it keeps"). "King" and "queen" appear in similar contexts except for gender-related contexts where they differ — exactly the gender direction. This geometric structure is why embeddings transfer well: the gender direction learned from English royalty generalizes to president/female-president, actor/actress, etc.
 
 ---
 
-#### **Question 2: A pre-trained BERT tokenizer splits "unbelievable" into ["un", "##believ", "##able"]. Why does BERT use subword tokenization instead of whole-word tokenization?**
+<div class="quiz-container" data-correct="1" data-explanation="WordPiece (BERT&#039;s tokenizer) learns a vocabulary of ~30,000 subword units from a large corpus. Frequent words appear as single tokens (&quot;the,&quot; &quot;running,&quot; &quot;president&quot;). Rare or novel words are decomposed: &quot;COVID-19&quot; → [&quot;co&quot;, &quot;##vid&quot;, &quot;-&quot;, &quot;19&quot;]; &quot;transformer&quot; → [&quot;transform&quot;, &quot;##er&quot;]. The `##` prefix marks continuation pieces. Because any text can be decomposed into these subword units, BERT never encounters a truly unknown word — it might not have seen &quot;COVID&quot; as a whole word in training, but it can still produce a representation from its subword components. This is why fine-tuning BERT on a medical corpus can handle medical terminology it wasn&#039;t explicitly trained on.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A pre-trained BERT tokenizer splits "unbelievable" into ["un", "##believ", "##able"]. Why does BERT use subword tokenization instead of whole-word tokenization?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Subword tokenization is used because BERT was trained on multiple languages, and subwords are language-neutral.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Subword tokenization allows BERT to represent any word — including novel technical terms, brand names, and foreign words — as a sequence of known subword pieces, eliminating the out-of-vocabulary problem. Whole-word tokenization with a vocabulary of 30,000 words would silently drop many domain-specific or newly coined words. Subword tokenization with 30,000 pieces can represent essentially any word in any language by composing known pieces.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Subword tokenization reduces memory usage because subword pieces are shorter than full words.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Subword tokenization allows BERT to understand prefixes and suffixes — "un-" always means negation, so the model can derive the meaning of unseen words from their components.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Subword tokenization is used because BERT was trained on multiple languages, and subwords are language-neutral.
-2. Subword tokenization allows BERT to represent any word — including novel technical terms, brand names, and foreign words — as a sequence of known subword pieces, eliminating the out-of-vocabulary problem. Whole-word tokenization with a vocabulary of 30,000 words would silently drop many domain-specific or newly coined words. Subword tokenization with 30,000 pieces can represent essentially any word in any language by composing known pieces.
-3. Subword tokenization reduces memory usage because subword pieces are shorter than full words.
-4. Subword tokenization allows BERT to understand prefixes and suffixes — "un-" always means negation, so the model can derive the meaning of unseen words from their components.
-
-**Correct Answer:**
-2. Subword tokenization allows BERT to represent any word (including novel, technical, or foreign words) as a sequence of known pieces, eliminating the OOV problem that plagues whole-word vocabularies.
-
-**Explanation:**
-WordPiece (BERT's tokenizer) learns a vocabulary of ~30,000 subword units from a large corpus. Frequent words appear as single tokens ("the," "running," "president"). Rare or novel words are decomposed: "COVID-19" → ["co", "##vid", "-", "19"]; "transformer" → ["transform", "##er"]. The `##` prefix marks continuation pieces. Because any text can be decomposed into these subword units, BERT never encounters a truly unknown word — it might not have seen "COVID" as a whole word in training, but it can still produce a representation from its subword components. This is why fine-tuning BERT on a medical corpus can handle medical terminology it wasn't explicitly trained on.
 
 ---
 
-#### **Question 3: You need to classify 1,000 product reviews into 5 sentiment categories (very negative, negative, neutral, positive, very positive) but have no labeled training data. What is the most appropriate approach?**
+<div class="quiz-container" data-correct="1" data-explanation="Zero-shot classification uses a natural language inference model (e.g., BART-MNLI) that was pre-trained to determine if a premise entails a hypothesis. At inference time, the &quot;premise&quot; is the review text and the &quot;hypothesis&quot; is each candidate label framed as a sentence (&quot;This review expresses very negative sentiment&quot;). The model scores which hypothesis is most entailed by the text. This requires no task-specific training data. The accuracy is lower than a fine-tuned model would achieve, but for quick prototyping or when labeling data is not yet possible, zero-shot classification is a practical starting point. If accuracy is insufficient, the next step would be labeling ~100 examples and fine-tuning a BERT model, which typically achieves strong results with that small amount of data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You need to classify 1,000 product reviews into 5 sentiment categories (very negative, negative, neutral, positive, very positive) but have no labeled training data. What is the most appropriate approach?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Use TF-IDF + logistic regression — it does not require labeled training data because TF-IDF is unsupervised.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Use a zero-shot classification pipeline with a pre-trained model. Define the 5 categories as text labels ("very negative," "slightly negative," etc.) and let the model classify each review using its pre-trained understanding of sentiment language, without any task-specific training data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Use a pre-trained BERT model fine-tuned on IMDB — since IMDB is also sentiment analysis, it transfers directly to product reviews.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Without labeled data, no machine learning approach is possible. You must manually label at least 200 reviews before building any classifier.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Use TF-IDF + logistic regression — it does not require labeled training data because TF-IDF is unsupervised.
-2. Use a zero-shot classification pipeline with a pre-trained model. Define the 5 categories as text labels ("very negative," "slightly negative," etc.) and let the model classify each review using its pre-trained understanding of sentiment language, without any task-specific training data.
-3. Use a pre-trained BERT model fine-tuned on IMDB — since IMDB is also sentiment analysis, it transfers directly to product reviews.
-4. Without labeled data, no machine learning approach is possible. You must manually label at least 200 reviews before building any classifier.
-
-**Correct Answer:**
-2. Use zero-shot classification with a pre-trained model. Define category labels as natural language strings and let the model classify using its pre-trained linguistic knowledge, without any labeled training data.
-
-**Explanation:**
-Zero-shot classification uses a natural language inference model (e.g., BART-MNLI) that was pre-trained to determine if a premise entails a hypothesis. At inference time, the "premise" is the review text and the "hypothesis" is each candidate label framed as a sentence ("This review expresses very negative sentiment"). The model scores which hypothesis is most entailed by the text. This requires no task-specific training data. The accuracy is lower than a fine-tuned model would achieve, but for quick prototyping or when labeling data is not yet possible, zero-shot classification is a practical starting point. If accuracy is insufficient, the next step would be labeling ~100 examples and fine-tuning a BERT model, which typically achieves strong results with that small amount of data.

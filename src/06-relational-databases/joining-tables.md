@@ -259,48 +259,93 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: You want to list all customers, including those who have never placed an order (showing 0 for their order count). Which join type should you use?**
-1. `INNER JOIN` — it returns all customers.
-2. `LEFT JOIN` with `customers` as the left table — it returns all customers, with `NULL` for unmatched orders.
-3. `RIGHT JOIN` with `orders` as the right table — it returns all orders.
-4. `CROSS JOIN` — it returns every customer-order combination.
+<div class="quiz-container" data-correct="1" data-explanation="`LEFT JOIN` keeps every row from the left table regardless of whether a match exists in the right table. By placing `customers` on the left, every customer is included. Those with no matching orders will have `NULL` in the order columns. Wrapping the join in a `GROUP BY` with `COUNT(order_id)` then produces `0` for customers with no orders, since `COUNT` skips `NULL` values.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You want to list all customers, including those who have never placed an order (showing 0 for their order count). Which join type should you use?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`INNER JOIN` — it returns all customers.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`LEFT JOIN` with `customers` as the left table — it returns all customers, with `NULL` for unmatched orders.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`RIGHT JOIN` with `orders` as the right table — it returns all orders.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`CROSS JOIN` — it returns every customer-order combination.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `LEFT JOIN` with `customers` as the left table — it returns all customers, with `NULL` for unmatched orders.
-
-**Explanation:**
-`LEFT JOIN` keeps every row from the left table regardless of whether a match exists in the right table. By placing `customers` on the left, every customer is included. Those with no matching orders will have `NULL` in the order columns. Wrapping the join in a `GROUP BY` with `COUNT(order_id)` then produces `0` for customers with no orders, since `COUNT` skips `NULL` values.
 
 ---
 
-#### **Question 2: What does the following pattern find?**
-```sql
-SELECT c.name
+<div class="quiz-container" data-correct="2" data-explanation="The `LEFT JOIN` keeps all customers, filling `NULL` into the order columns for customers with no orders. The `WHERE o.order_id IS NULL` then filters to keep only those customers where no matching order was found — i.e., customers who have never ordered. This is the canonical SQL pattern for finding &quot;rows in table A with no match in table B.&quot;">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does the following pattern find?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>SELECT c.name
 FROM customers AS c
 LEFT JOIN orders AS o ON c.customer_id = o.customer_id
-WHERE o.order_id IS NULL;
-```
-1. All customers who have placed at least one order.
-2. All orders where the customer's record is missing.
-3. All customers who have never placed an order.
-4. All customers and orders, including unmatched ones.
+WHERE o.order_id IS NULL;</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>All customers who have placed at least one order.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>All orders where the customer's record is missing.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>All customers who have never placed an order.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>All customers and orders, including unmatched ones.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. All customers who have never placed an order.
-
-**Explanation:**
-The `LEFT JOIN` keeps all customers, filling `NULL` into the order columns for customers with no orders. The `WHERE o.order_id IS NULL` then filters to keep only those customers where no matching order was found — i.e., customers who have never ordered. This is the canonical SQL pattern for finding "rows in table A with no match in table B."
 
 ---
 
-#### **Question 3: What is the key difference between `INNER JOIN` and `LEFT JOIN`?**
-1. `INNER JOIN` is faster; `LEFT JOIN` is used for large datasets only.
-2. `INNER JOIN` returns only rows with matches in both tables; `LEFT JOIN` also returns rows from the left table that have no match in the right table.
-3. `LEFT JOIN` can only be used when joining exactly two tables; `INNER JOIN` works with any number.
-4. `INNER JOIN` requires the tables to have identical schemas; `LEFT JOIN` does not.
+<div class="quiz-container" data-correct="1" data-explanation="The critical difference is how non-matching rows are handled. `INNER JOIN` silently drops any row from either table that has no counterpart — this can cause data to disappear without an obvious error. `LEFT JOIN` preserves all rows from the left table, using `NULL` to represent missing right-table data. Choosing the wrong join type is a common source of incorrect query results.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the key difference between `INNER JOIN` and `LEFT JOIN`?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`INNER JOIN` is faster; `LEFT JOIN` is used for large datasets only.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`INNER JOIN` returns only rows with matches in both tables; `LEFT JOIN` also returns rows from the left table that have no match in the right table.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`LEFT JOIN` can only be used when joining exactly two tables; `INNER JOIN` works with any number.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`INNER JOIN` requires the tables to have identical schemas; `LEFT JOIN` does not.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `INNER JOIN` returns only rows with matches in both tables; `LEFT JOIN` also returns rows from the left table that have no match in the right table.
-
-**Explanation:**
-The critical difference is how non-matching rows are handled. `INNER JOIN` silently drops any row from either table that has no counterpart — this can cause data to disappear without an obvious error. `LEFT JOIN` preserves all rows from the left table, using `NULL` to represent missing right-table data. Choosing the wrong join type is a common source of incorrect query results.

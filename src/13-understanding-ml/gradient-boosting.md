@@ -360,45 +360,87 @@ Gradient Boosting achieves AUC 0.999 on the breast cancer dataset — the highes
 
 ### Knowledge Check
 
-#### **Question 1: A gradient boosting model is trained with learning_rate=0.5 and n_estimators=50. The training accuracy is 99% but the test accuracy is 88%. What is the most likely cause, and how would you fix it?**
+<div class="quiz-container" data-correct="1" data-explanation="A high learning rate means each tree is &quot;trusted&quot; heavily. With only 50 such trees, the model quickly memorizes training patterns — including noise. The standard fix is to reduce the learning rate and increase n_estimators proportionally: halving the learning rate requires roughly twice as many trees to reach the same training loss, but the resulting model generalizes better because each tree makes smaller, more conservative corrections. Early stopping (monitoring validation loss) is the most principled way to find the right n_estimators.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A gradient boosting model is trained with learning_rate=0.5 and n_estimators=50. The training accuracy is 99% but the test accuracy is 88%. What is the most likely cause, and how would you fix it?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The model is underfitting because the learning rate is too low. Increase learning rate to 1.0 and add more trees.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The model is overfitting. A high learning rate (0.5) makes each tree's contribution large — the model rapidly fits training data, including noise. Fix: reduce learning_rate to 0.05–0.1 and increase n_estimators proportionally (e.g., 300–500 trees), or reduce max_depth.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The model is underfitting because 50 estimators are not enough. Increase n_estimators to 1,000.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The accuracy gap is expected — gradient boosting always shows a large train-test gap due to its sequential nature.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model is underfitting because the learning rate is too low. Increase learning rate to 1.0 and add more trees.
-2. The model is overfitting. A high learning rate (0.5) makes each tree's contribution large — the model rapidly fits training data, including noise. Fix: reduce learning_rate to 0.05–0.1 and increase n_estimators proportionally (e.g., 300–500 trees), or reduce max_depth.
-3. The model is underfitting because 50 estimators are not enough. Increase n_estimators to 1,000.
-4. The accuracy gap is expected — gradient boosting always shows a large train-test gap due to its sequential nature.
-
-**Correct Answer:**
-2. The model is overfitting. A high learning rate (0.5) makes each tree's contribution large — the model rapidly fits training data. Fix: reduce learning_rate to 0.05–0.1 and increase n_estimators proportionally.
-
-**Explanation:**
-A high learning rate means each tree is "trusted" heavily. With only 50 such trees, the model quickly memorizes training patterns — including noise. The standard fix is to reduce the learning rate and increase n_estimators proportionally: halving the learning rate requires roughly twice as many trees to reach the same training loss, but the resulting model generalizes better because each tree makes smaller, more conservative corrections. Early stopping (monitoring validation loss) is the most principled way to find the right n_estimators.
 
 ---
 
-#### **Question 2: Why does gradient boosting typically use shallow trees (depth 1–3), while random forests use full-depth trees?**
+<div class="quiz-container" data-correct="1" data-explanation="A key difference in philosophy: random forests reduce variance by averaging many high-variance (deep, overfit) trees — the diversity from bootstrap samples and feature randomness means their errors cancel. Gradient boosting reduces bias by iteratively correcting residuals with low-variance (shallow) trees — a deep tree in boosting would overfit the current residuals, amplifying rather than correcting noise. This is why gradient boosting is more sensitive to its tree depth hyperparameter than random forests.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why does gradient boosting typically use shallow trees (depth 1–3), while random forests use full-depth trees?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Gradient boosting uses shallow trees because they train faster — deeper trees would make the algorithm too slow.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>In gradient boosting, each tree is a weak learner that corrects the residuals of the previous ensemble. Shallow trees capture simple patterns (one or two interactions), and hundreds of such corrections combine into a strong model. Deep trees in gradient boosting would overfit by learning too much noise in the residuals. In random forests, deep trees are acceptable because averaging hundreds of overfit trees reduces variance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Gradient boosting uses shallow trees because the algorithm cannot process more than 3 levels of depth.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Random forests use full-depth trees to ensure each tree is as different as possible from the others.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Gradient boosting uses shallow trees because they train faster — deeper trees would make the algorithm too slow.
-2. In gradient boosting, each tree is a weak learner that corrects the residuals of the previous ensemble. Shallow trees capture simple patterns (one or two interactions), and hundreds of such corrections combine into a strong model. Deep trees in gradient boosting would overfit by learning too much noise in the residuals. In random forests, deep trees are acceptable because averaging hundreds of overfit trees reduces variance.
-3. Gradient boosting uses shallow trees because the algorithm cannot process more than 3 levels of depth.
-4. Random forests use full-depth trees to ensure each tree is as different as possible from the others.
-
-**Correct Answer:**
-2. In gradient boosting, each tree corrects the residuals of the previous ensemble. Shallow trees capture simple patterns and hundreds of corrections combine into a strong model. Deep trees would overfit by learning noise in the residuals.
-
-**Explanation:**
-A key difference in philosophy: random forests reduce variance by averaging many high-variance (deep, overfit) trees — the diversity from bootstrap samples and feature randomness means their errors cancel. Gradient boosting reduces bias by iteratively correcting residuals with low-variance (shallow) trees — a deep tree in boosting would overfit the current residuals, amplifying rather than correcting noise. This is why gradient boosting is more sensitive to its tree depth hyperparameter than random forests.
 
 ---
 
-#### **Question 3: XGBoost is described as "the industry standard for tabular data." What does it offer beyond scikit-learn's GradientBoostingClassifier?**
+<div class="quiz-container" data-correct="2" data-explanation="Scikit-learn&#039;s `GradientBoostingClassifier` is a clean, well-documented reference implementation — excellent for learning. XGBoost and LightGBM achieve the same algorithmic results but are engineered for scale: LightGBM, for instance, uses histogram-based splits that reduce memory usage by 20× and training time by 10× on large datasets. Early stopping is particularly valuable: rather than tuning n_estimators by grid search (training many complete models), you train one model and stop when validation performance plateaus — saving hours on large datasets.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> XGBoost is described as "the industry standard for tabular data." What does it offer beyond scikit-learn's GradientBoostingClassifier?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>XGBoost uses a different algorithm (bagging instead of boosting) that is more accurate on most datasets.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>XGBoost is the industry standard because it is the only gradient boosting library that supports multi-class classification.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>XGBoost offers significantly faster training (10–100×) through optimized tree construction and optional GPU acceleration, built-in L1/L2 regularization on tree weights, native handling of missing values (learning the optimal branch direction at each split), and early stopping (halting when validation performance stops improving) — features that make it more accurate and practical at scale than the sklearn reference implementation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>XGBoost always achieves higher accuracy than GradientBoostingClassifier on the same data with the same hyperparameters.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. XGBoost uses a different algorithm (bagging instead of boosting) that is more accurate on most datasets.
-2. XGBoost is the industry standard because it is the only gradient boosting library that supports multi-class classification.
-3. XGBoost offers significantly faster training (10–100×) through optimized tree construction and optional GPU acceleration, built-in L1/L2 regularization on tree weights, native handling of missing values (learning the optimal branch direction at each split), and early stopping (halting when validation performance stops improving) — features that make it more accurate and practical at scale than the sklearn reference implementation.
-4. XGBoost always achieves higher accuracy than GradientBoostingClassifier on the same data with the same hyperparameters.
-
-**Correct Answer:**
-3. XGBoost offers significantly faster training through optimized tree construction and GPU support, built-in regularization, native missing value handling, and early stopping — making it more accurate and practical at scale.
-
-**Explanation:**
-Scikit-learn's `GradientBoostingClassifier` is a clean, well-documented reference implementation — excellent for learning. XGBoost and LightGBM achieve the same algorithmic results but are engineered for scale: LightGBM, for instance, uses histogram-based splits that reduce memory usage by 20× and training time by 10× on large datasets. Early stopping is particularly valuable: rather than tuning n_estimators by grid search (training many complete models), you train one model and stop when validation performance plateaus — saving hours on large datasets.

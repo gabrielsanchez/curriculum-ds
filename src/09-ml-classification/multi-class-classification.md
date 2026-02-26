@@ -355,45 +355,87 @@ In this lesson, you completed the classification trilogy. You learned that multi
 
 ### Knowledge Check
 
-#### **Question 1: A logistic regression classifier using One-vs-Rest is trained on a 5-class problem. How many binary classifiers does it train internally, and what does each one predict?**
+<div class="quiz-container" data-correct="2" data-explanation="One-vs-Rest trains exactly k classifiers for k classes. Classifier 1 is trained to distinguish class 1 from classes {2, 3, 4, 5}; Classifier 2 distinguishes class 2 from classes {1, 3, 4, 5}; and so on. At prediction time, all 5 classifiers score the sample, and the class with the highest confidence score wins. For reference, One-vs-One would train k×(k-1)/2 = 10 classifiers.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A logistic regression classifier using One-vs-Rest is trained on a 5-class problem. How many binary classifiers does it train internally, and what does each one predict?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>10 classifiers — one for every pair of classes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>1 classifier — logistic regression handles all classes natively.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>5 classifiers — each one predicts whether a sample belongs to one specific class versus all other classes combined.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>4 classifiers — one per class boundary.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. 10 classifiers — one for every pair of classes.
-2. 1 classifier — logistic regression handles all classes natively.
-3. 5 classifiers — each one predicts whether a sample belongs to one specific class versus all other classes combined.
-4. 4 classifiers — one per class boundary.
-
-**Correct Answer:**
-3. 5 classifiers — each one predicts whether a sample belongs to one specific class versus all other classes combined.
-
-**Explanation:**
-One-vs-Rest trains exactly k classifiers for k classes. Classifier 1 is trained to distinguish class 1 from classes {2, 3, 4, 5}; Classifier 2 distinguishes class 2 from classes {1, 3, 4, 5}; and so on. At prediction time, all 5 classifiers score the sample, and the class with the highest confidence score wins. For reference, One-vs-One would train k×(k-1)/2 = 10 classifiers.
 
 ---
 
-#### **Question 2: A multi-class classification report shows that your model has macro-average F1 = 0.61 but weighted-average F1 = 0.84. What is the most likely explanation?**
+<div class="quiz-container" data-correct="1" data-explanation="When macro F1 &lt;&lt; weighted F1, it almost always indicates class imbalance. Weighted average F1 is pulled up by the large classes, which the model handles well. Macro average gives equal weight to every class — including the small, underrepresented ones that the model struggles with. This gap is a red flag that the model may perform poorly in practice on rare but important categories. Both averages should be reported and understood.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A multi-class classification report shows that your model has macro-average F1 = 0.61 but weighted-average F1 = 0.84. What is the most likely explanation?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The model performs well overall, and the two averages always disagree by this much.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The dataset is highly imbalanced — the model performs well on large classes (driving up the weighted average) but poorly on small classes (which are treated equally in the macro average).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The macro average is always lower than the weighted average because it is computed differently.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The model has high precision but low recall across all classes.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model performs well overall, and the two averages always disagree by this much.
-2. The dataset is highly imbalanced — the model performs well on large classes (driving up the weighted average) but poorly on small classes (which are treated equally in the macro average).
-3. The macro average is always lower than the weighted average because it is computed differently.
-4. The model has high precision but low recall across all classes.
-
-**Correct Answer:**
-2. The dataset is highly imbalanced — the model performs well on large classes (driving up the weighted average) but poorly on small classes (which are treated equally in the macro average).
-
-**Explanation:**
-When macro F1 << weighted F1, it almost always indicates class imbalance. Weighted average F1 is pulled up by the large classes, which the model handles well. Macro average gives equal weight to every class — including the small, underrepresented ones that the model struggles with. This gap is a red flag that the model may perform poorly in practice on rare but important categories. Both averages should be reported and understood.
 
 ---
 
-#### **Question 3: Looking at a multi-class confusion matrix for a 4-class problem, you notice that class "B" is frequently confused with class "C" (many off-diagonal entries in the B row point to column C). What does this tell you, and what should you investigate?**
+<div class="quiz-container" data-correct="1" data-explanation="Off-diagonal concentration in a confusion matrix shows which class pairs the model finds hard to distinguish. Frequent B→C confusion means the model sees many class-B samples as more similar to class-C samples than to other B samples in feature space. This could mean: the features don&#039;t capture what distinguishes B from C, the boundary is inherently fuzzy (the classes genuinely overlap), or you need domain-specific features to separate them. The confusion matrix guides your feature engineering and data collection efforts.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Looking at a multi-class confusion matrix for a 4-class problem, you notice that class "B" is frequently confused with class "C" (many off-diagonal entries in the B row point to column C). What does this tell you, and what should you investigate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The model should be retrained with a higher learning rate to separate B and C.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Classes B and C are similar in feature space — their distinguishing features may overlap. You should investigate whether they are truly distinct or whether better features are needed.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The training data for class B is corrupted and should be discarded.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>This indicates overfitting — the model memorized B in training but generalizes it as C.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model should be retrained with a higher learning rate to separate B and C.
-2. Classes B and C are similar in feature space — their distinguishing features may overlap. You should investigate whether they are truly distinct or whether better features are needed.
-3. The training data for class B is corrupted and should be discarded.
-4. This indicates overfitting — the model memorized B in training but generalizes it as C.
-
-**Correct Answer:**
-2. Classes B and C are similar in feature space — their distinguishing features may overlap. You should investigate whether they are truly distinct or whether better features are needed.
-
-**Explanation:**
-Off-diagonal concentration in a confusion matrix shows which class pairs the model finds hard to distinguish. Frequent B→C confusion means the model sees many class-B samples as more similar to class-C samples than to other B samples in feature space. This could mean: the features don't capture what distinguishes B from C, the boundary is inherently fuzzy (the classes genuinely overlap), or you need domain-specific features to separate them. The confusion matrix guides your feature engineering and data collection efforts.

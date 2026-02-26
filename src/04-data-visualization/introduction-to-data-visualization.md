@@ -185,42 +185,87 @@ In this lesson, you learned why visualization is a core data science skill — f
 
 ### Knowledge Check
 
-#### **Question 1: Which chart type is most appropriate for showing how monthly revenue has changed over the past two years?**
-1. Bar chart
-2. Scatter plot
-3. Line chart
-4. Pie chart
+<div class="quiz-container" data-correct="2" data-explanation="Line charts are designed to show **trends over time** or ordered sequences. Each month&#039;s revenue is a data point, and the line connecting them makes the trend — growth, decline, seasonality — immediately visible. A bar chart could work for month-by-month comparisons, but a line chart is more natural for continuous time-series data.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Which chart type is most appropriate for showing how monthly revenue has changed over the past two years?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Bar chart</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Scatter plot</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Line chart</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Pie chart</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Line chart
-
-**Explanation:**
-Line charts are designed to show **trends over time** or ordered sequences. Each month's revenue is a data point, and the line connecting them makes the trend — growth, decline, seasonality — immediately visible. A bar chart could work for month-by-month comparisons, but a line chart is more natural for continuous time-series data.
 
 ---
 
-#### **Question 2: What does Anscombe's Quartet demonstrate about data visualization?**
-1. That all four common chart types produce the same result on the same dataset.
-2. That summary statistics alone can be misleading — datasets with identical statistics can have completely different patterns when visualized.
-3. That scatter plots are more accurate than histograms for all types of data.
-4. That you should always use multiple chart types to display the same data.
+<div class="quiz-container" data-correct="1" data-explanation="Anscombe&#039;s Quartet consists of four datasets with nearly identical mean, variance, correlation, and regression line — yet they look completely different when plotted. This demonstrates that visualization is essential to understand data and that relying solely on summary statistics can lead to incorrect conclusions.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does Anscombe's Quartet demonstrate about data visualization?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>That all four common chart types produce the same result on the same dataset.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>That summary statistics alone can be misleading — datasets with identical statistics can have completely different patterns when visualized.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>That scatter plots are more accurate than histograms for all types of data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>That you should always use multiple chart types to display the same data.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. That summary statistics alone can be misleading — datasets with identical statistics can have completely different patterns when visualized.
-
-**Explanation:**
-Anscombe's Quartet consists of four datasets with nearly identical mean, variance, correlation, and regression line — yet they look completely different when plotted. This demonstrates that visualization is essential to understand data and that relying solely on summary statistics can lead to incorrect conclusions.
 
 ---
 
-#### **Question 3: Why is it generally recommended to start the y-axis of a bar chart at 0?**
-1. It is a Python convention enforced by Matplotlib and Plotly.
-2. Starting at a non-zero value can visually exaggerate the differences between bars, misleading the viewer about the true magnitude of the differences.
-3. Bar charts can only display non-negative values, so starting at 0 is the only option.
-4. It makes the chart title easier to read.
+<div class="quiz-container" data-correct="1" data-explanation="Bar length encodes value — the eye judges magnitude by how tall the bar is relative to the others. If the y-axis starts at, say, 95 instead of 0, a bar at 98 looks three times taller than a bar at 96, even though the actual difference is only 2%. Starting at 0 ensures the visual proportions reflect the true data proportions.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Why is it generally recommended to start the y-axis of a bar chart at 0?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>It is a Python convention enforced by Matplotlib and Plotly.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Starting at a non-zero value can visually exaggerate the differences between bars, misleading the viewer about the true magnitude of the differences.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Bar charts can only display non-negative values, so starting at 0 is the only option.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>It makes the chart title easier to read.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Starting at a non-zero value can visually exaggerate the differences between bars, misleading the viewer about the true magnitude of the differences.
-
-**Explanation:**
-Bar length encodes value — the eye judges magnitude by how tall the bar is relative to the others. If the y-axis starts at, say, 95 instead of 0, a bar at 98 looks three times taller than a bar at 96, even though the actual difference is only 2%. Starting at 0 ensures the visual proportions reflect the true data proportions.

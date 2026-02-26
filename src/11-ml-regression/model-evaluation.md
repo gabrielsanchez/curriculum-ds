@@ -459,45 +459,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: A house price model achieves MAE = $45,000 and RMSE = $90,000. What does the large gap between MAE and RMSE indicate, and which metric should you report to a business stakeholder?**
+<div class="quiz-container" data-correct="1" data-explanation="MAE and RMSE measure the same thing (prediction errors) but weigh them differently. When RMSE &gt;&gt; MAE, it means a subset of errors is very large — these large errors inflate RMSE but are averaged away in MAE. Investigating which samples have large residuals often reveals data quality issues, unusual property types, or gaps in feature coverage. For communication, MAE is preferred because it&#039;s in the original units and has an intuitive meaning. RMSE is preferred when you need to penalize large errors in the loss function or are comparing models where outlier sensitivity matters.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A house price model achieves MAE = $45,000 and RMSE = $90,000. What does the large gap between MAE and RMSE indicate, and which metric should you report to a business stakeholder?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The gap indicates data leakage — MAE and RMSE should be equal for a well-trained model.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The large MAE-RMSE gap indicates the model makes some very large prediction errors on specific properties. RMSE penalizes these outliers more, so its value is higher. For a business stakeholder, MAE ($45,000) is the more interpretable metric: "on average, predictions are off by $45,000."</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>RMSE is always higher than MAE, so no interpretation is needed.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The gap suggests the model is underfitting and needs more features.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The gap indicates data leakage — MAE and RMSE should be equal for a well-trained model.
-2. The large MAE-RMSE gap indicates the model makes some very large prediction errors on specific properties. RMSE penalizes these outliers more, so its value is higher. For a business stakeholder, MAE ($45,000) is the more interpretable metric: "on average, predictions are off by $45,000."
-3. RMSE is always higher than MAE, so no interpretation is needed.
-4. The gap suggests the model is underfitting and needs more features.
-
-**Correct Answer:**
-2. The large MAE-RMSE gap indicates the model makes some very large prediction errors on specific properties. RMSE penalizes these outliers more, so its value is higher. For a business stakeholder, MAE ($45,000) is the more interpretable metric: "on average, predictions are off by $45,000."
-
-**Explanation:**
-MAE and RMSE measure the same thing (prediction errors) but weigh them differently. When RMSE >> MAE, it means a subset of errors is very large — these large errors inflate RMSE but are averaged away in MAE. Investigating which samples have large residuals often reveals data quality issues, unusual property types, or gaps in feature coverage. For communication, MAE is preferred because it's in the original units and has an intuitive meaning. RMSE is preferred when you need to penalize large errors in the loss function or are comparing models where outlier sensitivity matters.
 
 ---
 
-#### **Question 2: You want to tune `max_depth` for a decision tree regressor. You evaluate several values on your held-out test set, find that `max_depth=7` gives the best test RMSE, and train your final model with `max_depth=7`. What is wrong with this workflow?**
+<div class="quiz-container" data-correct="2" data-explanation="Every time you use the test set to make a decision — even a hyperparameter decision — you are implicitly fitting to the test set. If you try 20 values of `max_depth` and pick the one with the best test RMSE, you&#039;ve effectively searched over 20 models and selected for the one that happened to perform well on that particular random test sample. This is optimistic overfitting to the test set. The fix is `GridSearchCV` or manual cross-validation on the training data. The test set is reserved for one final evaluation after all decisions are made.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You want to tune `max_depth` for a decision tree regressor. You evaluate several values on your held-out test set, find that `max_depth=7` gives the best test RMSE, and train your final model with `max_depth=7`. What is wrong with this workflow?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Nothing — evaluating hyperparameters on the test set is the standard approach.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`max_depth` cannot be tuned for decision trees — it must be set manually.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Selecting `max_depth=7` by evaluating on the test set is a form of data leakage. The test set was used to make a modeling decision, so it no longer provides an unbiased estimate of generalization. The apparent performance is optimistic. Use cross-validation (e.g., `GridSearchCV`) on the training set to select `max_depth`, then evaluate the final model on the test set exactly once.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The workflow is correct, but you should use R² instead of RMSE for tree tuning.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Nothing — evaluating hyperparameters on the test set is the standard approach.
-2. `max_depth` cannot be tuned for decision trees — it must be set manually.
-3. Selecting `max_depth=7` by evaluating on the test set is a form of data leakage. The test set was used to make a modeling decision, so it no longer provides an unbiased estimate of generalization. The apparent performance is optimistic. Use cross-validation (e.g., `GridSearchCV`) on the training set to select `max_depth`, then evaluate the final model on the test set exactly once.
-4. The workflow is correct, but you should use R² instead of RMSE for tree tuning.
-
-**Correct Answer:**
-3. Selecting `max_depth=7` by evaluating on the test set is a form of data leakage. The test set was used to make a modeling decision, so it no longer provides an unbiased estimate of generalization. The apparent performance is optimistic. Use cross-validation (e.g., `GridSearchCV`) on the training set to select `max_depth`, then evaluate the final model on the test set exactly once.
-
-**Explanation:**
-Every time you use the test set to make a decision — even a hyperparameter decision — you are implicitly fitting to the test set. If you try 20 values of `max_depth` and pick the one with the best test RMSE, you've effectively searched over 20 models and selected for the one that happened to perform well on that particular random test sample. This is optimistic overfitting to the test set. The fix is `GridSearchCV` or manual cross-validation on the training data. The test set is reserved for one final evaluation after all decisions are made.
 
 ---
 
-#### **Question 3: A 5-fold cross-validation on the training set returns R² scores of [0.71, 0.69, 0.72, 0.68, 0.70] for a polynomial regression model. The single train/test split gives test R² = 0.64. How should you interpret these two results?**
+<div class="quiz-container" data-correct="1" data-explanation="Cross-validation produces a more stable performance estimate than a single split, because it uses all the training data for both training and validation (in different folds). A difference of 0.06 between CV mean (0.70) and single test R² (0.64) is within the range expected from sampling variation, especially if the test set contains a few harder regions of the feature space. You should report both: CV performance for model selection during development, and test set performance as the final published result. The test set result is the official score; the CV scores provide context for how stable the model is.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A 5-fold cross-validation on the training set returns R² scores of [0.71, 0.69, 0.72, 0.68, 0.70] for a polynomial regression model. The single train/test split gives test R² = 0.64. How should you interpret these two results?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The test set result (0.64) is wrong — use the CV mean (0.70) as the true performance estimate.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The CV mean (0.70) is likely a more reliable estimate of the model's generalization ability than the single test split (0.64), because it averages over 5 different held-out partitions rather than depending on one. The CV standard deviation (≈0.014) indicates stability. The lower test result may reflect that the single test split was slightly harder-than-average, or that the model generalizes slightly less well on fully unseen data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The discrepancy means the model is overfitting — reduce the polynomial degree.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Cross-validation always overestimates performance — the test set result (0.64) is correct.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The test set result (0.64) is wrong — use the CV mean (0.70) as the true performance estimate.
-2. The CV mean (0.70) is likely a more reliable estimate of the model's generalization ability than the single test split (0.64), because it averages over 5 different held-out partitions rather than depending on one. The CV standard deviation (≈0.014) indicates stability. The lower test result may reflect that the single test split was slightly harder-than-average, or that the model generalizes slightly less well on fully unseen data.
-3. The discrepancy means the model is overfitting — reduce the polynomial degree.
-4. Cross-validation always overestimates performance — the test set result (0.64) is correct.
-
-**Correct Answer:**
-2. The CV mean (0.70) is likely a more reliable estimate of the model's generalization ability than the single test split (0.64), because it averages over 5 different held-out partitions rather than depending on one. The CV mean ≈ 0.70 with low variance is a strong indication of consistent performance. The slightly lower test set result (0.64) is not alarming — it's within the range of natural sampling variation and provides a single, final unbiased estimate.
-
-**Explanation:**
-Cross-validation produces a more stable performance estimate than a single split, because it uses all the training data for both training and validation (in different folds). A difference of 0.06 between CV mean (0.70) and single test R² (0.64) is within the range expected from sampling variation, especially if the test set contains a few harder regions of the feature space. You should report both: CV performance for model selection during development, and test set performance as the final published result. The test set result is the official score; the CV scores provide context for how stable the model is.

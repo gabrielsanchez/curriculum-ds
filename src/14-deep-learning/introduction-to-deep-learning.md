@@ -240,45 +240,87 @@ The lessons after that introduce specialized architectures:
 
 ### Knowledge Check
 
-#### **Question 1: What is the key difference between deep learning and traditional machine learning methods like logistic regression or gradient boosting?**
+<div class="quiz-container" data-correct="2" data-explanation="Logistic regression and gradient boosting need a feature matrix — a table of numbers where someone has already decided that &quot;age,&quot; &quot;income,&quot; and &quot;zip code&quot; are the relevant inputs. A CNN can take raw pixel values and learn that certain pixel patterns correspond to &quot;edges,&quot; then that certain edge patterns correspond to &quot;ears,&quot; then that certain ear-plus-face patterns correspond to &quot;cat&quot; — entirely automatically. This is what &quot;representation learning&quot; means: the network discovers what features are useful rather than being told.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the key difference between deep learning and traditional machine learning methods like logistic regression or gradient boosting?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Deep learning always achieves higher accuracy than traditional ML methods on any dataset.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Deep learning requires more data and compute, so it is only worth using for problems with more than 1 million samples.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The key difference is representation learning: traditional ML requires humans to engineer features from raw data (e.g., extracting edge counts from pixels), while deep learning learns its own hierarchical representations directly from raw data (pixels, tokens, waveforms). This makes deep learning especially powerful for unstructured data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Deep learning uses gradient descent while traditional ML does not — deep learning is the only algorithm family that can be optimized iteratively.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Deep learning always achieves higher accuracy than traditional ML methods on any dataset.
-2. Deep learning requires more data and compute, so it is only worth using for problems with more than 1 million samples.
-3. The key difference is representation learning: traditional ML requires humans to engineer features from raw data (e.g., extracting edge counts from pixels), while deep learning learns its own hierarchical representations directly from raw data (pixels, tokens, waveforms). This makes deep learning especially powerful for unstructured data.
-4. Deep learning uses gradient descent while traditional ML does not — deep learning is the only algorithm family that can be optimized iteratively.
-
-**Correct Answer:**
-3. The key difference is representation learning: traditional ML requires hand-engineered features, while deep learning learns hierarchical representations directly from raw data, making it especially powerful for unstructured data like images, text, and audio.
-
-**Explanation:**
-Logistic regression and gradient boosting need a feature matrix — a table of numbers where someone has already decided that "age," "income," and "zip code" are the relevant inputs. A CNN can take raw pixel values and learn that certain pixel patterns correspond to "edges," then that certain edge patterns correspond to "ears," then that certain ear-plus-face patterns correspond to "cat" — entirely automatically. This is what "representation learning" means: the network discovers what features are useful rather than being told.
 
 ---
 
-#### **Question 2: Why is the ReLU activation function preferred over sigmoid in the hidden layers of deep networks?**
+<div class="quiz-container" data-correct="1" data-explanation="In a 10-layer network using sigmoid activations, a gradient that starts at 0.5 at the output layer might be (0.5)^10 ≈ 0.001 by the time it reaches the first layer — the first layer learns 500× slower than the output layer. ReLU&#039;s gradient for positive inputs is exactly 1, so gradients don&#039;t shrink as they pass through (though dead neurons — neurons stuck at 0 for all inputs — are a different risk). This is why deep learning became practically trainable once ReLU replaced sigmoid in hidden layers around 2010.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why is the ReLU activation function preferred over sigmoid in the hidden layers of deep networks?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>ReLU is preferred because it produces outputs in the range (0, 1), making it compatible with probability interpretation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Sigmoid saturates at both extremes (very large or very small inputs produce gradients near zero), causing the vanishing gradient problem in deep networks — gradients shrink exponentially as they propagate back through many layers, making early layers learn very slowly. ReLU does not saturate for positive inputs (`f(x) = x` for x > 0), so gradients flow through without shrinking, enabling effective training of deep networks.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>ReLU is preferred because it is a probabilistic function, while sigmoid is deterministic.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>ReLU is preferred because it automatically normalizes activations to have zero mean and unit variance.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. ReLU is preferred because it produces outputs in the range (0, 1), making it compatible with probability interpretation.
-2. Sigmoid saturates at both extremes (very large or very small inputs produce gradients near zero), causing the vanishing gradient problem in deep networks — gradients shrink exponentially as they propagate back through many layers, making early layers learn very slowly. ReLU does not saturate for positive inputs (`f(x) = x` for x > 0), so gradients flow through without shrinking, enabling effective training of deep networks.
-3. ReLU is preferred because it is a probabilistic function, while sigmoid is deterministic.
-4. ReLU is preferred because it automatically normalizes activations to have zero mean and unit variance.
-
-**Correct Answer:**
-2. Sigmoid saturates at extremes, causing vanishing gradients in deep networks — gradients shrink as they propagate back through layers. ReLU does not saturate for positive inputs, allowing gradients to flow without shrinking and enabling effective training of deep networks.
-
-**Explanation:**
-In a 10-layer network using sigmoid activations, a gradient that starts at 0.5 at the output layer might be (0.5)^10 ≈ 0.001 by the time it reaches the first layer — the first layer learns 500× slower than the output layer. ReLU's gradient for positive inputs is exactly 1, so gradients don't shrink as they pass through (though dead neurons — neurons stuck at 0 for all inputs — are a different risk). This is why deep learning became practically trainable once ReLU replaced sigmoid in hidden layers around 2010.
 
 ---
 
-#### **Question 3: A network is trained for 50 epochs. The training loss decreases from 0.8 to 0.02, but the validation loss decreases from 0.8 to 0.15 then rises to 0.45 by epoch 50. What is happening and what would you do?**
+<div class="quiz-container" data-correct="1" data-explanation="This &quot;diverging loss&quot; pattern is the signature of overfitting: the model gets better at training examples but worse at new examples. The validation loss minimum (around epoch 20 in this example) represents the best generalizing model — early stopping saves those weights automatically. Lesson 5 covers all the regularization techniques for avoiding this pattern: dropout (randomly deactivating neurons during training), batch normalization, L2 weight decay, and learning rate scheduling.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A network is trained for 50 epochs. The training loss decreases from 0.8 to 0.02, but the validation loss decreases from 0.8 to 0.15 then rises to 0.45 by epoch 50. What is happening and what would you do?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The network is underfitting — both losses should decrease together. Add more layers to increase model capacity.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The network is overfitting — after epoch ~20 (where validation loss was lowest at 0.15), the model began memorizing training examples. Approaches: add dropout, reduce network size, use early stopping (save the model weights from the epoch with lowest validation loss), or add L2 regularization.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The rising validation loss indicates a data leak — some test data was accidentally included in the training set.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>This pattern is normal and expected — training loss is always much lower than validation loss in deep learning.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The network is underfitting — both losses should decrease together. Add more layers to increase model capacity.
-2. The network is overfitting — after epoch ~20 (where validation loss was lowest at 0.15), the model began memorizing training examples. Approaches: add dropout, reduce network size, use early stopping (save the model weights from the epoch with lowest validation loss), or add L2 regularization.
-3. The rising validation loss indicates a data leak — some test data was accidentally included in the training set.
-4. This pattern is normal and expected — training loss is always much lower than validation loss in deep learning.
-
-**Correct Answer:**
-2. The network is overfitting — after the validation loss minimum, the model began memorizing training data rather than learning general patterns. Apply early stopping (save weights from the best validation epoch), dropout, L2 regularization, or reduce model size.
-
-**Explanation:**
-This "diverging loss" pattern is the signature of overfitting: the model gets better at training examples but worse at new examples. The validation loss minimum (around epoch 20 in this example) represents the best generalizing model — early stopping saves those weights automatically. Lesson 5 covers all the regularization techniques for avoiding this pattern: dropout (randomly deactivating neurons during training), batch normalization, L2 weight decay, and learning rate scheduling.

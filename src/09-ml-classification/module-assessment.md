@@ -118,53 +118,93 @@ Write 2–3 sentences justifying which model and threshold you would deploy in a
 
 ## Knowledge Check
 
-#### **Question 1: For the mushroom classification problem, you train a model that achieves 96% accuracy but has a recall of only 62% for the poisonous class. Is this model acceptable for a real application? Why or why not?**
+<div class="quiz-container" data-correct="1" data-explanation="In mushroom safety prediction, a false negative (predicting &quot;edible&quot; when the mushroom is poisonous) can be life-threatening. High accuracy masks this problem because the dataset is fairly balanced. A recall of 62% on the poisonous class means more than one-third of poisonous mushrooms would be cleared as safe to eat. For safety-critical applications, recall on the dangerous class must be optimized — typically approaching 99–100% — even at the cost of reduced precision (more false alarms telling users to avoid mushrooms that are actually edible).">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> For the mushroom classification problem, you train a model that achieves 96% accuracy but has a recall of only 62% for the poisonous class. Is this model acceptable for a real application? Why or why not?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Yes — 96% accuracy is excellent and means most predictions are correct.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>No — 62% recall for the poisonous class means 38% of poisonous mushrooms are predicted as edible, which is dangerous. For this application, recall on the poisonous class should be near-perfect.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Yes — precision is more important than recall for safety-critical applications.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>No — you should always achieve above 98% accuracy before deploying a model.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Yes — 96% accuracy is excellent and means most predictions are correct.
-2. No — 62% recall for the poisonous class means 38% of poisonous mushrooms are predicted as edible, which is dangerous. For this application, recall on the poisonous class should be near-perfect.
-3. Yes — precision is more important than recall for safety-critical applications.
-4. No — you should always achieve above 98% accuracy before deploying a model.
-
-**Correct Answer:**
-2. No — 62% recall for the poisonous class means 38% of poisonous mushrooms are predicted as edible, which is dangerous. For this application, recall on the poisonous class should be near-perfect.
-
-**Explanation:**
-In mushroom safety prediction, a false negative (predicting "edible" when the mushroom is poisonous) can be life-threatening. High accuracy masks this problem because the dataset is fairly balanced. A recall of 62% on the poisonous class means more than one-third of poisonous mushrooms would be cleared as safe to eat. For safety-critical applications, recall on the dangerous class must be optimized — typically approaching 99–100% — even at the cost of reduced precision (more false alarms telling users to avoid mushrooms that are actually edible).
 
 ---
 
-#### **Question 2: You've trained three classifiers on the mushroom dataset with the following results:**
-
+<div class="quiz-container" data-correct="2" data-explanation="Model C has the highest accuracy but the lowest recall for the poisonous class (0.74) — meaning 26% of poisonous mushrooms are misclassified as edible. This is unacceptable for a safety application. Model B achieves high accuracy (97%), the highest recall (0.96 — only 4% of poisonous mushrooms missed), and the best AUC (0.99). Model A has the lowest recall (0.89), missing 11% of poisonous cases. Model B is the best choice because it excels on the metric that matters most for this domain.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You've trained three classifiers on the mushroom dataset with the following results:
 | Model | Accuracy | Recall (poisonous) | AUC |
 |-------|----------|--------------------|-----|
 | A | 94% | 0.89 | 0.97 |
 | B | 97% | 0.96 | 0.99 |
 | C | 99% | 0.74 | 0.98 |
-
 **Which model should you prefer for deployment, and why?**
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Model C — highest accuracy means fewest total mistakes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Model A — lowest accuracy means the model generalizes better without overfitting.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Model B — best balance of all three metrics, with the highest recall for the dangerous class.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Model C — highest accuracy and AUC indicates the best overall classifier.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Model C — highest accuracy means fewest total mistakes.
-2. Model A — lowest accuracy means the model generalizes better without overfitting.
-3. Model B — best balance of all three metrics, with the highest recall for the dangerous class.
-4. Model C — highest accuracy and AUC indicates the best overall classifier.
-
-**Correct Answer:**
-3. Model B — best balance of all three metrics, with the highest recall for the dangerous class.
-
-**Explanation:**
-Model C has the highest accuracy but the lowest recall for the poisonous class (0.74) — meaning 26% of poisonous mushrooms are misclassified as edible. This is unacceptable for a safety application. Model B achieves high accuracy (97%), the highest recall (0.96 — only 4% of poisonous mushrooms missed), and the best AUC (0.99). Model A has the lowest recall (0.89), missing 11% of poisonous cases. Model B is the best choice because it excels on the metric that matters most for this domain.
 
 ---
 
-#### **Question 3: After training your final mushroom classifier, you discover that the test set contains 95% edible mushrooms and only 5% poisonous ones — very different from the 52%/48% split in the original dataset. How does this affect your evaluation, and what should you do?**
+<div class="quiz-container" data-correct="1" data-explanation="A model that always predicts &quot;edible&quot; on a 95% edible test set achieves 95% accuracy — appearing excellent while being completely useless. When evaluation data has a different class distribution from training data, you must rely on class-specific metrics (precision, recall, F1 for the minority class) rather than overall accuracy. Additionally, if the real-world deployment environment truly has 5% poisonous cases (rather than the training distribution of ~48%), you may need to recalibrate the model&#039;s probability scores or adjust the decision threshold to maintain adequate recall on the rare but dangerous class.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> After training your final mushroom classifier, you discover that the test set contains 95% edible mushrooms and only 5% poisonous ones — very different from the 52%/48% split in the original dataset. How does this affect your evaluation, and what should you do?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Nothing changes — the model's test performance is always representative of real-world performance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The highly imbalanced test set means accuracy will be misleadingly high. You should report precision, recall, and F1 for the poisonous class specifically, and consider whether the test set's class distribution matches real-world deployment conditions.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>You should retrain the model on the imbalanced test set to improve generalization.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>You should use the micro-average F1 since it is not affected by class distribution.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Nothing changes — the model's test performance is always representative of real-world performance.
-2. The highly imbalanced test set means accuracy will be misleadingly high. You should report precision, recall, and F1 for the poisonous class specifically, and consider whether the test set's class distribution matches real-world deployment conditions.
-3. You should retrain the model on the imbalanced test set to improve generalization.
-4. You should use the micro-average F1 since it is not affected by class distribution.
-
-**Correct Answer:**
-2. The highly imbalanced test set means accuracy will be misleadingly high. You should report precision, recall, and F1 for the poisonous class specifically, and consider whether the test set's class distribution matches real-world deployment conditions.
-
-**Explanation:**
-A model that always predicts "edible" on a 95% edible test set achieves 95% accuracy — appearing excellent while being completely useless. When evaluation data has a different class distribution from training data, you must rely on class-specific metrics (precision, recall, F1 for the minority class) rather than overall accuracy. Additionally, if the real-world deployment environment truly has 5% poisonous cases (rather than the training distribution of ~48%), you may need to recalibrate the model's probability scores or adjust the decision threshold to maintain adequate recall on the rare but dangerous class.

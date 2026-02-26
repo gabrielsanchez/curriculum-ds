@@ -297,45 +297,90 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What is the key difference between `loc` and `iloc`?**
-1. `loc` works only on numeric columns; `iloc` works only on string columns.
-2. `loc` selects by label (name); `iloc` selects by integer position.
-3. `loc` returns a DataFrame; `iloc` always returns a Series.
-4. `loc` is faster than `iloc` for large datasets.
+<div class="quiz-container" data-correct="1" data-explanation="`loc` uses the actual index labels and column names — so `df.loc[0, &quot;score&quot;]` finds the row labeled `0` and the column named `&quot;score&quot;`. `iloc` uses raw integer positions — `df.iloc[0, 3]` means the first row and fourth column, regardless of their names.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the key difference between `loc` and `iloc`?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`loc` works only on numeric columns; `iloc` works only on string columns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`loc` selects by label (name); `iloc` selects by integer position.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`loc` returns a DataFrame; `iloc` always returns a Series.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`loc` is faster than `iloc` for large datasets.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `loc` selects by label (name); `iloc` selects by integer position.
-
-**Explanation:**
-`loc` uses the actual index labels and column names — so `df.loc[0, "score"]` finds the row labeled `0` and the column named `"score"`. `iloc` uses raw integer positions — `df.iloc[0, 3]` means the first row and fourth column, regardless of their names.
 
 ---
 
-#### **Question 2: Why must you use parentheses around each condition when combining filters in Pandas?**
-1. Parentheses are optional but improve readability.
-2. Python's operator precedence evaluates `&` and `|` before comparison operators, so without parentheses the expression produces an error or wrong result.
-3. Parentheses tell Pandas to use `loc` instead of `iloc`.
-4. Pandas requires parentheses to distinguish column names from Python keywords.
+<div class="quiz-container" data-correct="1" data-explanation="In Python, bitwise operators `&amp;` and `|` have higher precedence than comparison operators like `&gt;` or `==`. Writing `df[df[&quot;score&quot;] &gt; 80 &amp; df[&quot;age&quot;] &lt; 30]` is parsed as `df[df[&quot;score&quot;] &gt; (80 &amp; df[&quot;age&quot;]) &lt; 30]`, which is incorrect. Parentheses force each condition to be evaluated first: `df[(df[&quot;score&quot;] &gt; 80) &amp; (df[&quot;age&quot;] &lt; 30)]`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why must you use parentheses around each condition when combining filters in Pandas?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Parentheses are optional but improve readability.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Python's operator precedence evaluates `&` and `|` before comparison operators, so without parentheses the expression produces an error or wrong result.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Parentheses tell Pandas to use `loc` instead of `iloc`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Pandas requires parentheses to distinguish column names from Python keywords.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Python's operator precedence evaluates `&` and `|` before comparison operators, so without parentheses the expression produces an error or wrong result.
-
-**Explanation:**
-In Python, bitwise operators `&` and `|` have higher precedence than comparison operators like `>` or `==`. Writing `df[df["score"] > 80 & df["age"] < 30]` is parsed as `df[df["score"] > (80 & df["age"]) < 30]`, which is incorrect. Parentheses force each condition to be evaluated first: `df[(df["score"] > 80) & (df["age"] < 30)]`.
 
 ---
 
-#### **Question 3: What does the following code do?**
-```python
-df["category"] = np.where(df["score"] >= 90, "High", "Low")
-```
-1. Filters the DataFrame to keep only rows where `score >= 90`.
-2. Sorts the DataFrame by the `score` column in descending order.
-3. Creates a new column `"category"` with the value `"High"` where score is 90 or above, and `"Low"` otherwise.
-4. Deletes all rows where `score < 90`.
+<div class="quiz-container" data-correct="2" data-explanation="`np.where(condition, value_if_true, value_if_false)` is the NumPy equivalent of a vectorized if-else. It evaluates the condition row by row and assigns `&quot;High&quot;` or `&quot;Low&quot;` accordingly. The result is assigned to a new column `&quot;category&quot;` in the DataFrame.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What does the following code do?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>df[&quot;category&quot;] = np.where(df[&quot;score&quot;] &gt;= 90, &quot;High&quot;, &quot;Low&quot;)</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Filters the DataFrame to keep only rows where `score >= 90`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Sorts the DataFrame by the `score` column in descending order.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Creates a new column `"category"` with the value `"High"` where score is 90 or above, and `"Low"` otherwise.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Deletes all rows where `score < 90`.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Creates a new column `"category"` with the value `"High"` where score is 90 or above, and `"Low"` otherwise.
-
-**Explanation:**
-`np.where(condition, value_if_true, value_if_false)` is the NumPy equivalent of a vectorized if-else. It evaluates the condition row by row and assigns `"High"` or `"Low"` accordingly. The result is assigned to a new column `"category"` in the DataFrame.

@@ -235,42 +235,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: A correlation coefficient of −0.85 between two variables indicates:**
-1. A weak negative relationship — the variables are mostly unrelated.
-2. No relationship — negative correlations are not meaningful.
-3. A very strong negative relationship — as one variable increases, the other tends to decrease strongly.
-4. A very strong positive relationship — the negative sign is a typo in the output.
+<div class="quiz-container" data-correct="2" data-explanation="The sign of a correlation coefficient indicates direction: positive means both variables move in the same direction, negative means they move in opposite directions. The magnitude (absolute value) indicates strength. −0.85 has a magnitude of 0.85, which is a very strong relationship. As one variable goes up, the other strongly tends to go down.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A correlation coefficient of −0.85 between two variables indicates:
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>A weak negative relationship — the variables are mostly unrelated.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>No relationship — negative correlations are not meaningful.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>A very strong negative relationship — as one variable increases, the other tends to decrease strongly.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>A very strong positive relationship — the negative sign is a typo in the output.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. A very strong negative relationship — as one variable increases, the other tends to decrease strongly.
-
-**Explanation:**
-The sign of a correlation coefficient indicates direction: positive means both variables move in the same direction, negative means they move in opposite directions. The magnitude (absolute value) indicates strength. −0.85 has a magnitude of 0.85, which is a very strong relationship. As one variable goes up, the other strongly tends to go down.
 
 ---
 
-#### **Question 2: In a correlation matrix heatmap, the diagonal is always 1.0. Why?**
-1. It's a display convention — the diagonal is set to 1.0 to make the chart look symmetric.
-2. The diagonal represents the correlation of each variable with itself, which is always a perfect 1.0 by definition.
-3. The diagonal represents the average correlation of each variable with all other variables.
-4. Pandas rounds all correlation values on the diagonal up to 1.0.
+<div class="quiz-container" data-correct="1" data-explanation="The Pearson correlation coefficient measures how consistently two variables move together. A variable always moves perfectly in sync with itself — for every data point, `x == x` — so the correlation is always exactly 1.0. This is not a convention or rounding; it is mathematically certain.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> In a correlation matrix heatmap, the diagonal is always 1.0. Why?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It's a display convention — the diagonal is set to 1.0 to make the chart look symmetric.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The diagonal represents the correlation of each variable with itself, which is always a perfect 1.0 by definition.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The diagonal represents the average correlation of each variable with all other variables.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Pandas rounds all correlation values on the diagonal up to 1.0.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The diagonal represents the correlation of each variable with itself, which is always a perfect 1.0 by definition.
-
-**Explanation:**
-The Pearson correlation coefficient measures how consistently two variables move together. A variable always moves perfectly in sync with itself — for every data point, `x == x` — so the correlation is always exactly 1.0. This is not a convention or rounding; it is mathematically certain.
 
 ---
 
-#### **Question 3: Two features in your dataset have a correlation of 0.95 with each other. What issue might this cause in a linear regression model?**
-1. The model will automatically remove one of the features.
-2. The model will be unable to train because the correlation matrix cannot be computed.
-3. Multicollinearity — the model will struggle to separate the individual contributions of each feature, leading to unstable and unreliable coefficient estimates.
-4. No issue — high correlation between features improves model accuracy.
+<div class="quiz-container" data-correct="2" data-explanation="When two features are very highly correlated (multicollinearity), a linear regression model cannot reliably determine how much of the outcome is explained by each one independently. Small changes in the data can cause large swings in the estimated coefficients, making them unstable and difficult to interpret. A common solution is to remove one of the correlated features or combine them using dimensionality reduction.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Two features in your dataset have a correlation of 0.95 with each other. What issue might this cause in a linear regression model?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The model will automatically remove one of the features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The model will be unable to train because the correlation matrix cannot be computed.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Multicollinearity — the model will struggle to separate the individual contributions of each feature, leading to unstable and unreliable coefficient estimates.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>No issue — high correlation between features improves model accuracy.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Multicollinearity — the model will struggle to separate the individual contributions of each feature, leading to unstable and unreliable coefficient estimates.
-
-**Explanation:**
-When two features are very highly correlated (multicollinearity), a linear regression model cannot reliably determine how much of the outcome is explained by each one independently. Small changes in the data can cause large swings in the estimated coefficients, making them unstable and difficult to interpret. A common solution is to remove one of the correlated features or combine them using dimensionality reduction.

@@ -188,42 +188,87 @@ In a markdown cell, answer the following questions:
 
 ## Knowledge Check
 
-#### **Question 1: You are building a model to classify penguin species using body measurements. After completing feature engineering, you realize you accidentally called `preprocessor.fit_transform()` on the combined train + test data instead of training data only. What problem does this cause?**
-1. The preprocessor will produce incorrect output shapes.
-2. The scaling statistics (mean, standard deviation) will be computed using test set values, which constitutes data leakage — making performance estimates on the test set artificially optimistic.
-3. `ColumnTransformer` will raise an error if fitted on more than 80% of the data.
-4. One-hot encoding will create different columns for train and test, causing a shape mismatch.
+<div class="quiz-container" data-correct="1" data-explanation="`fit_transform()` on the combined dataset allows test set statistics to influence the scaler&#039;s learned mean and standard deviation. In practice, when a model is deployed, you only have training data when fitting preprocessors — future records must be transformed using statistics from the training distribution. Fitting on the full dataset leaks future information into the preprocessing step, making the model appear to perform better than it will in production.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You are building a model to classify penguin species using body measurements. After completing feature engineering, you realize you accidentally called `preprocessor.fit_transform()` on the combined train + test data instead of training data only. What problem does this cause?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The preprocessor will produce incorrect output shapes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The scaling statistics (mean, standard deviation) will be computed using test set values, which constitutes data leakage — making performance estimates on the test set artificially optimistic.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`ColumnTransformer` will raise an error if fitted on more than 80% of the data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>One-hot encoding will create different columns for train and test, causing a shape mismatch.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The scaling statistics (mean, standard deviation) will be computed using test set values, which constitutes data leakage — making performance estimates on the test set artificially optimistic.
-
-**Explanation:**
-`fit_transform()` on the combined dataset allows test set statistics to influence the scaler's learned mean and standard deviation. In practice, when a model is deployed, you only have training data when fitting preprocessors — future records must be transformed using statistics from the training distribution. Fitting on the full dataset leaks future information into the preprocessing step, making the model appear to perform better than it will in production.
 
 ---
 
-#### **Question 2: The penguins dataset has three species: Adelie (44%), Chinstrap (20%), and Gentoo (36%). When you call `train_test_split`, you use `stratify=y`. Why?**
-1. `stratify=y` makes the split faster by sorting the data first.
-2. Without stratification, the random split might place all Chinstrap penguins in the training set and none in the test set, making evaluation unreliable for underrepresented classes.
-3. `stratify=y` ensures the test set is exactly 20% of the data.
-4. Stratification is required when the target is a string column rather than a numeric column.
+<div class="quiz-container" data-correct="1" data-explanation="When class proportions are unequal, a purely random split can produce a test set where a minority class is underrepresented or even absent. `stratify=y` ensures each class appears in the train and test sets in proportion to its frequency in the full dataset. This guarantees that performance is measured on a representative sample of all classes — especially important for the Chinstrap class, which makes up only 20% of the data.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> The penguins dataset has three species: Adelie (44%), Chinstrap (20%), and Gentoo (36%). When you call `train_test_split`, you use `stratify=y`. Why?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`stratify=y` makes the split faster by sorting the data first.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Without stratification, the random split might place all Chinstrap penguins in the training set and none in the test set, making evaluation unreliable for underrepresented classes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`stratify=y` ensures the test set is exactly 20% of the data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Stratification is required when the target is a string column rather than a numeric column.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Without stratification, the random split might place all Chinstrap penguins in the training set and none in the test set, making evaluation unreliable for underrepresented classes.
-
-**Explanation:**
-When class proportions are unequal, a purely random split can produce a test set where a minority class is underrepresented or even absent. `stratify=y` ensures each class appears in the train and test sets in proportion to its frequency in the full dataset. This guarantees that performance is measured on a representative sample of all classes — especially important for the Chinstrap class, which makes up only 20% of the data.
 
 ---
 
-#### **Question 3: A teammate suggests skipping feature scaling because "the model will figure out the right weights anyway." For which of the following algorithms is this reasoning most problematic?**
-1. A decision tree classifier — decision trees split on individual feature thresholds.
-2. A random forest classifier — random forests average many decision trees.
-3. A k-nearest neighbors classifier — KNN computes Euclidean distance between points and will treat `body_mass_g` (in grams, ~3500–6000) as orders of magnitude more important than `bill_depth_mm` (in mm, ~13–21).
-4. A gradient boosting classifier — gradient boosting is tree-based and scale-invariant.
+<div class="quiz-container" data-correct="2" data-explanation="Tree-based algorithms (decision trees, random forests, gradient boosting) split on individual feature values and are unaffected by scale. KNN, however, computes the distance between data points across all features simultaneously. A `body_mass_g` difference of 500 grams dwarfs a `bill_depth_mm` difference of 2 mm in Euclidean distance — not because body mass is more predictive, but simply because it&#039;s measured in a larger unit. Without scaling, KNN effectively ignores low-magnitude features. `StandardScaler` ensures each feature contributes proportionally to distance calculations.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A teammate suggests skipping feature scaling because "the model will figure out the right weights anyway." For which of the following algorithms is this reasoning most problematic?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>A decision tree classifier — decision trees split on individual feature thresholds.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>A random forest classifier — random forests average many decision trees.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>A k-nearest neighbors classifier — KNN computes Euclidean distance between points and will treat `body_mass_g` (in grams, ~3500–6000) as orders of magnitude more important than `bill_depth_mm` (in mm, ~13–21).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>A gradient boosting classifier — gradient boosting is tree-based and scale-invariant.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. A k-nearest neighbors classifier — KNN computes Euclidean distance between points and will treat `body_mass_g` (in grams, ~3500–6000) as orders of magnitude more important than `bill_depth_mm` (in mm, ~13–21).
-
-**Explanation:**
-Tree-based algorithms (decision trees, random forests, gradient boosting) split on individual feature values and are unaffected by scale. KNN, however, computes the distance between data points across all features simultaneously. A `body_mass_g` difference of 500 grams dwarfs a `bill_depth_mm` difference of 2 mm in Euclidean distance — not because body mass is more predictive, but simply because it's measured in a larger unit. Without scaling, KNN effectively ignores low-magnitude features. `StandardScaler` ensures each feature contributes proportionally to distance calculations.

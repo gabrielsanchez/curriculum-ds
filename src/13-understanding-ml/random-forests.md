@@ -335,45 +335,87 @@ Random Forests demonstrate that combining many imperfect models can surpass any 
 
 ### Knowledge Check
 
-#### **Question 1: A random forest uses bootstrap sampling. What does this mean, and what is an "out-of-bag" sample?**
+<div class="quiz-container" data-correct="1" data-explanation="When sampling n examples with replacement from n examples, the probability any single example is NOT selected in a given draw is (1 − 1/n). After n draws, the probability it&#039;s never selected is (1 − 1/n)ⁿ → 1/e ≈ 0.368. So about 36.8% of training examples are left out of each bootstrap sample. These &quot;out-of-bag&quot; examples can be used as a validation set for that tree, and averaging OOB error across all trees gives a free cross-validation estimate.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A random forest uses bootstrap sampling. What does this mean, and what is an "out-of-bag" sample?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Bootstrap sampling means the forest randomly removes features that are not useful. Out-of-bag samples are features that were removed.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Bootstrap sampling means each tree is trained on a random sample of training examples drawn with replacement (the same size as the original dataset). This means roughly 37% of training examples are not in each bootstrap sample — these are "out-of-bag" and can be used to estimate generalization performance without a separate validation set.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Bootstrap sampling means the forest randomly selects the number of trees to use. Out-of-bag samples are trees that were not selected.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Bootstrap sampling is a statistical technique that ensures all training examples appear equally often across all trees.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Bootstrap sampling means the forest randomly removes features that are not useful. Out-of-bag samples are features that were removed.
-2. Bootstrap sampling means each tree is trained on a random sample of training examples drawn with replacement (the same size as the original dataset). This means roughly 37% of training examples are not in each bootstrap sample — these are "out-of-bag" and can be used to estimate generalization performance without a separate validation set.
-3. Bootstrap sampling means the forest randomly selects the number of trees to use. Out-of-bag samples are trees that were not selected.
-4. Bootstrap sampling is a statistical technique that ensures all training examples appear equally often across all trees.
-
-**Correct Answer:**
-2. Bootstrap sampling means each tree is trained on a random sample of training examples drawn with replacement. Roughly 37% of training examples are not in each bootstrap sample — these are "out-of-bag" and can be used to estimate generalization performance.
-
-**Explanation:**
-When sampling n examples with replacement from n examples, the probability any single example is NOT selected in a given draw is (1 − 1/n). After n draws, the probability it's never selected is (1 − 1/n)ⁿ → 1/e ≈ 0.368. So about 36.8% of training examples are left out of each bootstrap sample. These "out-of-bag" examples can be used as a validation set for that tree, and averaging OOB error across all trees gives a free cross-validation estimate.
 
 ---
 
-#### **Question 2: Why do random forests typically outperform single decision trees, and what role does feature randomness play?**
+<div class="quiz-container" data-correct="1" data-explanation="If you trained 100 trees all on the same data with the same features, they&#039;d produce nearly identical predictions — averaging them would give no benefit. The two randomization sources solve this: different bootstrap samples give different training sets, and limiting `max_features` per split prevents all trees from always choosing the same dominant features. The result is a diverse ensemble where tree disagreements expose genuine uncertainty and tree agreements signal confident predictions.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why do random forests typically outperform single decision trees, and what role does feature randomness play?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Random forests outperform single trees because they use more data — each tree sees all training examples, while a single tree sees only a subset.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Random forests outperform single trees because they ensemble many trees trained on different bootstrap samples. Feature randomness (considering only sqrt(n_features) features per split) decorrelates the trees — different trees specialize on different features, so their errors are largely independent. Averaging independent errors reduces variance without increasing bias.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Random forests outperform single trees because they use a more sophisticated splitting criterion (Gini impurity vs. entropy).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Random forests outperform single trees because they automatically tune the max_depth hyperparameter for each tree using cross-validation.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Random forests outperform single trees because they use more data — each tree sees all training examples, while a single tree sees only a subset.
-2. Random forests outperform single trees because they ensemble many trees trained on different bootstrap samples. Feature randomness (considering only sqrt(n_features) features per split) decorrelates the trees — different trees specialize on different features, so their errors are largely independent. Averaging independent errors reduces variance without increasing bias.
-3. Random forests outperform single trees because they use a more sophisticated splitting criterion (Gini impurity vs. entropy).
-4. Random forests outperform single trees because they automatically tune the max_depth hyperparameter for each tree using cross-validation.
-
-**Correct Answer:**
-2. Random forests outperform single trees because they ensemble many trees trained on different bootstrap samples. Feature randomness decorrelates the trees — different trees specialize on different features — so their errors are largely independent. Averaging independent errors reduces variance without increasing bias.
-
-**Explanation:**
-If you trained 100 trees all on the same data with the same features, they'd produce nearly identical predictions — averaging them would give no benefit. The two randomization sources solve this: different bootstrap samples give different training sets, and limiting `max_features` per split prevents all trees from always choosing the same dominant features. The result is a diverse ensemble where tree disagreements expose genuine uncertainty and tree agreements signal confident predictions.
 
 ---
 
-#### **Question 3: Random forest feature importances show that feature A has importance 0.35 and feature B has importance 0.02. A colleague concludes that feature B can be safely removed. What concern should you raise?**
+<div class="quiz-container" data-correct="1" data-explanation="When two features carry redundant information, a random forest at each split picks whichever version it sees first (or whichever is in the current random feature subset). Over many trees, the importance is split between the correlated features — both appear less important than either would be alone. Additionally, tree-based importance (mean impurity decrease) can favor high-cardinality features. A safer approach: compute permutation importance (shuffling each feature and measuring accuracy drop) which is less susceptible to these biases, or test model performance with and without the feature.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Random forest feature importances show that feature A has importance 0.35 and feature B has importance 0.02. A colleague concludes that feature B can be safely removed. What concern should you raise?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Feature importances in random forests are not normalized, so 0.02 doesn't mean feature B is unimportant.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Feature importances can be misleading when features are correlated. If feature B is highly correlated with feature A, the forest may have distributed their shared importance primarily to A. Feature B might still contain predictive information. Before dropping it, verify with a model trained without feature B, or check correlation with A.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Random forest importances always underestimate the importance of categorical features, so feature B is probably more important than it appears.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The threshold for removing features should be 0.05, not 0.02 — so feature B is borderline important.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Feature importances in random forests are not normalized, so 0.02 doesn't mean feature B is unimportant.
-2. Feature importances can be misleading when features are correlated. If feature B is highly correlated with feature A, the forest may have distributed their shared importance primarily to A. Feature B might still contain predictive information. Before dropping it, verify with a model trained without feature B, or check correlation with A.
-3. Random forest importances always underestimate the importance of categorical features, so feature B is probably more important than it appears.
-4. The threshold for removing features should be 0.05, not 0.02 — so feature B is borderline important.
-
-**Correct Answer:**
-2. Feature importances can be misleading when features are correlated. If feature B is highly correlated with feature A, the forest may have distributed their shared importance primarily to A, underestimating B's true contribution.
-
-**Explanation:**
-When two features carry redundant information, a random forest at each split picks whichever version it sees first (or whichever is in the current random feature subset). Over many trees, the importance is split between the correlated features — both appear less important than either would be alone. Additionally, tree-based importance (mean impurity decrease) can favor high-cardinality features. A safer approach: compute permutation importance (shuffling each feature and measuring accuracy drop) which is less susceptible to these biases, or test model performance with and without the feature.

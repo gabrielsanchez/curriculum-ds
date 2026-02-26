@@ -311,45 +311,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: A linear regression model has `MedInc` coefficient = 0.829 (after standardizing all features). What does this mean?**
+<div class="quiz-container" data-correct="1" data-explanation="After standardizing features, coefficients are in units of standard deviations. A coefficient of 0.829 means: moving income up by one standard deviation (≈$19,000) is associated with a 0.829 standard deviation increase in predicted value (≈$83,000), all else equal. The phrase &quot;all else equal&quot; is crucial — coefficients are partial effects, estimated while holding every other feature at its mean. Without standardization, the coefficient would be in the original units (e.g., $41,700 per $10,000 increase in income), making cross-feature comparison harder.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A linear regression model has `MedInc` coefficient = 0.829 (after standardizing all features). What does this mean?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>For every $1 increase in income, house value increases by $0.829.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>A 1 standard deviation increase in median income is associated with an 0.829 standard deviation increase in predicted house value, holding all other features constant.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Income accounts for 82.9% of the variance in house prices.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The model predicts a house value of 0.829 when all other features are zero.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. For every $1 increase in income, house value increases by $0.829.
-2. A 1 standard deviation increase in median income is associated with an 0.829 standard deviation increase in predicted house value, holding all other features constant.
-3. Income accounts for 82.9% of the variance in house prices.
-4. The model predicts a house value of 0.829 when all other features are zero.
-
-**Correct Answer:**
-2. A 1 standard deviation increase in median income is associated with an 0.829 standard deviation increase in predicted house value, holding all other features constant.
-
-**Explanation:**
-After standardizing features, coefficients are in units of standard deviations. A coefficient of 0.829 means: moving income up by one standard deviation (≈$19,000) is associated with a 0.829 standard deviation increase in predicted value (≈$83,000), all else equal. The phrase "all else equal" is crucial — coefficients are partial effects, estimated while holding every other feature at its mean. Without standardization, the coefficient would be in the original units (e.g., $41,700 per $10,000 increase in income), making cross-feature comparison harder.
 
 ---
 
-#### **Question 2: A residual vs. predicted plot shows a clear fan shape: residuals are small and tightly clustered for low predicted values, but grow much larger for high predicted values. What does this indicate and what is the recommended fix?**
+<div class="quiz-container" data-correct="1" data-explanation="A fan shape in the residual vs. predicted plot is the classic signature of heteroscedasticity: variance increases with the magnitude of the predicted value. This violates a key assumption of OLS (constant residual variance) and can make predictions for high-value cases unreliable. Log-transforming the target (`y_log = np.log1p(y)`) compresses the distribution and often makes residual variance more constant. You then invert the transformation at prediction time: `y_pred = np.expm1(model.predict(X))`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A residual vs. predicted plot shows a clear fan shape: residuals are small and tightly clustered for low predicted values, but grow much larger for high predicted values. What does this indicate and what is the recommended fix?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The model is overfitting — reduce the number of features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Heteroscedasticity — the model's errors are not constant across the range of predictions. A common fix is to log-transform the target variable, which tends to compress the high-value tail and stabilize variance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The data has too many outliers — remove the top 5% of predictions.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The model needs more training data to handle high-value predictions.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model is overfitting — reduce the number of features.
-2. Heteroscedasticity — the model's errors are not constant across the range of predictions. A common fix is to log-transform the target variable, which tends to compress the high-value tail and stabilize variance.
-3. The data has too many outliers — remove the top 5% of predictions.
-4. The model needs more training data to handle high-value predictions.
-
-**Correct Answer:**
-2. Heteroscedasticity — the model's errors are not constant across the range of predictions. A common fix is to log-transform the target variable, which tends to compress the high-value tail and stabilize variance.
-
-**Explanation:**
-A fan shape in the residual vs. predicted plot is the classic signature of heteroscedasticity: variance increases with the magnitude of the predicted value. This violates a key assumption of OLS (constant residual variance) and can make predictions for high-value cases unreliable. Log-transforming the target (`y_log = np.log1p(y)`) compresses the distribution and often makes residual variance more constant. You then invert the transformation at prediction time: `y_pred = np.expm1(model.predict(X))`.
 
 ---
 
-#### **Question 3: Two features, `AveRooms` and `AveBedrms`, have a correlation of 0.85 in the training data. What problem does this create for linear regression, and what are two ways to address it?**
+<div class="quiz-container" data-correct="1" data-explanation="When two features are highly correlated, small changes in the data can cause large swings in their estimated coefficients — the model can&#039;t reliably attribute the effect to one feature vs. the other. The model&#039;s *predictions* can still be good (the collinear features together capture the signal), but *interpretations* of individual coefficients become unreliable. Dropping one correlated feature simplifies the model; Ridge regression (L2 regularization) is a more principled approach that keeps both features while constraining their coefficients — covered in lesson 4.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Two features, `AveRooms` and `AveBedrms`, have a correlation of 0.85 in the training data. What problem does this create for linear regression, and what are two ways to address it?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The model cannot be trained — scikit-learn will raise an error when features are correlated.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Multicollinearity — highly correlated features make individual coefficient estimates unreliable, though the model's overall predictions may still be accurate. Two fixes: (1) drop one of the correlated features, or (2) use Ridge regression (L2 regularization), which handles multicollinearity by shrinking and stabilizing coefficients.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Multicollinearity means both features are redundant and should always be removed.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Correlated features cause overfitting and require more training data to resolve.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model cannot be trained — scikit-learn will raise an error when features are correlated.
-2. Multicollinearity — highly correlated features make individual coefficient estimates unreliable, though the model's overall predictions may still be accurate. Two fixes: (1) drop one of the correlated features, or (2) use Ridge regression (L2 regularization), which handles multicollinearity by shrinking and stabilizing coefficients.
-3. Multicollinearity means both features are redundant and should always be removed.
-4. Correlated features cause overfitting and require more training data to resolve.
-
-**Correct Answer:**
-2. Multicollinearity — highly correlated features make individual coefficient estimates unreliable, though the model's overall predictions may still be accurate. Two fixes: (1) drop one of the correlated features, or (2) use Ridge regression (L2 regularization), which handles multicollinearity by shrinking and stabilizing coefficients.
-
-**Explanation:**
-When two features are highly correlated, small changes in the data can cause large swings in their estimated coefficients — the model can't reliably attribute the effect to one feature vs. the other. The model's *predictions* can still be good (the collinear features together capture the signal), but *interpretations* of individual coefficients become unreliable. Dropping one correlated feature simplifies the model; Ridge regression (L2 regularization) is a more principled approach that keeps both features while constraining their coefficients — covered in lesson 4.

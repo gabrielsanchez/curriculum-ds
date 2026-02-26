@@ -243,42 +243,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: Which function do you use to load a CSV file into a Pandas DataFrame?**
-1. `pd.load_csv()`
-2. `pd.open_csv()`
-3. `pd.read_csv()`
-4. `pd.import_csv()`
+<div class="quiz-container" data-correct="2" data-explanation="`pd.read_csv()` is the standard Pandas function for loading CSV files. It accepts a file path or a URL and returns a DataFrame. The other options (`load_csv`, `open_csv`, `import_csv`) do not exist in Pandas.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Which function do you use to load a CSV file into a Pandas DataFrame?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`pd.load_csv()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`pd.open_csv()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`pd.read_csv()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`pd.import_csv()`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `pd.read_csv()`
-
-**Explanation:**
-`pd.read_csv()` is the standard Pandas function for loading CSV files. It accepts a file path or a URL and returns a DataFrame. The other options (`load_csv`, `open_csv`, `import_csv`) do not exist in Pandas.
 
 ---
 
-#### **Question 2: Why is `index=False` commonly used when calling `df.to_csv()`?**
-1. It speeds up the file-writing process.
-2. It prevents the row index from being written as an extra column in the output file.
-3. It removes all column headers from the output file.
-4. It compresses the CSV file to save disk space.
+<div class="quiz-container" data-correct="1" data-explanation="By default, Pandas includes the DataFrame&#039;s row index as the first column when writing to CSV. This creates an unnamed column of numbers (0, 1, 2, ...) that is usually unwanted. Passing `index=False` skips writing the index, keeping the output file clean and consistent with the original column structure.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why is `index=False` commonly used when calling `df.to_csv()`?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It speeds up the file-writing process.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>It prevents the row index from being written as an extra column in the output file.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>It removes all column headers from the output file.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>It compresses the CSV file to save disk space.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It prevents the row index from being written as an extra column in the output file.
-
-**Explanation:**
-By default, Pandas includes the DataFrame's row index as the first column when writing to CSV. This creates an unnamed column of numbers (0, 1, 2, ...) that is usually unwanted. Passing `index=False` skips writing the index, keeping the output file clean and consistent with the original column structure.
 
 ---
 
-#### **Question 3: Which Pandas function would you use to create a DataFrame from a list of dictionaries?**
-1. `pd.Series(records)`
-2. `pd.DataFrame(records)`
-3. `pd.read_json(records)`
-4. `pd.from_records(records)`
+<div class="quiz-container" data-correct="1" data-explanation="`pd.DataFrame()` accepts a list of dictionaries directly, treating each dictionary as one row and using the dictionary keys as column names. This is a very natural way to build a DataFrame when you&#039;ve collected records one by one, such as from an API response or a loop.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Which Pandas function would you use to create a DataFrame from a list of dictionaries?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`pd.Series(records)`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`pd.DataFrame(records)`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`pd.read_json(records)`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`pd.from_records(records)`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `pd.DataFrame(records)`
-
-**Explanation:**
-`pd.DataFrame()` accepts a list of dictionaries directly, treating each dictionary as one row and using the dictionary keys as column names. This is a very natural way to build a DataFrame when you've collected records one by one, such as from an API response or a loop.

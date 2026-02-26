@@ -128,42 +128,87 @@ These are open-ended reflection questions — there are no trick answers. Though
 
 ## Knowledge Check
 
-#### **Question 1: You close your Colab notebook and reopen it the next day. When you try to run a cell that uses a variable you defined yesterday, you get a `NameError`. What happened, and how do you fix it?**
-1. The notebook file was corrupted — you need to recreate it from scratch.
-2. Colab discarded the runtime when the session ended, clearing all variables from memory. To fix it, run all cells from the top of the notebook (`Runtime → Run all`).
-3. Variables expire after 24 hours in Colab due to a storage limitation.
-4. The variable was accidentally deleted when the notebook was saved.
+<div class="quiz-container" data-correct="1" data-explanation="Google Colab runs code in a virtual machine (runtime) that is terminated when you close the browser or after a period of inactivity. When you reopen the notebook, the file (containing your code and outputs) is intact — but the runtime is fresh with no variables in memory. The notebook must be re-executed from the top to restore the kernel state. This is why organizing your notebook so it runs correctly top-to-bottom is a professional habit.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You close your Colab notebook and reopen it the next day. When you try to run a cell that uses a variable you defined yesterday, you get a `NameError`. What happened, and how do you fix it?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The notebook file was corrupted — you need to recreate it from scratch.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Colab discarded the runtime when the session ended, clearing all variables from memory. To fix it, run all cells from the top of the notebook (`Runtime → Run all`).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Variables expire after 24 hours in Colab due to a storage limitation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The variable was accidentally deleted when the notebook was saved.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Colab discarded the runtime when the session ended, clearing all variables from memory. To fix it, run all cells from the top of the notebook (`Runtime → Run all`).
-
-**Explanation:**
-Google Colab runs code in a virtual machine (runtime) that is terminated when you close the browser or after a period of inactivity. When you reopen the notebook, the file (containing your code and outputs) is intact — but the runtime is fresh with no variables in memory. The notebook must be re-executed from the top to restore the kernel state. This is why organizing your notebook so it runs correctly top-to-bottom is a professional habit.
 
 ---
 
-#### **Question 2: Which step of the data science lifecycle involves creating new variables from existing ones — such as computing `price_per_sqft` from `price` and `size`, or creating an `is_weekend` column from a date?**
-1. Data collection
-2. Model evaluation
-3. Feature engineering, which is part of the data preparation step
-4. Deployment
+<div class="quiz-container" data-correct="2" data-explanation="Feature engineering is the practice of creating new input variables (features) by transforming or combining existing ones, in order to give machine learning algorithms better signal to learn from. Computing `price_per_sqft` from two raw columns is a classic example — the ratio captures something meaningful that neither column alone expresses. This happens during the preparation phase, before model training.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Which step of the data science lifecycle involves creating new variables from existing ones — such as computing `price_per_sqft` from `price` and `size`, or creating an `is_weekend` column from a date?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Data collection</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Model evaluation</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Feature engineering, which is part of the data preparation step</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Deployment</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Feature engineering, which is part of the data preparation step
-
-**Explanation:**
-Feature engineering is the practice of creating new input variables (features) by transforming or combining existing ones, in order to give machine learning algorithms better signal to learn from. Computing `price_per_sqft` from two raw columns is a classic example — the ratio captures something meaningful that neither column alone expresses. This happens during the preparation phase, before model training.
 
 ---
 
-#### **Question 3: A data science team builds a model that predicts which job applicants to advance to interviews. After deployment, they discover the model consistently scores candidates from certain universities lower than equally qualified candidates from other schools. What is the most likely cause?**
-1. The model's algorithm is inherently biased against certain universities.
-2. The team forgot to scale the features before training.
-3. The training data — historical hiring decisions — reflected the biases of past human reviewers, and the model learned and automated those patterns.
-4. The model was overfit to the training data and generalized poorly.
+<div class="quiz-container" data-correct="2" data-explanation="Machine learning models learn from data. If the training data was generated by biased human decisions — for example, hiring managers who historically favored candidates from certain schools — the model will learn to replicate that bias and apply it at scale, faster and more consistently than any human could. This is called **data bias** and is one of the most serious ethical challenges in applied AI. The fix is not a better algorithm; it is examining, auditing, and correcting the training data, and measuring model performance separately across demographic subgroups.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A data science team builds a model that predicts which job applicants to advance to interviews. After deployment, they discover the model consistently scores candidates from certain universities lower than equally qualified candidates from other schools. What is the most likely cause?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The model's algorithm is inherently biased against certain universities.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The team forgot to scale the features before training.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The training data — historical hiring decisions — reflected the biases of past human reviewers, and the model learned and automated those patterns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The model was overfit to the training data and generalized poorly.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. The training data — historical hiring decisions — reflected the biases of past human reviewers, and the model learned and automated those patterns.
-
-**Explanation:**
-Machine learning models learn from data. If the training data was generated by biased human decisions — for example, hiring managers who historically favored candidates from certain schools — the model will learn to replicate that bias and apply it at scale, faster and more consistently than any human could. This is called **data bias** and is one of the most serious ethical challenges in applied AI. The fix is not a better algorithm; it is examining, auditing, and correcting the training data, and measuring model performance separately across demographic subgroups.

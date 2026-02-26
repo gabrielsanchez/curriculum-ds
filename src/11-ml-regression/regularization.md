@@ -391,45 +391,87 @@ In this lesson, you learned that regularization prevents overfitting by adding a
 
 ### Knowledge Check
 
-#### **Question 1: You train a Lasso regression model with progressively larger alpha values. As alpha increases from 0.001 to 10.0, you observe that the number of non-zero coefficients drops from 20 to 3. What is happening, and what is the practical benefit of this behavior?**
+<div class="quiz-container" data-correct="1" data-explanation="Lasso&#039;s L1 penalty has a geometric property that promotes sparse solutions: the penalty surface has corners at the axes, and the optimal solution often lands exactly on an axis (coefficient = 0). As alpha grows, the penalty dominates and more features are zeroed out. This is automatic feature selection — useful when you have many candidate features and want the model to identify which ones actually matter, reducing both complexity and overfitting risk.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You train a Lasso regression model with progressively larger alpha values. As alpha increases from 0.001 to 10.0, you observe that the number of non-zero coefficients drops from 20 to 3. What is happening, and what is the practical benefit of this behavior?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Lasso is removing correlated features by averaging them together, which reduces model complexity.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Lasso's L1 penalty is driving coefficients to exactly zero as the regularization strength increases, automatically performing feature selection. The benefit is a sparser, more interpretable model that keeps only the strongest predictors.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The model is converging to a local minimum and becoming less stable at high alpha values.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Lasso eliminates features randomly to prevent overfitting — the selection is not predictable.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Lasso is removing correlated features by averaging them together, which reduces model complexity.
-2. Lasso's L1 penalty is driving coefficients to exactly zero as the regularization strength increases, automatically performing feature selection. The benefit is a sparser, more interpretable model that keeps only the strongest predictors.
-3. The model is converging to a local minimum and becoming less stable at high alpha values.
-4. Lasso eliminates features randomly to prevent overfitting — the selection is not predictable.
-
-**Correct Answer:**
-2. Lasso's L1 penalty is driving coefficients to exactly zero as the regularization strength increases, automatically performing feature selection. The benefit is a sparser, more interpretable model that keeps only the strongest predictors.
-
-**Explanation:**
-Lasso's L1 penalty has a geometric property that promotes sparse solutions: the penalty surface has corners at the axes, and the optimal solution often lands exactly on an axis (coefficient = 0). As alpha grows, the penalty dominates and more features are zeroed out. This is automatic feature selection — useful when you have many candidate features and want the model to identify which ones actually matter, reducing both complexity and overfitting risk.
 
 ---
 
-#### **Question 2: You have a dataset with 500 features, many of which are highly correlated in groups. You want to use Lasso for feature selection but are concerned it will arbitrarily choose one feature from each correlated group and discard the others. Which approach is more appropriate?**
+<div class="quiz-container" data-correct="1" data-explanation="Lasso tends to arbitrarily select one feature from a correlated group and zero out the others, even when all carry similar information. ElasticNet&#039;s L2 component groups correlated features together (like Ridge does), while its L1 component still drives irrelevant features to zero. The `l1_ratio` parameter controls the balance: values closer to 1 behave more like Lasso, values closer to 0 behave more like Ridge. For a dataset with many correlated feature groups where some features are genuinely irrelevant, ElasticNet is the most appropriate choice.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You have a dataset with 500 features, many of which are highly correlated in groups. You want to use Lasso for feature selection but are concerned it will arbitrarily choose one feature from each correlated group and discard the others. Which approach is more appropriate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Use Ridge — it handles correlated features by shrinking them together without zeroing any out.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Use ElasticNet — it combines L1 (for sparsity) and L2 (which groups correlated features together), keeping the group signal while still zeroing out irrelevant features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Use a higher Lasso alpha to force it to keep all correlated features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Use a Decision Tree, which is immune to feature correlation.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Use Ridge — it handles correlated features by shrinking them together without zeroing any out.
-2. Use ElasticNet — it combines L1 (for sparsity) and L2 (which groups correlated features together), keeping the group signal while still zeroing out irrelevant features.
-3. Use a higher Lasso alpha to force it to keep all correlated features.
-4. Use a Decision Tree, which is immune to feature correlation.
-
-**Correct Answer:**
-2. Use ElasticNet — it combines L1 (for sparsity) and L2 (which groups correlated features together), keeping the group signal while still zeroing out irrelevant features.
-
-**Explanation:**
-Lasso tends to arbitrarily select one feature from a correlated group and zero out the others, even when all carry similar information. ElasticNet's L2 component groups correlated features together (like Ridge does), while its L1 component still drives irrelevant features to zero. The `l1_ratio` parameter controls the balance: values closer to 1 behave more like Lasso, values closer to 0 behave more like Ridge. For a dataset with many correlated feature groups where some features are genuinely irrelevant, ElasticNet is the most appropriate choice.
 
 ---
 
-#### **Question 3: You use `RidgeCV` with 5-fold cross-validation to select the best alpha from a grid of 50 values, and it selects alpha=7.2. You then evaluate the final Ridge model (trained with alpha=7.2 on the full training set) on the held-out test set. Is this workflow correct, and why?**
+<div class="quiz-container" data-correct="1" data-explanation="The key rule is: the test set may only be used once, for the final evaluation. `RidgeCV` performs cross-validation entirely within the training set — it splits training data into 5 folds, evaluates each alpha on held-out folds, and selects the best alpha. The test set is never seen during this process. The final step — training Ridge(alpha=7.2) on all training data and evaluating on the test set — is correct and gives an unbiased performance estimate. This is the standard workflow: CV for hyperparameter selection, test set for final evaluation.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You use `RidgeCV` with 5-fold cross-validation to select the best alpha from a grid of 50 values, and it selects alpha=7.2. You then evaluate the final Ridge model (trained with alpha=7.2 on the full training set) on the held-out test set. Is this workflow correct, and why?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>No — you should retrain with a different alpha on the test set to confirm the choice.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Yes — `RidgeCV` selects alpha using only the training data (5-fold CV), so the test set was never used to make any decisions. Evaluating the final model on the test set gives an unbiased estimate of generalization performance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>No — you should use a validation set (not the test set) to confirm alpha selection after cross-validation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Yes, but only if the test set was not used to build the cross-validation folds.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. No — you should retrain with a different alpha on the test set to confirm the choice.
-2. Yes — `RidgeCV` selects alpha using only the training data (5-fold CV), so the test set was never used to make any decisions. Evaluating the final model on the test set gives an unbiased estimate of generalization performance.
-3. No — you should use a validation set (not the test set) to confirm alpha selection after cross-validation.
-4. Yes, but only if the test set was not used to build the cross-validation folds.
-
-**Correct Answer:**
-2. Yes — `RidgeCV` selects alpha using only the training data (5-fold CV), so the test set was never used to make any decisions. Evaluating the final model on the test set gives an unbiased estimate of generalization performance.
-
-**Explanation:**
-The key rule is: the test set may only be used once, for the final evaluation. `RidgeCV` performs cross-validation entirely within the training set — it splits training data into 5 folds, evaluates each alpha on held-out folds, and selects the best alpha. The test set is never seen during this process. The final step — training Ridge(alpha=7.2) on all training data and evaluating on the test set — is correct and gives an unbiased performance estimate. This is the standard workflow: CV for hyperparameter selection, test set for final evaluation.

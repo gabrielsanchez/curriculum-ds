@@ -225,45 +225,87 @@ In this lesson, you established the foundation for the classification module. Yo
 
 ### Knowledge Check
 
-#### **Question 1: A hospital wants to build a model that reads a chest X-ray and predicts whether the patient has pneumonia, tuberculosis, or is healthy. What type of classification problem is this?**
+<div class="quiz-container" data-correct="2" data-explanation="There are three possible output categories (pneumonia, tuberculosis, healthy), and each X-ray belongs to exactly one of them. That&#039;s the definition of multi-class classification. It would be binary if there were only two classes (e.g., pneumonia / not pneumonia). It would be multi-label if a single X-ray could show both pneumonia and tuberculosis simultaneously.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A hospital wants to build a model that reads a chest X-ray and predicts whether the patient has pneumonia, tuberculosis, or is healthy. What type of classification problem is this?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Binary classification — because the model outputs one label per image.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Multi-label classification — because the image shows a chest, which can have many features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Multi-class classification — because there are three mutually exclusive possible diagnoses.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Regression — because medical predictions involve uncertainty.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Binary classification — because the model outputs one label per image.
-2. Multi-label classification — because the image shows a chest, which can have many features.
-3. Multi-class classification — because there are three mutually exclusive possible diagnoses.
-4. Regression — because medical predictions involve uncertainty.
-
-**Correct Answer:**
-3. Multi-class classification — because there are three mutually exclusive possible diagnoses.
-
-**Explanation:**
-There are three possible output categories (pneumonia, tuberculosis, healthy), and each X-ray belongs to exactly one of them. That's the definition of multi-class classification. It would be binary if there were only two classes (e.g., pneumonia / not pneumonia). It would be multi-label if a single X-ray could show both pneumonia and tuberculosis simultaneously.
 
 ---
 
-#### **Question 2: Why should you use `stratify=y` when splitting a classification dataset?**
+<div class="quiz-container" data-correct="1" data-explanation="If a dataset has 90% negative examples and 10% positive, a random split might put most positive examples in one set. `stratify=y` preserves the class ratio in both splits. This matters most with imbalanced classes — if the model never sees many positive examples in training, it can&#039;t learn to predict them, but evaluation on a test set without enough positives won&#039;t reveal the problem.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why should you use `stratify=y` when splitting a classification dataset?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It makes training faster by organizing the data more efficiently.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>It ensures the proportion of each class in the training set matches the test set, preventing misleading evaluation results when one class is rare.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>It randomly shuffles the labels to prevent the model from memorizing the order.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>It is required by scikit-learn for all classifiers that use `predict_proba`.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. It makes training faster by organizing the data more efficiently.
-2. It ensures the proportion of each class in the training set matches the test set, preventing misleading evaluation results when one class is rare.
-3. It randomly shuffles the labels to prevent the model from memorizing the order.
-4. It is required by scikit-learn for all classifiers that use `predict_proba`.
-
-**Correct Answer:**
-2. It ensures the proportion of each class in the training set matches the test set, preventing misleading evaluation results when one class is rare.
-
-**Explanation:**
-If a dataset has 90% negative examples and 10% positive, a random split might put most positive examples in one set. `stratify=y` preserves the class ratio in both splits. This matters most with imbalanced classes — if the model never sees many positive examples in training, it can't learn to predict them, but evaluation on a test set without enough positives won't reveal the problem.
 
 ---
 
-#### **Question 3: You train a decision tree classifier with `max_depth=4` and get 80% accuracy on the test set. Your colleague trains the same model on the same data and gets 73% accuracy. What is the most likely explanation?**
+<div class="quiz-container" data-correct="1" data-explanation="Without a fixed `random_state`, `train_test_split` produces a different random split each run. Some splits are harder or easier than others by chance — you might get unlucky and have more difficult test cases. Setting `random_state=42` (or any fixed integer) guarantees the same split every time, making results reproducible and comparable.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You train a decision tree classifier with `max_depth=4` and get 80% accuracy on the test set. Your colleague trains the same model on the same data and gets 73% accuracy. What is the most likely explanation?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>One of you has a different version of scikit-learn.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>One of you used a different value for `random_state` in `train_test_split`, resulting in a different split with a different difficulty distribution.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Decision trees are non-deterministic and produce different results every time.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The `max_depth` parameter controls accuracy directly.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. One of you has a different version of scikit-learn.
-2. One of you used a different value for `random_state` in `train_test_split`, resulting in a different split with a different difficulty distribution.
-3. Decision trees are non-deterministic and produce different results every time.
-4. The `max_depth` parameter controls accuracy directly.
-
-**Correct Answer:**
-2. One of you used a different value for `random_state` in `train_test_split`, resulting in a different split with a different difficulty distribution.
-
-**Explanation:**
-Without a fixed `random_state`, `train_test_split` produces a different random split each run. Some splits are harder or easier than others by chance — you might get unlucky and have more difficult test cases. Setting `random_state=42` (or any fixed integer) guarantees the same split every time, making results reproducible and comparable.

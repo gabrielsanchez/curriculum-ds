@@ -192,42 +192,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: Which of the following is a valid Python variable name?**
-1. `2nd_score`
-2. `second score`
-3. `second_score`
-4. `second-score`
+<div class="quiz-container" data-correct="2" data-explanation="Python variable names cannot start with a number (`2nd_score`), cannot contain spaces (`second score`), and cannot contain hyphens (`second-score`). Underscores are allowed, making `second_score` the only valid option.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Which of the following is a valid Python variable name?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`2nd_score`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`second score`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`second_score`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`second-score`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `second_score`
-
-**Explanation:**
-Python variable names cannot start with a number (`2nd_score`), cannot contain spaces (`second score`), and cannot contain hyphens (`second-score`). Underscores are allowed, making `second_score` the only valid option.
 
 ---
 
-#### **Question 2: What data type does Python assign to the value `3.14`?**
-1. `int`
-2. `str`
-3. `bool`
-4. `float`
+<div class="quiz-container" data-correct="3" data-explanation="Any number containing a decimal point is treated as a `float` in Python. `3.14` has a decimal, so Python classifies it as a floating-point number rather than an integer.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What data type does Python assign to the value `3.14`?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`int`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`str`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`bool`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>`float`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-4. `float`
-
-**Explanation:**
-Any number containing a decimal point is treated as a `float` in Python. `3.14` has a decimal, so Python classifies it as a floating-point number rather than an integer.
 
 ---
 
-#### **Question 3: What does the `type()` function do in Python?**
-1. It converts a variable to a different data type.
-2. It returns the data type of a given value or variable.
-3. It prints the value stored in a variable.
-4. It checks whether two variables have the same value.
+<div class="quiz-container" data-correct="1" data-explanation="The `type()` function returns a description of what kind of data a variable holds. For example, `type(42)` returns `&lt;class &#039;int&#039;&gt;` and `type(&quot;hello&quot;)` returns `&lt;class &#039;str&#039;&gt;`. This is useful for debugging and understanding your data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What does the `type()` function do in Python?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>It converts a variable to a different data type.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>It returns the data type of a given value or variable.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>It prints the value stored in a variable.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>It checks whether two variables have the same value.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It returns the data type of a given value or variable.
-
-**Explanation:**
-The `type()` function returns a description of what kind of data a variable holds. For example, `type(42)` returns `<class 'int'>` and `type("hello")` returns `<class 'str'>`. This is useful for debugging and understanding your data.

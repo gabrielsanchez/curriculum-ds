@@ -252,42 +252,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What is the difference between a Pandas Series and a DataFrame?**
-1. A Series stores text data; a DataFrame stores numeric data.
-2. A Series is one-dimensional with an index; a DataFrame is two-dimensional with labeled rows and columns.
-3. A Series can hold multiple data types; a DataFrame can only hold one.
-4. There is no difference — they are interchangeable.
+<div class="quiz-container" data-correct="1" data-explanation="A **Series** is like a single spreadsheet column — one sequence of values with labels. A **DataFrame** is like a full spreadsheet — multiple columns (each a Series) sharing the same row index. In practice, a DataFrame column is a Series.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the difference between a Pandas Series and a DataFrame?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>A Series stores text data; a DataFrame stores numeric data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>A Series is one-dimensional with an index; a DataFrame is two-dimensional with labeled rows and columns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>A Series can hold multiple data types; a DataFrame can only hold one.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>There is no difference — they are interchangeable.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. A Series is one-dimensional with an index; a DataFrame is two-dimensional with labeled rows and columns.
-
-**Explanation:**
-A **Series** is like a single spreadsheet column — one sequence of values with labels. A **DataFrame** is like a full spreadsheet — multiple columns (each a Series) sharing the same row index. In practice, a DataFrame column is a Series.
 
 ---
 
-#### **Question 2: What does `df.shape` return?**
-1. The data types of each column.
-2. The first five rows of the DataFrame.
-3. A tuple of (number of rows, number of columns).
-4. The total number of non-null values.
+<div class="quiz-container" data-correct="2" data-explanation="`df.shape` returns a tuple like `(100, 5)`, meaning the DataFrame has 100 rows and 5 columns. This is a quick way to understand the size of your dataset before diving into analysis.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does `df.shape` return?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The data types of each column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The first five rows of the DataFrame.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>A tuple of (number of rows, number of columns).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The total number of non-null values.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. A tuple of (number of rows, number of columns).
-
-**Explanation:**
-`df.shape` returns a tuple like `(100, 5)`, meaning the DataFrame has 100 rows and 5 columns. This is a quick way to understand the size of your dataset before diving into analysis.
 
 ---
 
-#### **Question 3: Which method provides a quick statistical summary (mean, min, max, std) of all numeric columns in a DataFrame?**
-1. `df.info()`
-2. `df.head()`
-3. `df.dtypes`
-4. `df.describe()`
+<div class="quiz-container" data-correct="3" data-explanation="`df.describe()` computes summary statistics — count, mean, standard deviation, min, quartiles, and max — for every numeric column. It&#039;s one of the first methods you should call when exploring a new dataset. `df.info()` shows column types and null counts, not statistical summaries.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Which method provides a quick statistical summary (mean, min, max, std) of all numeric columns in a DataFrame?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`df.info()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`df.head()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`df.dtypes`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`df.describe()`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-4. `df.describe()`
-
-**Explanation:**
-`df.describe()` computes summary statistics — count, mean, standard deviation, min, quartiles, and max — for every numeric column. It's one of the first methods you should call when exploring a new dataset. `df.info()` shows column types and null counts, not statistical summaries.

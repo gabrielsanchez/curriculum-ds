@@ -195,42 +195,87 @@ AI coding assistants are powerful tools — not magic, not cheating, and not a r
 
 ### Knowledge Check
 
-#### **Question 1: You ask an AI assistant to "write code to clean my dataset." It generates a 30-line function using methods you don't recognize. What is the best next step?**
-1. Run the code immediately — if it produces no errors, it's correct.
-2. Delete the code and try again with a different prompt.
-3. Ask the AI to explain each line, then verify that the approach makes sense for your specific data before running it.
-4. Copy the code directly into your final submission, since AI-generated code is always accurate.
+<div class="quiz-container" data-correct="2" data-explanation="AI-generated code can contain hallucinations, incorrect logic, or approaches that don&#039;t apply to your specific dataset. Running it without understanding it means you can&#039;t identify when it does something wrong — and it may silently produce incorrect results without raising an error. The correct workflow is: generate → explain → understand → verify. You should be able to explain every line of code you submit, regardless of whether AI helped you write it.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You ask an AI assistant to "write code to clean my dataset." It generates a 30-line function using methods you don't recognize. What is the best next step?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Run the code immediately — if it produces no errors, it's correct.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Delete the code and try again with a different prompt.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Ask the AI to explain each line, then verify that the approach makes sense for your specific data before running it.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Copy the code directly into your final submission, since AI-generated code is always accurate.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Ask the AI to explain each line, then verify that the approach makes sense for your specific data before running it.
-
-**Explanation:**
-AI-generated code can contain hallucinations, incorrect logic, or approaches that don't apply to your specific dataset. Running it without understanding it means you can't identify when it does something wrong — and it may silently produce incorrect results without raising an error. The correct workflow is: generate → explain → understand → verify. You should be able to explain every line of code you submit, regardless of whether AI helped you write it.
 
 ---
 
-#### **Question 2: Which of the following prompts is most likely to produce a useful, accurate AI response?**
-1. "Fix my pandas code"
-2. "Help with data cleaning"
-3. "I have a pandas DataFrame called `df` with columns `age` (int), `income` (float), and `city` (str). The `age` column has 12 missing values. How do I fill them with the median age, using only the training set to compute the median?"
-4. "Write data science code for me"
+<div class="quiz-container" data-correct="2" data-explanation="AI assistants respond to context. The third prompt provides: the library being used (pandas), the DataFrame name, the relevant columns and their types, the specific problem (12 missing values in `age`), the desired operation (median imputation), and an important constraint (use only the training set). This specificity allows the AI to generate targeted, correct code. Vague prompts produce generic, often useless responses.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Which of the following prompts is most likely to produce a useful, accurate AI response?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>"Fix my pandas code"</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>"Help with data cleaning"</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>"I have a pandas DataFrame called `df` with columns `age` (int), `income` (float), and `city` (str). The `age` column has 12 missing values. How do I fill them with the median age, using only the training set to compute the median?"</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>"Write data science code for me"</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. "I have a pandas DataFrame called `df` with columns `age` (int), `income` (float), and `city` (str). The `age` column has 12 missing values. How do I fill them with the median age, using only the training set to compute the median?"
-
-**Explanation:**
-AI assistants respond to context. The third prompt provides: the library being used (pandas), the DataFrame name, the relevant columns and their types, the specific problem (12 missing values in `age`), the desired operation (median imputation), and an important constraint (use only the training set). This specificity allows the AI to generate targeted, correct code. Vague prompts produce generic, often useless responses.
 
 ---
 
-#### **Question 3: A classmate says: "I just use AI to write all my notebooks. It saves so much time and I always get full marks." What is the most significant risk of this approach?**
-1. AI-generated code runs slower than human-written code.
-2. The classmate may accumulate passing grades without developing the understanding needed to work independently — they won't be able to explain, debug, or extend the code in interviews, on the job, or in later, harder modules.
-3. GitHub can detect AI-generated code and flag it as plagiarism.
-4. AI assistants charge per notebook, making this approach expensive.
+<div class="quiz-container" data-correct="1" data-explanation="Using AI to complete work without understanding it creates an illusion of competence. Grades reflect performance, not learning — and assessments in later modules build on concepts from earlier ones. In a technical interview or on the job, a data scientist is expected to write, read, debug, and explain code in real time without AI assistance. Someone who outsourced their learning to AI will hit a wall. The purpose of the curriculum is skill development, not just completion.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A classmate says: "I just use AI to write all my notebooks. It saves so much time and I always get full marks." What is the most significant risk of this approach?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>AI-generated code runs slower than human-written code.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The classmate may accumulate passing grades without developing the understanding needed to work independently — they won't be able to explain, debug, or extend the code in interviews, on the job, or in later, harder modules.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>GitHub can detect AI-generated code and flag it as plagiarism.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>AI assistants charge per notebook, making this approach expensive.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The classmate may accumulate passing grades without developing the understanding needed to work independently — they won't be able to explain, debug, or extend the code in interviews, on the job, or in later, harder modules.
-
-**Explanation:**
-Using AI to complete work without understanding it creates an illusion of competence. Grades reflect performance, not learning — and assessments in later modules build on concepts from earlier ones. In a technical interview or on the job, a data scientist is expected to write, read, debug, and explain code in real time without AI assistance. Someone who outsourced their learning to AI will hit a wall. The purpose of the curriculum is skill development, not just completion.

@@ -194,42 +194,87 @@ In this lesson, you learned the core distinction between supervised learning (le
 
 ### Knowledge Check
 
-#### **Question 1: A data scientist has a dataset of 50,000 customer transactions, each labeled as either "fraudulent" or "legitimate." They want to build a system that flags new transactions in real time. What type of ML problem is this?**
-1. Unsupervised / Clustering
-2. Supervised / Binary classification
-3. Supervised / Regression
-4. Unsupervised / Dimensionality reduction
+<div class="quiz-container" data-correct="1" data-explanation="The dataset has labels (fraudulent / legitimate), making it supervised learning. The target is a discrete category with exactly two possible values, making it binary classification. The goal — predicting the label of a new transaction — is exactly the classification task.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A data scientist has a dataset of 50,000 customer transactions, each labeled as either "fraudulent" or "legitimate." They want to build a system that flags new transactions in real time. What type of ML problem is this?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Unsupervised / Clustering</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Supervised / Binary classification</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Supervised / Regression</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Unsupervised / Dimensionality reduction</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Supervised / Binary classification
-
-**Explanation:**
-The dataset has labels (fraudulent / legitimate), making it supervised learning. The target is a discrete category with exactly two possible values, making it binary classification. The goal — predicting the label of a new transaction — is exactly the classification task.
 
 ---
 
-#### **Question 2: What is the key characteristic that separates supervised learning from unsupervised learning?**
-1. Supervised learning uses more data than unsupervised learning.
-2. Supervised learning requires a GPU; unsupervised learning does not.
-3. Supervised learning requires labeled training data (features paired with correct outputs); unsupervised learning does not use labels.
-4. Supervised learning is used for images; unsupervised learning is used for text.
+<div class="quiz-container" data-correct="2" data-explanation="The defining difference is the presence of labels. Supervised algorithms learn a mapping from inputs to outputs using labeled examples. Unsupervised algorithms explore the data&#039;s structure — finding groups, patterns, or compact representations — without any target variable to guide them.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What is the key characteristic that separates supervised learning from unsupervised learning?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Supervised learning uses more data than unsupervised learning.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Supervised learning requires a GPU; unsupervised learning does not.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Supervised learning requires labeled training data (features paired with correct outputs); unsupervised learning does not use labels.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Supervised learning is used for images; unsupervised learning is used for text.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Supervised learning requires labeled training data (features paired with correct outputs); unsupervised learning does not use labels.
-
-**Explanation:**
-The defining difference is the presence of labels. Supervised algorithms learn a mapping from inputs to outputs using labeled examples. Unsupervised algorithms explore the data's structure — finding groups, patterns, or compact representations — without any target variable to guide them.
 
 ---
 
-#### **Question 3: A retailer has transaction data showing which products were purchased together across 1 million orders, but has no predefined product categories. They want to discover natural groupings of products that tend to be bought by similar customers. Which approach is most appropriate?**
-1. Supervised / Regression — predict the number of items in each group.
-2. Supervised / Multi-class classification — classify each transaction into a product group.
-3. Unsupervised / Clustering — find natural groups in purchasing behavior without predefined labels.
-4. Reinforcement learning — reward the model when it correctly groups products.
+<div class="quiz-container" data-correct="2" data-explanation="There are no predefined labels — the retailer doesn&#039;t know the &quot;correct&quot; product groupings in advance. The goal is to discover natural structure in the data. This is a classic unsupervised clustering problem. Regression and classification require a target variable to predict, and reinforcement learning requires an environment and reward signal — neither applies here.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A retailer has transaction data showing which products were purchased together across 1 million orders, but has no predefined product categories. They want to discover natural groupings of products that tend to be bought by similar customers. Which approach is most appropriate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Supervised / Regression — predict the number of items in each group.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Supervised / Multi-class classification — classify each transaction into a product group.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Unsupervised / Clustering — find natural groups in purchasing behavior without predefined labels.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Reinforcement learning — reward the model when it correctly groups products.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Unsupervised / Clustering — find natural groups in purchasing behavior without predefined labels.
-
-**Explanation:**
-There are no predefined labels — the retailer doesn't know the "correct" product groupings in advance. The goal is to discover natural structure in the data. This is a classic unsupervised clustering problem. Regression and classification require a target variable to predict, and reinforcement learning requires an environment and reward signal — neither applies here.

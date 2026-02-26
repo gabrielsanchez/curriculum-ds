@@ -74,45 +74,90 @@ The notebook will walk you through the following steps using a provided retail s
 
 ## Knowledge Check
 
-#### **Question 1: Which Pandas method is most appropriate for quickly detecting missing values across all columns?**
-1. `df.describe()`
-2. `df.isnull().sum()`
-3. `df.dropna()`
-4. `df.info()`
+<div class="quiz-container" data-correct="1" data-explanation="`df.isnull()` returns a boolean DataFrame where `True` indicates a missing value. Chaining `.sum()` counts the `True` values per column, giving you the number of missing entries in each column at a glance. `df.info()` also shows non-null counts, but `isnull().sum()` is more direct for a column-by-column missing value count.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Which Pandas method is most appropriate for quickly detecting missing values across all columns?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`df.describe()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`df.isnull().sum()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`df.dropna()`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`df.info()`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `df.isnull().sum()`
-
-**Explanation:**
-`df.isnull()` returns a boolean DataFrame where `True` indicates a missing value. Chaining `.sum()` counts the `True` values per column, giving you the number of missing entries in each column at a glance. `df.info()` also shows non-null counts, but `isnull().sum()` is more direct for a column-by-column missing value count.
-
----
-
-#### **Question 2: A teammate wrote the following code. What is the most likely problem?**
-```python
-df["discount"] = df.apply(lambda x: x["price"] * 0.1)
-```
-1. `lambda` functions cannot be used with `.apply()`.
-2. The `axis` parameter is missing — without `axis=1`, Pandas applies the function column-by-column, not row-by-row, causing an error.
-3. `.apply()` cannot access dictionary-style keys like `x["price"]`.
-4. The result of the lambda should use `return` instead of a direct expression.
-
-**Correct Answer:**
-2. The `axis` parameter is missing — without `axis=1`, Pandas applies the function column-by-column, not row-by-row, causing an error.
-
-**Explanation:**
-When using `.apply()` on a DataFrame to access individual column values within each row (using `row["column_name"]`), you must specify `axis=1`. Without it, the default `axis=0` passes each **column** as a Series to the function, meaning `x["price"]` tries to index a column Series by the string `"price"`, which will raise a `KeyError`. The correct call is `df.apply(lambda row: row["price"] * 0.1, axis=1)`.
 
 ---
 
-#### **Question 3: After running `df.groupby("category")["revenue"].sum()`, the result has `category` as the index. What is the standard next step to make the result easier to work with?**
-1. Call `.sort_values()` to sort alphabetically.
-2. Call `.reset_index()` to convert the index back into a regular column.
-3. Call `.transpose()` to swap rows and columns.
-4. Call `.rename()` to give the index a new name.
+<div class="quiz-container" data-correct="1" data-explanation="When using `.apply()` on a DataFrame to access individual column values within each row (using `row[&quot;column_name&quot;]`), you must specify `axis=1`. Without it, the default `axis=0` passes each **column** as a Series to the function, meaning `x[&quot;price&quot;]` tries to index a column Series by the string `&quot;price&quot;`, which will raise a `KeyError`. The correct call is `df.apply(lambda row: row[&quot;price&quot;] * 0.1, axis=1)`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A teammate wrote the following code. What is the most likely problem?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>df[&quot;discount&quot;] = df.apply(lambda x: x[&quot;price&quot;] * 0.1)</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`lambda` functions cannot be used with `.apply()`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The `axis` parameter is missing — without `axis=1`, Pandas applies the function column-by-column, not row-by-row, causing an error.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`.apply()` cannot access dictionary-style keys like `x["price"]`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The result of the lambda should use `return` instead of a direct expression.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Call `.reset_index()` to convert the index back into a regular column.
 
-**Explanation:**
-After a `groupby()` operation, the grouping column(s) become the index. `.reset_index()` promotes the index back to a regular column and assigns a default integer index (0, 1, 2, ...). This makes the result a clean, standard DataFrame that can be used seamlessly in further operations like merging, sorting, or saving to CSV.
+---
+
+<div class="quiz-container" data-correct="1" data-explanation="After a `groupby()` operation, the grouping column(s) become the index. `.reset_index()` promotes the index back to a regular column and assigns a default integer index (0, 1, 2, ...). This makes the result a clean, standard DataFrame that can be used seamlessly in further operations like merging, sorting, or saving to CSV.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> After running `df.groupby("category")["revenue"].sum()`, the result has `category` as the index. What is the standard next step to make the result easier to work with?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Call `.sort_values()` to sort alphabetically.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Call `.reset_index()` to convert the index back into a regular column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Call `.transpose()` to swap rows and columns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Call `.rename()` to give the index a new name.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
+

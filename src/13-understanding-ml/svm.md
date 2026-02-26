@@ -321,45 +321,87 @@ SVM with an RBF kernel achieves 98.2% accuracy and AUC 0.998 on the breast cance
 
 ### Knowledge Check
 
-#### **Question 1: An SVM is trained with a very large C value (e.g., C=10,000). What is the likely effect on the model?**
+<div class="quiz-container" data-correct="1" data-explanation="C is the penalty for misclassifying training points. A large C says &quot;misclassifications are very costly — squeeze the margin as narrow as necessary to classify everything correctly.&quot; The result is a boundary that fits training data tightly, potentially including noise, which hurts generalization. A small C says &quot;a wide margin is more valuable than perfect training accuracy,&quot; accepting some misclassifications to achieve a more robust boundary.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> An SVM is trained with a very large C value (e.g., C=10,000). What is the likely effect on the model?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The model will have a very wide margin and may underfit by ignoring some correctly-classified points near the boundary.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The model will be forced to correctly classify every training point, resulting in a very narrow margin and a decision boundary that closely fits the training data. This reduces bias but increases variance — the model may overfit.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The model will behave identically to a model with C=1 because SVM is insensitive to the regularization parameter.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The model will automatically switch from a linear kernel to an RBF kernel to accommodate the large C.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model will have a very wide margin and may underfit by ignoring some correctly-classified points near the boundary.
-2. The model will be forced to correctly classify every training point, resulting in a very narrow margin and a decision boundary that closely fits the training data. This reduces bias but increases variance — the model may overfit.
-3. The model will behave identically to a model with C=1 because SVM is insensitive to the regularization parameter.
-4. The model will automatically switch from a linear kernel to an RBF kernel to accommodate the large C.
-
-**Correct Answer:**
-2. The model will be forced to correctly classify every training point, resulting in a very narrow margin and a decision boundary that closely fits the training data. This reduces bias but increases variance — the model may overfit.
-
-**Explanation:**
-C is the penalty for misclassifying training points. A large C says "misclassifications are very costly — squeeze the margin as narrow as necessary to classify everything correctly." The result is a boundary that fits training data tightly, potentially including noise, which hurts generalization. A small C says "a wide margin is more valuable than perfect training accuracy," accepting some misclassifications to achieve a more robust boundary.
 
 ---
 
-#### **Question 2: What does the kernel trick allow an SVM to do, and why is it computationally valuable?**
+<div class="quiz-container" data-correct="1" data-explanation="A polynomial kernel of degree 3 with 30 features would require constructing roughly 5,000 explicit polynomial features. The RBF kernel implicitly maps data into an infinite-dimensional space — but because the SVM&#039;s math only requires dot products between points (not explicit coordinates), the kernel function computes these dot products directly in the original space. This is the &quot;trick&quot;: infinite-dimensional transformations computed with a simple exponential function.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does the kernel trick allow an SVM to do, and why is it computationally valuable?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The kernel trick allows an SVM to use gradient descent instead of quadratic programming, making training faster.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The kernel trick allows an SVM to compute similarities between points in a higher-dimensional feature space (where they may be linearly separable) without explicitly constructing that high-dimensional representation. This makes non-linear SVM tractable — computing a dot product in the original space instead of constructing millions of new features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The kernel trick is a method for automatically tuning the C parameter using cross-validation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The kernel trick allows an SVM to make probabilistic predictions by transforming the decision function output into a probability score.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The kernel trick allows an SVM to use gradient descent instead of quadratic programming, making training faster.
-2. The kernel trick allows an SVM to compute similarities between points in a higher-dimensional feature space (where they may be linearly separable) without explicitly constructing that high-dimensional representation. This makes non-linear SVM tractable — computing a dot product in the original space instead of constructing millions of new features.
-3. The kernel trick is a method for automatically tuning the C parameter using cross-validation.
-4. The kernel trick allows an SVM to make probabilistic predictions by transforming the decision function output into a probability score.
-
-**Correct Answer:**
-2. The kernel trick allows an SVM to compute similarities between points in a higher-dimensional feature space without explicitly constructing that high-dimensional representation. This makes non-linear SVM tractable.
-
-**Explanation:**
-A polynomial kernel of degree 3 with 30 features would require constructing roughly 5,000 explicit polynomial features. The RBF kernel implicitly maps data into an infinite-dimensional space — but because the SVM's math only requires dot products between points (not explicit coordinates), the kernel function computes these dot products directly in the original space. This is the "trick": infinite-dimensional transformations computed with a simple exponential function.
 
 ---
 
-#### **Question 3: You are building a text classification model with 50,000 training documents and 100,000 vocabulary features (TF-IDF sparse matrix). Which algorithm is likely most appropriate, and why?**
+<div class="quiz-container" data-correct="1" data-explanation="With 50,000 samples, SVM becomes slow (O(n²) to O(n³) training time). kNN requires computing distances across 100,000-dimensional vectors for every prediction — prohibitively expensive and ineffective in very high dimensions (curse of dimensionality). Decision trees split on one feature at a time and struggle with 100,000 nearly-equally-important features. Logistic regression with L1 regularization is the standard for sparse text: it trains in seconds via stochastic gradient descent, naturally handles high dimensionality, and produces interpretable coefficients. (Linear SVM is also excellent for text, but logistic regression&#039;s probability outputs are often more useful.)">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You are building a text classification model with 50,000 training documents and 100,000 vocabulary features (TF-IDF sparse matrix). Which algorithm is likely most appropriate, and why?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>kNN — it requires no training and handles high-dimensional data well.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Logistic regression — it is fast to train and handles high-dimensional sparse features efficiently with L1/L2 regularization.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Neural network — it always outperforms simpler methods on text data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Decision tree — it selects the most discriminative features automatically.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. kNN — it requires no training and handles high-dimensional data well.
-2. Logistic regression — it is fast to train and handles high-dimensional sparse features efficiently with L1/L2 regularization.
-3. Neural network — it always outperforms simpler methods on text data.
-4. Decision tree — it selects the most discriminative features automatically.
-
-**Correct Answer:**
-2. Logistic regression — it is fast to train and handles high-dimensional sparse features efficiently with L1/L2 regularization.
-
-**Explanation:**
-With 50,000 samples, SVM becomes slow (O(n²) to O(n³) training time). kNN requires computing distances across 100,000-dimensional vectors for every prediction — prohibitively expensive and ineffective in very high dimensions (curse of dimensionality). Decision trees split on one feature at a time and struggle with 100,000 nearly-equally-important features. Logistic regression with L1 regularization is the standard for sparse text: it trains in seconds via stochastic gradient descent, naturally handles high dimensionality, and produces interpretable coefficients. (Linear SVM is also excellent for text, but logistic regression's probability outputs are often more useful.)

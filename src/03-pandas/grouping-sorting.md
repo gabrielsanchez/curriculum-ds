@@ -305,42 +305,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What does `df.groupby("region")["sales"].mean()` compute?**
-1. The mean of the entire `sales` column, ignoring `region`.
-2. The average `sales` value for each unique value in the `region` column.
-3. The total `sales` for each `region`.
-4. The number of rows in each `region` group.
+<div class="quiz-container" data-correct="1" data-explanation="`groupby(&quot;region&quot;)` splits the DataFrame into groups based on the unique values in the `region` column. Selecting `[&quot;sales&quot;]` narrows the result to that column. Calling `.mean()` then computes the average `sales` within each group. The result is a Series indexed by the unique region values.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What does `df.groupby("region")["sales"].mean()` compute?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The mean of the entire `sales` column, ignoring `region`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The average `sales` value for each unique value in the `region` column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The total `sales` for each `region`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The number of rows in each `region` group.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The average `sales` value for each unique value in the `region` column.
-
-**Explanation:**
-`groupby("region")` splits the DataFrame into groups based on the unique values in the `region` column. Selecting `["sales"]` narrows the result to that column. Calling `.mean()` then computes the average `sales` within each group. The result is a Series indexed by the unique region values.
 
 ---
 
-#### **Question 2: What does `.reset_index()` do after a `groupby()` operation?**
-1. It removes all rows with missing values.
-2. It resets the DataFrame to its original, ungrouped form.
-3. It converts the group labels (the index) back into regular columns so the result is a standard DataFrame.
-4. It re-sorts the DataFrame by its original row order.
+<div class="quiz-container" data-correct="2" data-explanation="After `groupby().agg()`, the grouping column(s) become the index of the result. Calling `.reset_index()` moves those index labels back into regular columns, giving you a clean DataFrame with a default integer index — which is easier to work with in most downstream operations.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does `.reset_index()` do after a `groupby()` operation?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It removes all rows with missing values.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>It resets the DataFrame to its original, ungrouped form.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>It converts the group labels (the index) back into regular columns so the result is a standard DataFrame.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>It re-sorts the DataFrame by its original row order.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. It converts the group labels (the index) back into regular columns so the result is a standard DataFrame.
-
-**Explanation:**
-After `groupby().agg()`, the grouping column(s) become the index of the result. Calling `.reset_index()` moves those index labels back into regular columns, giving you a clean DataFrame with a default integer index — which is easier to work with in most downstream operations.
 
 ---
 
-#### **Question 3: How do you sort a DataFrame by `sales` in descending order (highest first)?**
-1. `df.sort_values("sales")`
-2. `df.sort_values("sales", ascending=True)`
-3. `df.sort_values("sales", ascending=False)`
-4. `df.sort_values("sales", order="desc")`
+<div class="quiz-container" data-correct="2" data-explanation="`sort_values()` sorts in ascending order by default (`ascending=True`). To reverse this and place the largest values first, set `ascending=False`. There is no `order` parameter in Pandas — option 4 would raise an error.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> How do you sort a DataFrame by `sales` in descending order (highest first)?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`df.sort_values("sales")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`df.sort_values("sales", ascending=True)`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`df.sort_values("sales", ascending=False)`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`df.sort_values("sales", order="desc")`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `df.sort_values("sales", ascending=False)`
-
-**Explanation:**
-`sort_values()` sorts in ascending order by default (`ascending=True`). To reverse this and place the largest values first, set `ascending=False`. There is no `order` parameter in Pandas — option 4 would raise an error.

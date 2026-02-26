@@ -470,45 +470,87 @@ Overfitting is the central challenge of deep learning, and the techniques in thi
 
 ### Knowledge Check
 
-#### **Question 1: Dropout is set to `rate=0.5` on a Dense layer with 256 neurons during training. How many neurons are active on average in each forward pass, and what happens at test time?**
+<div class="quiz-container" data-correct="0" data-explanation="During training with rate=0.5, each neuron is independently zeroed with probability 0.5 at each forward pass — different neurons are dropped at each step. At test time, no dropout occurs: all 256 neurons contribute. Without scaling, the expected activation magnitude would double (128 active neurons → 256 active neurons). Keras uses &quot;inverted dropout&quot;: during training, the surviving neurons&#039; outputs are scaled up by `1/(1-rate)` so the expected magnitude is the same at train and test time. This makes inference efficient — no scaling needed at test time.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Dropout is set to `rate=0.5` on a Dense layer with 256 neurons during training. How many neurons are active on average in each forward pass, and what happens at test time?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>During training, 128 neurons are active on average (256 × 0.5). At test time, dropout is disabled and all 256 neurons are active — Keras automatically scales their outputs by 0.5 to account for the fact that they were only active 50% of the time during training.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>During training, 256 neurons are active (dropout doesn't change the number of active neurons, only their weights). At test time, 128 neurons are randomly selected to be active.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>During training, 256 neurons are active, but half their weights are set to zero permanently. At test time, the network has only 128 effective connections.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>During training, 128 neurons are active. At test time, the same 128 neurons are used (no scaling required).</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. During training, 128 neurons are active on average (256 × 0.5). At test time, dropout is disabled and all 256 neurons are active — Keras automatically scales their outputs by 0.5 to account for the fact that they were only active 50% of the time during training.
-2. During training, 256 neurons are active (dropout doesn't change the number of active neurons, only their weights). At test time, 128 neurons are randomly selected to be active.
-3. During training, 256 neurons are active, but half their weights are set to zero permanently. At test time, the network has only 128 effective connections.
-4. During training, 128 neurons are active. At test time, the same 128 neurons are used (no scaling required).
-
-**Correct Answer:**
-1. During training, 128 neurons are active on average (256 × 0.5 = 128). At test time, all 256 neurons are active — Keras automatically scales their outputs by 0.5 (the "inverted dropout" technique) to maintain the same expected activation magnitude.
-
-**Explanation:**
-During training with rate=0.5, each neuron is independently zeroed with probability 0.5 at each forward pass — different neurons are dropped at each step. At test time, no dropout occurs: all 256 neurons contribute. Without scaling, the expected activation magnitude would double (128 active neurons → 256 active neurons). Keras uses "inverted dropout": during training, the surviving neurons' outputs are scaled up by `1/(1-rate)` so the expected magnitude is the same at train and test time. This makes inference efficient — no scaling needed at test time.
 
 ---
 
-#### **Question 2: You add Batch Normalization to your CNN and notice that it converges in 15 epochs instead of 30. Why does BatchNorm speed up training?**
+<div class="quiz-container" data-correct="1" data-explanation="Without BatchNorm, if the first layer&#039;s weights change significantly in one step, the distribution of inputs to the second layer changes — the second layer must then re-adapt to this new distribution, essentially &quot;chasing a moving target.&quot; With BatchNorm, every layer receives approximately unit-normalized inputs regardless of what happened in previous layers. This is called reducing &quot;internal covariate shift.&quot; The practical effect: training is more stable, allowing 2–3× larger learning rates, which means fewer epochs to convergence. The learned γ (scale) and β (shift) parameters allow the network to undo the normalization if that&#039;s optimal for a particular layer.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You add Batch Normalization to your CNN and notice that it converges in 15 epochs instead of 30. Why does BatchNorm speed up training?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>BatchNorm speeds up training by reducing the number of parameters in the model, making each gradient update faster to compute.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>BatchNorm normalizes each layer's inputs to have mean ≈ 0 and variance ≈ 1 after every mini-batch update. This stabilizes the distribution of inputs to each layer — as earlier layers' weights change, later layers don't need to continuously re-adapt to shifting input distributions. This allows the model to use larger learning rates without instability, and means each layer's weight updates are effective immediately rather than being undermined by changing input statistics.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>BatchNorm speeds up training by randomly dropping neuron activations, reducing the complexity of the optimization landscape.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>BatchNorm performs automatic hyperparameter tuning, selecting the optimal learning rate at each epoch.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. BatchNorm speeds up training by reducing the number of parameters in the model, making each gradient update faster to compute.
-2. BatchNorm normalizes each layer's inputs to have mean ≈ 0 and variance ≈ 1 after every mini-batch update. This stabilizes the distribution of inputs to each layer — as earlier layers' weights change, later layers don't need to continuously re-adapt to shifting input distributions. This allows the model to use larger learning rates without instability, and means each layer's weight updates are effective immediately rather than being undermined by changing input statistics.
-3. BatchNorm speeds up training by randomly dropping neuron activations, reducing the complexity of the optimization landscape.
-4. BatchNorm performs automatic hyperparameter tuning, selecting the optimal learning rate at each epoch.
-
-**Correct Answer:**
-2. BatchNorm normalizes each layer's inputs to mean ≈ 0 and variance ≈ 1, stabilizing the distribution of inputs to each layer. This allows larger learning rates and ensures each layer's updates are effective immediately rather than being undermined by shifting input statistics from earlier layers.
-
-**Explanation:**
-Without BatchNorm, if the first layer's weights change significantly in one step, the distribution of inputs to the second layer changes — the second layer must then re-adapt to this new distribution, essentially "chasing a moving target." With BatchNorm, every layer receives approximately unit-normalized inputs regardless of what happened in previous layers. This is called reducing "internal covariate shift." The practical effect: training is more stable, allowing 2–3× larger learning rates, which means fewer epochs to convergence. The learned γ (scale) and β (shift) parameters allow the network to undo the normalization if that's optimal for a particular layer.
 
 ---
 
-#### **Question 3: For which scenario is data augmentation most effective, and what augmentations would be inappropriate for the given data?**
+<div class="quiz-container" data-correct="1" data-explanation="The key principle of data augmentation is that the augmented examples must remain valid and representative of what the model would see at test time. For natural photos (cats, dogs, cars), horizontal flipping, moderate rotation, and brightness changes are all valid — a cat photographed from slightly different angles is still a cat. For medical images in fixed orientation (X-rays, MRIs), vertical flipping would create images that never occur in clinical practice, potentially teaching the model wrong features. For digit recognition, rotating digits by 180° turns a 6 into a 9 — an inappropriate augmentation that would corrupt labels. Always ask: &quot;Would a human expert recognize this augmented image as a valid example of the same class?&quot;">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> For which scenario is data augmentation most effective, and what augmentations would be inappropriate for the given data?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Data augmentation is most effective for large datasets (>100,000 images) because small datasets can't benefit from augmentation. Inappropriate augmentation for a car photo dataset would be vertical flipping.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Data augmentation is most effective when training data is scarce (< 10,000 images) relative to model capacity. For a medical X-ray dataset (chest X-rays, upright orientation), horizontal flipping is appropriate (the chest is symmetric), but vertical flipping is inappropriate (flipping upside-down creates anatomically impossible images that would confuse the model, as the heart and lungs have defined positions relative to the image orientation).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Data augmentation is only effective for black-and-white images — it is not applicable to color images or text data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Data augmentation is most effective for regression problems — it should not be used for classification because it changes the class labels.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Data augmentation is most effective for large datasets (>100,000 images) because small datasets can't benefit from augmentation. Inappropriate augmentation for a car photo dataset would be vertical flipping.
-2. Data augmentation is most effective when training data is scarce (< 10,000 images) relative to model capacity. For a medical X-ray dataset (chest X-rays, upright orientation), horizontal flipping is appropriate (the chest is symmetric), but vertical flipping is inappropriate (flipping upside-down creates anatomically impossible images that would confuse the model, as the heart and lungs have defined positions relative to the image orientation).
-3. Data augmentation is only effective for black-and-white images — it is not applicable to color images or text data.
-4. Data augmentation is most effective for regression problems — it should not be used for classification because it changes the class labels.
-
-**Correct Answer:**
-2. Data augmentation is most effective when training data is scarce. For X-rays, horizontal flipping is appropriate (chest is symmetric) but vertical flipping is not (anatomically impossible).
-
-**Explanation:**
-The key principle of data augmentation is that the augmented examples must remain valid and representative of what the model would see at test time. For natural photos (cats, dogs, cars), horizontal flipping, moderate rotation, and brightness changes are all valid — a cat photographed from slightly different angles is still a cat. For medical images in fixed orientation (X-rays, MRIs), vertical flipping would create images that never occur in clinical practice, potentially teaching the model wrong features. For digit recognition, rotating digits by 180° turns a 6 into a 9 — an inappropriate augmentation that would corrupt labels. Always ask: "Would a human expert recognize this augmented image as a valid example of the same class?"

@@ -197,45 +197,87 @@ In this lesson, you established the baseline performance on the breast cancer da
 
 ### Knowledge Check
 
-#### **Question 1: A data scientist has 800 samples and needs a model they can explain to non-technical stakeholders (showing which features drove a prediction). Which algorithm family is most appropriate to start with?**
+<div class="quiz-container" data-correct="2" data-explanation="With only 800 samples, complex models like neural networks and gradient boosting have limited data to learn from and risk overfitting. Logistic regression&#039;s coefficients directly show each feature&#039;s contribution to the prediction — straightforwardly explainable. A shallow decision tree provides literal if-then rules that non-technical stakeholders can follow. Both are also fast to train and debug, making them good starting points before trying anything more sophisticated.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A data scientist has 800 samples and needs a model they can explain to non-technical stakeholders (showing which features drove a prediction). Which algorithm family is most appropriate to start with?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Neural Networks — they achieve the highest accuracy and can be explained with attention maps.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Gradient Boosting — it's the most accurate algorithm for tabular data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Logistic Regression or a shallow Decision Tree — both are interpretable and appropriate for small datasets where neural networks and gradient boosting would likely overfit.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>SVM — it always outperforms logistic regression with the right kernel.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Neural Networks — they achieve the highest accuracy and can be explained with attention maps.
-2. Gradient Boosting — it's the most accurate algorithm for tabular data.
-3. Logistic Regression or a shallow Decision Tree — both are interpretable and appropriate for small datasets where neural networks and gradient boosting would likely overfit.
-4. SVM — it always outperforms logistic regression with the right kernel.
-
-**Correct Answer:**
-3. Logistic Regression or a shallow Decision Tree — both are interpretable and appropriate for small datasets where neural networks and gradient boosting would likely overfit.
-
-**Explanation:**
-With only 800 samples, complex models like neural networks and gradient boosting have limited data to learn from and risk overfitting. Logistic regression's coefficients directly show each feature's contribution to the prediction — straightforwardly explainable. A shallow decision tree provides literal if-then rules that non-technical stakeholders can follow. Both are also fast to train and debug, making them good starting points before trying anything more sophisticated.
 
 ---
 
-#### **Question 2: What is the key distinction between bagging (used in Random Forests) and boosting (used in Gradient Boosting)?**
+<div class="quiz-container" data-correct="1" data-explanation="The key difference is the relationship between models. In bagging, each model is trained independently and contributes equally to the final vote — the ensemble&#039;s power comes from diversity. In boosting, each new model explicitly targets the mistakes of the existing ensemble, building a progressively better combined predictor. This makes boosting more powerful but also more sensitive to overfitting and noisy data.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What is the key distinction between bagging (used in Random Forests) and boosting (used in Gradient Boosting)?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Bagging uses decision trees; boosting uses neural networks.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Bagging trains multiple models in parallel on random subsets of data and averages their predictions, reducing variance. Boosting trains models sequentially, with each model correcting the previous model's errors, reducing both bias and variance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Bagging is used for regression; boosting is used for classification.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Bagging requires more data than boosting because it samples with replacement.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Bagging uses decision trees; boosting uses neural networks.
-2. Bagging trains multiple models in parallel on random subsets of data and averages their predictions, reducing variance. Boosting trains models sequentially, with each model correcting the previous model's errors, reducing both bias and variance.
-3. Bagging is used for regression; boosting is used for classification.
-4. Bagging requires more data than boosting because it samples with replacement.
-
-**Correct Answer:**
-2. Bagging trains multiple models in parallel on random subsets of data and averages their predictions, reducing variance. Boosting trains models sequentially, with each model correcting the previous model's errors, reducing both bias and variance.
-
-**Explanation:**
-The key difference is the relationship between models. In bagging, each model is trained independently and contributes equally to the final vote — the ensemble's power comes from diversity. In boosting, each new model explicitly targets the mistakes of the existing ensemble, building a progressively better combined predictor. This makes boosting more powerful but also more sensitive to overfitting and noisy data.
 
 ---
 
-#### **Question 3: Logistic regression achieves 94% accuracy on a classification problem. A gradient boosting model achieves 96% accuracy. Should you always deploy the gradient boosting model?**
+<div class="quiz-container" data-correct="1" data-explanation="Model selection involves trade-offs beyond accuracy. A 2% accuracy gain that takes 10× longer to train, requires a PhD to tune, and can&#039;t be explained to a regulator may not be worth it. On the other hand, in high-stakes domains (medical diagnosis, fraud detection), 2% can translate to thousands of lives or millions of dollars — and the complexity is justified. The right choice is always context-dependent.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Logistic regression achieves 94% accuracy on a classification problem. A gradient boosting model achieves 96% accuracy. Should you always deploy the gradient boosting model?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Yes — higher accuracy always justifies the more complex model.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Not necessarily — the 2% improvement must be weighed against the costs of gradient boosting: slower training and inference, more hyperparameters to tune, harder to interpret, and more infrastructure complexity. If the improvement is not practically meaningful (e.g., in a low-stakes application), the simpler model is often preferable.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Yes — gradient boosting is always more reliable than logistic regression.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>No — you should always use the simplest possible model regardless of performance differences.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Yes — higher accuracy always justifies the more complex model.
-2. Not necessarily — the 2% improvement must be weighed against the costs of gradient boosting: slower training and inference, more hyperparameters to tune, harder to interpret, and more infrastructure complexity. If the improvement is not practically meaningful (e.g., in a low-stakes application), the simpler model is often preferable.
-3. Yes — gradient boosting is always more reliable than logistic regression.
-4. No — you should always use the simplest possible model regardless of performance differences.
-
-**Correct Answer:**
-2. Not necessarily — the 2% improvement must be weighed against the costs of gradient boosting: slower training and inference, more hyperparameters to tune, harder to interpret, and more infrastructure complexity. If the improvement is not practically meaningful (e.g., in a low-stakes application), the simpler model is often preferable.
-
-**Explanation:**
-Model selection involves trade-offs beyond accuracy. A 2% accuracy gain that takes 10× longer to train, requires a PhD to tune, and can't be explained to a regulator may not be worth it. On the other hand, in high-stakes domains (medical diagnosis, fraud detection), 2% can translate to thousands of lives or millions of dollars — and the complexity is justified. The right choice is always context-dependent.

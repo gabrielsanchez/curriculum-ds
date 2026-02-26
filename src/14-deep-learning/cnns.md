@@ -324,45 +324,87 @@ CNNs outperform dense networks on image tasks by exploiting spatial structure �
 
 ### Knowledge Check
 
-#### **Question 1: A Conv2D layer has 32 filters of size 3×3, applied to a single-channel (grayscale) input. How many learnable parameters does this layer have?**
+<div class="quiz-container" data-correct="1" data-explanation="A 3×3 filter applied to a 1-channel image has 9 weight values. With 32 filters, that&#039;s 32 × 9 = 288 weights, plus one bias per filter = 32 biases = 320 total parameters. Crucially, these 320 parameters are **shared across the entire image** — the same filter is applied at every position. Compare this to a Dense layer that would require 784 × 32 + 32 = 25,120 parameters to connect 784 inputs (flattened 28×28) to 32 neurons. The convolutional layer achieves the same spatial coverage with 98.7% fewer parameters.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A Conv2D layer has 32 filters of size 3×3, applied to a single-channel (grayscale) input. How many learnable parameters does this layer have?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>32 × 28 × 28 = 25,088 — one parameter per pixel per filter.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>32 × (3 × 3 × 1) + 32 = 320 — nine weights per filter times one input channel, plus one bias per filter.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>3 × 3 × 32 = 288 — the filter weights without biases.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>32 × 28 × 28 × 1 = 25,088 — the number of activations in the feature map.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. 32 × 28 × 28 = 25,088 — one parameter per pixel per filter.
-2. 32 × (3 × 3 × 1) + 32 = 320 — nine weights per filter times one input channel, plus one bias per filter.
-3. 3 × 3 × 32 = 288 — the filter weights without biases.
-4. 32 × 28 × 28 × 1 = 25,088 — the number of activations in the feature map.
-
-**Correct Answer:**
-2. 32 × (3 × 3 × 1) + 32 = 320 — nine weights per filter times one input channel, plus one bias per filter.
-
-**Explanation:**
-A 3×3 filter applied to a 1-channel image has 9 weight values. With 32 filters, that's 32 × 9 = 288 weights, plus one bias per filter = 32 biases = 320 total parameters. Crucially, these 320 parameters are **shared across the entire image** — the same filter is applied at every position. Compare this to a Dense layer that would require 784 × 32 + 32 = 25,120 parameters to connect 784 inputs (flattened 28×28) to 32 neurons. The convolutional layer achieves the same spatial coverage with 98.7% fewer parameters.
 
 ---
 
-#### **Question 2: What is the purpose of MaxPooling, and what does it do to the spatial dimensions of a feature map?**
+<div class="quiz-container" data-correct="1" data-explanation="A 2×2 MaxPool on a 14×14 feature map produces a 7×7 output — the most strongly activated value in each 2×2 region survives. This has two effects: (1) compressing the spatial representation reduces the number of connections in subsequent dense layers, controlling parameter count and computation; (2) the maximum operation is somewhat robust to exact positioning — if a feature (e.g., an edge) appears one pixel off, the same maximum value is likely captured. &quot;Average pooling&quot; takes the mean instead of the maximum — MaxPooling is preferred for feature detection because strong activations (feature present) should dominate over weak ones (feature absent).">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What is the purpose of MaxPooling, and what does it do to the spatial dimensions of a feature map?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>MaxPooling applies a learned linear transformation to the feature map, preserving spatial dimensions while increasing the number of channels.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>MaxPooling is a downsampling operation: it divides the feature map into non-overlapping windows (e.g., 2×2) and takes the maximum value in each window. This halves each spatial dimension (a 14×14 map becomes 7×7), reduces the number of parameters in subsequent layers, and provides approximate translation invariance — small shifts in the input produce the same maximum.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>MaxPooling randomly drops 50% of neuron activations to prevent overfitting, similar to Dropout.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>MaxPooling computes the average value in each window, making the representation smoother and more robust to noise.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. MaxPooling applies a learned linear transformation to the feature map, preserving spatial dimensions while increasing the number of channels.
-2. MaxPooling is a downsampling operation: it divides the feature map into non-overlapping windows (e.g., 2×2) and takes the maximum value in each window. This halves each spatial dimension (a 14×14 map becomes 7×7), reduces the number of parameters in subsequent layers, and provides approximate translation invariance — small shifts in the input produce the same maximum.
-3. MaxPooling randomly drops 50% of neuron activations to prevent overfitting, similar to Dropout.
-4. MaxPooling computes the average value in each window, making the representation smoother and more robust to noise.
-
-**Correct Answer:**
-2. MaxPooling is a downsampling operation: it takes the maximum value in each window (e.g., 2×2), halving each spatial dimension. This reduces parameters in later layers and provides translation invariance.
-
-**Explanation:**
-A 2×2 MaxPool on a 14×14 feature map produces a 7×7 output — the most strongly activated value in each 2×2 region survives. This has two effects: (1) compressing the spatial representation reduces the number of connections in subsequent dense layers, controlling parameter count and computation; (2) the maximum operation is somewhat robust to exact positioning — if a feature (e.g., an edge) appears one pixel off, the same maximum value is likely captured. "Average pooling" takes the mean instead of the maximum — MaxPooling is preferred for feature detection because strong activations (feature present) should dominate over weak ones (feature absent).
 
 ---
 
-#### **Question 3: You have 500 labeled images of 5 different plant diseases and want to build a classification model. What is the most appropriate approach?**
+<div class="quiz-container" data-correct="2" data-explanation="With 500 images across 5 classes (100 per class), training a CNN from scratch would severely overfit — there&#039;s not enough data to learn good convolutional filters. A pre-trained model (trained on 1.2M ImageNet images) has already learned rich visual features: edges, textures, colors, object parts. These features transfer well to plant disease detection because both involve visual patterns in natural images. Training only the new head (typically 1–2 Dense layers) requires far less data. Data augmentation — random flips, crops, brightness changes — effectively multiplies your 500 images, further reducing overfitting.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You have 500 labeled images of 5 different plant diseases and want to build a classification model. What is the most appropriate approach?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Train a CNN from scratch with a deep architecture (10+ layers), using data augmentation to expand the 500 images.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Use a gradient boosting model on handcrafted image features (mean color, texture statistics) — 500 samples is too few for deep learning.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Load a pre-trained CNN (e.g., MobileNetV2 or EfficientNet trained on ImageNet), freeze the convolutional base, and train only a new Dense classification head on your 500 images. Use data augmentation (flipping, rotation, color jitter) to reduce overfitting.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Use a dense network on flattened pixel values — CNNs are only useful for datasets with more than 10,000 images.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Train a CNN from scratch with a deep architecture (10+ layers), using data augmentation to expand the 500 images.
-2. Use a gradient boosting model on handcrafted image features (mean color, texture statistics) — 500 samples is too few for deep learning.
-3. Load a pre-trained CNN (e.g., MobileNetV2 or EfficientNet trained on ImageNet), freeze the convolutional base, and train only a new Dense classification head on your 500 images. Use data augmentation (flipping, rotation, color jitter) to reduce overfitting.
-4. Use a dense network on flattened pixel values — CNNs are only useful for datasets with more than 10,000 images.
-
-**Correct Answer:**
-3. Load a pre-trained CNN, freeze the convolutional base, and train only the new classification head on your 500 images. Use data augmentation to reduce overfitting.
-
-**Explanation:**
-With 500 images across 5 classes (100 per class), training a CNN from scratch would severely overfit — there's not enough data to learn good convolutional filters. A pre-trained model (trained on 1.2M ImageNet images) has already learned rich visual features: edges, textures, colors, object parts. These features transfer well to plant disease detection because both involve visual patterns in natural images. Training only the new head (typically 1–2 Dense layers) requires far less data. Data augmentation — random flips, crops, brightness changes — effectively multiplies your 500 images, further reducing overfitting.

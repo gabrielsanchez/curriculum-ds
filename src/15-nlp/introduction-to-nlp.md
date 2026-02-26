@@ -193,45 +193,87 @@ NLP unlocks a category of problems that structured data cannot address: understa
 
 ### Knowledge Check
 
-#### **Question 1: A dataset contains 10,000 customer service tickets. You want to automatically classify each ticket into one of 15 department categories (billing, technical support, returns, etc.) to route it to the right team. Which NLP task is this, and what is the simplest approach to start with?**
+<div class="quiz-container" data-correct="1" data-explanation="Routing tickets to departments is multi-class text classification — each ticket gets exactly one label from a fixed set of categories. TF-IDF captures which department-specific keywords appear in the ticket (billing keywords: &quot;invoice,&quot; &quot;charge,&quot; &quot;payment&quot;; technical keywords: &quot;error,&quot; &quot;crash,&quot; &quot;connection&quot;). Logistic regression then learns which keyword patterns map to each department. This approach is the right starting point: it&#039;s fast, interpretable (you can see which words drive each classification), and often good enough to deploy. A pre-trained BERT model adds complexity but typically provides meaningful accuracy improvement only if the baseline underperforms (&lt; 80%) or if subtle phrasing differences matter.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A dataset contains 10,000 customer service tickets. You want to automatically classify each ticket into one of 15 department categories (billing, technical support, returns, etc.) to route it to the right team. Which NLP task is this, and what is the simplest approach to start with?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>This is named entity recognition (NER). The simplest approach is to extract entity names from each ticket and route based on which entities appear.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>This is text classification. The simplest approach is TF-IDF vectorization of the ticket text, followed by a logistic regression or linear SVM classifier trained on labeled examples. This baseline often achieves good results and is fast to build and interpret.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>This is machine translation. You need to translate each ticket into a structured format that a rule-based routing system can parse.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>This is text summarization. Summarize each ticket to a single sentence, then route based on keywords in the summary.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. This is named entity recognition (NER). The simplest approach is to extract entity names from each ticket and route based on which entities appear.
-2. This is text classification. The simplest approach is TF-IDF vectorization of the ticket text, followed by a logistic regression or linear SVM classifier trained on labeled examples. This baseline often achieves good results and is fast to build and interpret.
-3. This is machine translation. You need to translate each ticket into a structured format that a rule-based routing system can parse.
-4. This is text summarization. Summarize each ticket to a single sentence, then route based on keywords in the summary.
-
-**Correct Answer:**
-2. This is text classification. The simplest approach is TF-IDF + logistic regression, which is fast to build, interpretable, and often achieves 80–90% accuracy on routing tasks with enough labeled examples.
-
-**Explanation:**
-Routing tickets to departments is multi-class text classification — each ticket gets exactly one label from a fixed set of categories. TF-IDF captures which department-specific keywords appear in the ticket (billing keywords: "invoice," "charge," "payment"; technical keywords: "error," "crash," "connection"). Logistic regression then learns which keyword patterns map to each department. This approach is the right starting point: it's fast, interpretable (you can see which words drive each classification), and often good enough to deploy. A pre-trained BERT model adds complexity but typically provides meaningful accuracy improvement only if the baseline underperforms (< 80%) or if subtle phrasing differences matter.
 
 ---
 
-#### **Question 2: Why does the word "bank" pose a challenge for a Bag-of-Words model but not for a Transformer model?**
+<div class="quiz-container" data-correct="1" data-explanation="This is the fundamental limitation of static representations (BoW, and also Word2Vec/GloVe). A word has one fixed vector regardless of context. Transformers address this through self-attention: computing &quot;bank&quot;&#039;s representation by attending to all other words in the sentence, weighted by relevance. The word &quot;deposited&quot; and &quot;money&quot; have high attention weights when computing &quot;bank&quot;&#039;s representation in the financial context; &quot;river&quot; and &quot;fished&quot; have high weights in the geographic context. The resulting contextual embedding vectors are literally different numerical vectors for the same word in different contexts.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why does the word "bank" pose a challenge for a Bag-of-Words model but not for a Transformer model?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>BoW models cannot process words with more than four letters, while Transformers have no character limit.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>In a BoW model, "bank" is represented as a single count — the same number regardless of whether the sentence is "I deposited money at the bank" or "We fished along the river bank." The model has no way to distinguish which sense is intended. A Transformer model processes "bank" in context — attending to surrounding words ("deposited," "money" vs. "river," "fished") — and produces a different embedding vector for each sense. This contextual representation correctly captures the word's meaning in each context.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>BoW models use a fixed vocabulary and cannot represent "bank" if it wasn't in the training corpus. Transformers use subword tokenization and can represent any word.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>BoW models count "bank" as a single word, while Transformers split it into subword tokens "ban" + "k," capturing its etymology.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. BoW models cannot process words with more than four letters, while Transformers have no character limit.
-2. In a BoW model, "bank" is represented as a single count — the same number regardless of whether the sentence is "I deposited money at the bank" or "We fished along the river bank." The model has no way to distinguish which sense is intended. A Transformer model processes "bank" in context — attending to surrounding words ("deposited," "money" vs. "river," "fished") — and produces a different embedding vector for each sense. This contextual representation correctly captures the word's meaning in each context.
-3. BoW models use a fixed vocabulary and cannot represent "bank" if it wasn't in the training corpus. Transformers use subword tokenization and can represent any word.
-4. BoW models count "bank" as a single word, while Transformers split it into subword tokens "ban" + "k," capturing its etymology.
-
-**Correct Answer:**
-2. In a BoW model, "bank" has one representation regardless of context. A Transformer attends to surrounding words and produces a different embedding for each sense — correctly capturing "financial institution" vs. "riverbank."
-
-**Explanation:**
-This is the fundamental limitation of static representations (BoW, and also Word2Vec/GloVe). A word has one fixed vector regardless of context. Transformers address this through self-attention: computing "bank"'s representation by attending to all other words in the sentence, weighted by relevance. The word "deposited" and "money" have high attention weights when computing "bank"'s representation in the financial context; "river" and "fished" have high weights in the geographic context. The resulting contextual embedding vectors are literally different numerical vectors for the same word in different contexts.
 
 ---
 
-#### **Question 3: You have 100 labeled examples to train a text classifier. Should you train a TF-IDF model from scratch or fine-tune a pre-trained BERT model? Justify your choice.**
+<div class="quiz-container" data-correct="1" data-explanation="This is the core argument for transfer learning in NLP. TF-IDF + logistic regression on 100 examples must learn everything from those 100 examples — including basic linguistic patterns that BERT has already encoded from billions of documents. BERT&#039;s representations know that &quot;excellent&quot; and &quot;outstanding&quot; are similar, that negation reverses sentiment, and that technical jargon clusters into domain groups. Fine-tuning with 100 examples adapts these rich representations to your specific classes. In practice, BERT fine-tuned on 100 examples often outperforms TF-IDF + LR trained on 1,000 examples for tasks where linguistic understanding matters (sentiment, intent, paraphrase detection).">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You have 100 labeled examples to train a text classifier. Should you train a TF-IDF model from scratch or fine-tune a pre-trained BERT model? Justify your choice.
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Train TF-IDF from scratch — pre-trained models require at least 10,000 examples to be useful.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Fine-tune a pre-trained BERT model. With only 100 labeled examples, any model trained entirely from scratch (including TF-IDF + logistic regression) will likely have high variance because 100 examples are barely enough to learn 15+ class boundaries reliably. BERT has already learned rich linguistic representations from billions of words. Fine-tuning only the classification head on 100 examples adapts these representations to the specific task without needing the full dataset that training from scratch would require.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Train TF-IDF from scratch — BERT cannot work with fewer than 1,000 examples per class.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Neither approach will work with 100 examples. You need to collect more data before building any model.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Train TF-IDF from scratch — pre-trained models require at least 10,000 examples to be useful.
-2. Fine-tune a pre-trained BERT model. With only 100 labeled examples, any model trained entirely from scratch (including TF-IDF + logistic regression) will likely have high variance because 100 examples are barely enough to learn 15+ class boundaries reliably. BERT has already learned rich linguistic representations from billions of words. Fine-tuning only the classification head on 100 examples adapts these representations to the specific task without needing the full dataset that training from scratch would require.
-3. Train TF-IDF from scratch — BERT cannot work with fewer than 1,000 examples per class.
-4. Neither approach will work with 100 examples. You need to collect more data before building any model.
-
-**Correct Answer:**
-2. Fine-tune a pre-trained BERT model. With 100 labeled examples, BERT's pre-learned representations provide a much stronger starting point than TF-IDF features learned from scratch on such limited data.
-
-**Explanation:**
-This is the core argument for transfer learning in NLP. TF-IDF + logistic regression on 100 examples must learn everything from those 100 examples — including basic linguistic patterns that BERT has already encoded from billions of documents. BERT's representations know that "excellent" and "outstanding" are similar, that negation reverses sentiment, and that technical jargon clusters into domain groups. Fine-tuning with 100 examples adapts these rich representations to your specific classes. In practice, BERT fine-tuned on 100 examples often outperforms TF-IDF + LR trained on 1,000 examples for tasks where linguistic understanding matters (sentiment, intent, paraphrase detection).

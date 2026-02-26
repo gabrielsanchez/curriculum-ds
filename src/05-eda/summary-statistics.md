@@ -299,42 +299,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: A dataset of household incomes has a mean of $85,000 and a median of $52,000. What does this tell you about the distribution?**
-1. The distribution is roughly symmetric.
-2. The distribution is left-skewed, with a long tail toward lower incomes.
-3. The distribution is right-skewed, with a long tail toward higher incomes driven by a small number of very high earners.
-4. The dataset contains no outliers.
+<div class="quiz-container" data-correct="2" data-explanation="When the mean is significantly higher than the median, it indicates a right-skewed (positively skewed) distribution. A small number of very high values — like millionaires in an income dataset — pull the mean upward while the median stays closer to the typical value. This is why median household income is usually reported rather than mean income.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A dataset of household incomes has a mean of $85,000 and a median of $52,000. What does this tell you about the distribution?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The distribution is roughly symmetric.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The distribution is left-skewed, with a long tail toward lower incomes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The distribution is right-skewed, with a long tail toward higher incomes driven by a small number of very high earners.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The dataset contains no outliers.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. The distribution is right-skewed, with a long tail toward higher incomes driven by a small number of very high earners.
-
-**Explanation:**
-When the mean is significantly higher than the median, it indicates a right-skewed (positively skewed) distribution. A small number of very high values — like millionaires in an income dataset — pull the mean upward while the median stays closer to the typical value. This is why median household income is usually reported rather than mean income.
 
 ---
 
-#### **Question 2: Why is the IQR considered more robust than the standard deviation when a dataset contains outliers?**
-1. The IQR is always a larger number than the standard deviation.
-2. The IQR measures the spread of the middle 50% of the data and completely ignores values in the tails, while the standard deviation is affected by every value including extremes.
-3. The IQR can be applied to categorical variables but standard deviation cannot.
-4. The IQR is calculated using the mean, which is less sensitive to outliers.
+<div class="quiz-container" data-correct="1" data-explanation="Standard deviation squares the distance of each value from the mean, meaning extreme outliers contribute disproportionately to its value. The IQR is simply Q3 − Q1 — it is computed entirely from the middle 50% of the data and is unaffected by however extreme the top and bottom values are. This makes it the preferred spread measure when outliers are present.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why is the IQR considered more robust than the standard deviation when a dataset contains outliers?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The IQR is always a larger number than the standard deviation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The IQR measures the spread of the middle 50% of the data and completely ignores values in the tails, while the standard deviation is affected by every value including extremes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The IQR can be applied to categorical variables but standard deviation cannot.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The IQR is calculated using the mean, which is less sensitive to outliers.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The IQR measures the spread of the middle 50% of the data and completely ignores values in the tails, while the standard deviation is affected by every value including extremes.
-
-**Explanation:**
-Standard deviation squares the distance of each value from the mean, meaning extreme outliers contribute disproportionately to its value. The IQR is simply Q3 − Q1 — it is computed entirely from the middle 50% of the data and is unaffected by however extreme the top and bottom values are. This makes it the preferred spread measure when outliers are present.
 
 ---
 
-#### **Question 3: What does `df["category"].value_counts()` return?**
-1. The mean and standard deviation of the column.
-2. The number of unique values in the column.
-3. A sorted count of how many times each unique value appears in the column.
-4. The percentage of missing values in the column.
+<div class="quiz-container" data-correct="2" data-explanation="`value_counts()` returns a Series listing each unique value in the column alongside how many times it appears, sorted from most frequent to least frequent. It is the go-to method for understanding the composition of a categorical column, equivalent to a frequency table.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What does `df["category"].value_counts()` return?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The mean and standard deviation of the column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The number of unique values in the column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>A sorted count of how many times each unique value appears in the column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The percentage of missing values in the column.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. A sorted count of how many times each unique value appears in the column.
-
-**Explanation:**
-`value_counts()` returns a Series listing each unique value in the column alongside how many times it appears, sorted from most frequent to least frequent. It is the go-to method for understanding the composition of a categorical column, equivalent to a frequency table.

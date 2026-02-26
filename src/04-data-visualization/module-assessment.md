@@ -73,42 +73,87 @@ The notebook provides a dataset containing information about global city populat
 
 ## Knowledge Check
 
-#### **Question 1: A colleague creates a pie chart to compare the revenue of 12 product categories. What is the main problem with this choice?**
-1. Pie charts can only display data from two categories.
-2. With 12 slices, the chart becomes extremely difficult to read because humans struggle to compare many angles and small areas accurately.
-3. Pie charts cannot display revenue data because it is a continuous variable.
-4. Plotly does not support pie charts with more than 5 categories.
+<div class="quiz-container" data-correct="1" data-explanation="Pie charts rely on humans comparing the sizes of angles and areas, which we do poorly even with a handful of slices. With 12 categories, many slices will be so thin they become indistinguishable. A horizontal bar chart sorted by value would communicate the same information far more clearly, making it easy to rank and compare categories.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A colleague creates a pie chart to compare the revenue of 12 product categories. What is the main problem with this choice?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Pie charts can only display data from two categories.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>With 12 slices, the chart becomes extremely difficult to read because humans struggle to compare many angles and small areas accurately.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Pie charts cannot display revenue data because it is a continuous variable.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Plotly does not support pie charts with more than 5 categories.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. With 12 slices, the chart becomes extremely difficult to read because humans struggle to compare many angles and small areas accurately.
-
-**Explanation:**
-Pie charts rely on humans comparing the sizes of angles and areas, which we do poorly even with a handful of slices. With 12 categories, many slices will be so thin they become indistinguishable. A horizontal bar chart sorted by value would communicate the same information far more clearly, making it easy to rank and compare categories.
 
 ---
 
-#### **Question 2: What is the key advantage of Plotly charts over Matplotlib charts?**
-1. Plotly charts always look better than Matplotlib charts.
-2. Plotly charts are interactive — users can zoom, pan, hover to see data values, and toggle series on and off.
-3. Plotly charts require less code to create.
-4. Plotly is faster to render than Matplotlib for large datasets.
+<div class="quiz-container" data-correct="1" data-explanation="The defining advantage of Plotly is **interactivity**. While Matplotlib produces static images (ideal for reports and publications), Plotly charts render in the browser and allow users to explore the data directly — hovering over points to see exact values, clicking legend items to show/hide series, and zooming in on regions of interest. This makes Plotly especially powerful for dashboards and exploratory presentations.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What is the key advantage of Plotly charts over Matplotlib charts?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Plotly charts always look better than Matplotlib charts.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Plotly charts are interactive — users can zoom, pan, hover to see data values, and toggle series on and off.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Plotly charts require less code to create.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Plotly is faster to render than Matplotlib for large datasets.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Plotly charts are interactive — users can zoom, pan, hover to see data values, and toggle series on and off.
-
-**Explanation:**
-The defining advantage of Plotly is **interactivity**. While Matplotlib produces static images (ideal for reports and publications), Plotly charts render in the browser and allow users to explore the data directly — hovering over points to see exact values, clicking legend items to show/hide series, and zooming in on regions of interest. This makes Plotly especially powerful for dashboards and exploratory presentations.
 
 ---
 
-#### **Question 3: You want to visualize the distribution of house prices in a dataset of 5,000 homes. Which chart type is most appropriate, and why?**
-1. Line chart — because house prices are a continuous variable measured over time.
-2. Bar chart — because you need to compare prices across different houses.
-3. Histogram — because it shows how a single continuous variable is distributed across a range of values.
-4. Scatter plot — because you need two variables to create a meaningful chart.
+<div class="quiz-container" data-correct="2" data-explanation="A histogram divides house prices into bins and shows how many homes fall into each price range, revealing whether the distribution is symmetric, skewed (many cheap homes, few expensive ones), or bimodal (two distinct price clusters). A line chart requires an ordered sequence, a bar chart compares discrete categories, and a scatter plot needs two variables — none of which apply here.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You want to visualize the distribution of house prices in a dataset of 5,000 homes. Which chart type is most appropriate, and why?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Line chart — because house prices are a continuous variable measured over time.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Bar chart — because you need to compare prices across different houses.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Histogram — because it shows how a single continuous variable is distributed across a range of values.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Scatter plot — because you need two variables to create a meaningful chart.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Histogram — because it shows how a single continuous variable is distributed across a range of values.
-
-**Explanation:**
-A histogram divides house prices into bins and shows how many homes fall into each price range, revealing whether the distribution is symmetric, skewed (many cheap homes, few expensive ones), or bimodal (two distinct price clusters). A line chart requires an ordered sequence, a bar chart compares discrete categories, and a scatter plot needs two variables — none of which apply here.

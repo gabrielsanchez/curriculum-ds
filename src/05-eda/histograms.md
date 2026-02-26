@@ -224,42 +224,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: A histogram of employee salaries shows a long tail stretching to the right with most values below $80,000 and a few above $300,000. How would you describe this distribution?**
-1. Normal (symmetric)
-2. Left-skewed
-3. Bimodal
-4. Right-skewed
+<div class="quiz-container" data-correct="3" data-explanation="A right-skewed (positively skewed) distribution has most values concentrated on the left side (lower values) with a long tail extending to the right (higher values). Salary data is a classic example — most employees earn moderate salaries, but a small number of very high earners stretch the distribution to the right, pulling the mean above the median.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A histogram of employee salaries shows a long tail stretching to the right with most values below $80,000 and a few above $300,000. How would you describe this distribution?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Normal (symmetric)</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Left-skewed</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Bimodal</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Right-skewed</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-4. Right-skewed
-
-**Explanation:**
-A right-skewed (positively skewed) distribution has most values concentrated on the left side (lower values) with a long tail extending to the right (higher values). Salary data is a classic example — most employees earn moderate salaries, but a small number of very high earners stretch the distribution to the right, pulling the mean above the median.
 
 ---
 
-#### **Question 2: What happens if you use too few bins in a histogram?**
-1. The histogram becomes too noisy and shows random fluctuations rather than the true shape.
-2. The histogram over-smooths the data, potentially hiding important features like bimodality or gaps.
-3. Pandas raises an error because the bin width is too large.
-4. The histogram automatically switches to a bar chart.
+<div class="quiz-container" data-correct="1" data-explanation="With too few bins, many different values get lumped into the same bar, blurring fine-grained features. A bimodal distribution might look like a single wide hump. A gap in the data might disappear entirely. Too many bins has the opposite problem — the chart becomes jagged and noisy. Finding the right balance is key, and it often requires trying a few different values.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What happens if you use too few bins in a histogram?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The histogram becomes too noisy and shows random fluctuations rather than the true shape.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The histogram over-smooths the data, potentially hiding important features like bimodality or gaps.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Pandas raises an error because the bin width is too large.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The histogram automatically switches to a bar chart.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The histogram over-smooths the data, potentially hiding important features like bimodality or gaps.
-
-**Explanation:**
-With too few bins, many different values get lumped into the same bar, blurring fine-grained features. A bimodal distribution might look like a single wide hump. A gap in the data might disappear entirely. Too many bins has the opposite problem — the chart becomes jagged and noisy. Finding the right balance is key, and it often requires trying a few different values.
 
 ---
 
-#### **Question 3: You plot a histogram of house prices and notice the mean line sits clearly to the right of the median line. What does this indicate?**
-1. The data has been normalized correctly.
-2. The distribution is symmetric and well-behaved.
-3. The distribution is right-skewed, likely influenced by a small number of very high-priced properties.
-4. The median was calculated incorrectly.
+<div class="quiz-container" data-correct="2" data-explanation="When the mean sits to the right of the median on a histogram, it means the mean has been pulled rightward by a few high values in the tail. This is the hallmark of a right-skewed distribution. The median is resistant to these extremes, so it stays closer to where most of the data actually sits. This pattern is very common in price and income data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You plot a histogram of house prices and notice the mean line sits clearly to the right of the median line. What does this indicate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The data has been normalized correctly.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The distribution is symmetric and well-behaved.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The distribution is right-skewed, likely influenced by a small number of very high-priced properties.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The median was calculated incorrectly.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. The distribution is right-skewed, likely influenced by a small number of very high-priced properties.
-
-**Explanation:**
-When the mean sits to the right of the median on a histogram, it means the mean has been pulled rightward by a few high values in the tail. This is the hallmark of a right-skewed distribution. The median is resistant to these extremes, so it stays closer to where most of the data actually sits. This pattern is very common in price and income data.

@@ -383,45 +383,87 @@ RNNs — specifically LSTMs and GRUs — address a fundamental limitation of fix
 
 ### Knowledge Check
 
-#### **Question 1: What problem do LSTM and GRU solve that vanilla RNNs cannot handle effectively?**
+<div class="quiz-container" data-correct="1" data-explanation="In a 200-step sequence, the gradient of the loss with respect to step 1&#039;s hidden state is computed by multiplying through 199 Jacobian matrices (one per time step). In vanilla RNNs, these multiplications cause gradients to shrink to near-zero in early time steps — the first words effectively don&#039;t contribute to learning. The LSTM cell state acts as a &quot;conveyor belt&quot; with additive (not multiplicative) updates, allowing gradients to flow through many steps without shrinking. The forget gate learns when to clear the cell state, and the input gate learns when to add new information.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What problem do LSTM and GRU solve that vanilla RNNs cannot handle effectively?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>LSTMs and GRUs handle variable-length sequences, while vanilla RNNs can only process fixed-length inputs.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>LSTMs and GRUs solve the vanishing gradient problem: in vanilla RNNs, gradients shrink exponentially as they propagate back through many time steps, making it nearly impossible to learn dependencies between words separated by many steps. LSTM's gating mechanisms create a "highway" for gradients to flow without being multiplied at every step.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>LSTMs and GRUs support bidirectional processing, while vanilla RNNs can only process sequences left to right.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>LSTMs and GRUs are faster to train than vanilla RNNs because they have fewer parameters.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. LSTMs and GRUs handle variable-length sequences, while vanilla RNNs can only process fixed-length inputs.
-2. LSTMs and GRUs solve the vanishing gradient problem: in vanilla RNNs, gradients shrink exponentially as they propagate back through many time steps, making it nearly impossible to learn dependencies between words separated by many steps. LSTM's gating mechanisms create a "highway" for gradients to flow without being multiplied at every step.
-3. LSTMs and GRUs support bidirectional processing, while vanilla RNNs can only process sequences left to right.
-4. LSTMs and GRUs are faster to train than vanilla RNNs because they have fewer parameters.
-
-**Correct Answer:**
-2. LSTMs and GRUs solve the vanishing gradient problem: vanilla RNN gradients shrink exponentially through many time steps, making long-range dependencies impossible to learn. LSTM's gating mechanisms create gradient pathways that don't vanish.
-
-**Explanation:**
-In a 200-step sequence, the gradient of the loss with respect to step 1's hidden state is computed by multiplying through 199 Jacobian matrices (one per time step). In vanilla RNNs, these multiplications cause gradients to shrink to near-zero in early time steps — the first words effectively don't contribute to learning. The LSTM cell state acts as a "conveyor belt" with additive (not multiplicative) updates, allowing gradients to flow through many steps without shrinking. The forget gate learns when to clear the cell state, and the input gate learns when to add new information.
 
 ---
 
-#### **Question 2: Why do sequences need to be padded before being fed into a Keras model, and what does `padding="post"` mean?**
+<div class="quiz-container" data-correct="1" data-explanation="Keras compiles models to fixed-shape tensor operations. In a batch of 128 reviews with lengths from 50 to 500 words, all must become the same length before batching. Zeros (the padding token) have their own embedding vector — typically near zero after training, since they carry no information. `padding=&quot;post&quot;` (padding at the end) is preferred for RNNs: the LSTM processes real tokens first and only encounters padding zeros at the end, after it has already built up meaningful hidden states. `padding=&quot;pre&quot;` would cause the LSTM to first process all zeros before reaching the real text.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why do sequences need to be padded before being fed into a Keras model, and what does `padding="post"` mean?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Padding converts text tokens into floating-point numbers that neural networks can process. `padding="post"` means padding is applied before the beginning of each sequence.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Keras tensors require fixed dimensions — all sequences in a batch must have the same length. Padding appends zeros to short sequences (or truncates long ones) to create uniform length. `padding="post"` places zeros at the end of shorter sequences (after the real tokens), while `padding="pre"` places zeros at the beginning.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Padding is only needed for CNNs — RNNs can process variable-length sequences natively without padding.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Padding is required because LSTM layers cannot process zero values and replace them with learned embeddings.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Padding converts text tokens into floating-point numbers that neural networks can process. `padding="post"` means padding is applied before the beginning of each sequence.
-2. Keras tensors require fixed dimensions — all sequences in a batch must have the same length. Padding appends zeros to short sequences (or truncates long ones) to create uniform length. `padding="post"` places zeros at the end of shorter sequences (after the real tokens), while `padding="pre"` places zeros at the beginning.
-3. Padding is only needed for CNNs — RNNs can process variable-length sequences natively without padding.
-4. Padding is required because LSTM layers cannot process zero values and replace them with learned embeddings.
-
-**Correct Answer:**
-2. Keras tensors require fixed dimensions — all sequences in a batch must have the same length. Padding appends zeros (or truncates) to create uniform length. `padding="post"` places zeros after the real tokens.
-
-**Explanation:**
-Keras compiles models to fixed-shape tensor operations. In a batch of 128 reviews with lengths from 50 to 500 words, all must become the same length before batching. Zeros (the padding token) have their own embedding vector — typically near zero after training, since they carry no information. `padding="post"` (padding at the end) is preferred for RNNs: the LSTM processes real tokens first and only encounters padding zeros at the end, after it has already built up meaningful hidden states. `padding="pre"` would cause the LSTM to first process all zeros before reaching the real text.
 
 ---
 
-#### **Question 3: A colleague suggests that for a new text classification task with 200,000 labeled examples, you should train an LSTM from scratch. You suggest using a pre-trained Transformer model instead. What is your strongest argument?**
+<div class="quiz-container" data-correct="1" data-explanation="This is the argument for transfer learning applied to NLP, parallel to the ImageNet transfer learning argument for vision. A BERT model pre-trained on Common Crawl and Books has learned that &quot;bank&quot; has different meanings in &quot;river bank&quot; vs. &quot;bank account&quot; (context-dependent word meaning), that negation affects sentiment, and thousands of other linguistic patterns. An LSTM trained on 200,000 task-specific examples learns only from those examples. The 200,000 examples are sufficient to fine-tune BERT&#039;s top layers for your specific task, giving you both the broad linguistic knowledge and the task-specific adaptation. On most NLP benchmarks, fine-tuned BERT outperforms LSTM models trained on 10× more labeled data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A colleague suggests that for a new text classification task with 200,000 labeled examples, you should train an LSTM from scratch. You suggest using a pre-trained Transformer model instead. What is your strongest argument?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>LSTMs can't handle text with more than 10,000 unique words, while Transformers have no vocabulary limit.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Pre-trained Transformers (e.g., BERT) have been trained on billions of words and already encode rich linguistic knowledge: grammar, semantic relationships, named entities, sentiment. Fine-tuning a pre-trained model on your 200,000 examples requires only a few epochs to adapt these rich representations to your specific task, typically achieving higher accuracy than an LSTM trained from scratch — even with 200,000 labeled examples. Training an LSTM from scratch learns word embeddings and sequence patterns only from your dataset, which is limited compared to what BERT learned from the entire web.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>LSTMs are slower to train than Transformers on GPUs, so even if the LSTM would achieve higher accuracy, the time cost makes Transformers preferable.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Transformers should always be used instead of LSTMs regardless of dataset size because they are architecturally superior.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. LSTMs can't handle text with more than 10,000 unique words, while Transformers have no vocabulary limit.
-2. Pre-trained Transformers (e.g., BERT) have been trained on billions of words and already encode rich linguistic knowledge: grammar, semantic relationships, named entities, sentiment. Fine-tuning a pre-trained model on your 200,000 examples requires only a few epochs to adapt these rich representations to your specific task, typically achieving higher accuracy than an LSTM trained from scratch — even with 200,000 labeled examples. Training an LSTM from scratch learns word embeddings and sequence patterns only from your dataset, which is limited compared to what BERT learned from the entire web.
-3. LSTMs are slower to train than Transformers on GPUs, so even if the LSTM would achieve higher accuracy, the time cost makes Transformers preferable.
-4. Transformers should always be used instead of LSTMs regardless of dataset size because they are architecturally superior.
-
-**Correct Answer:**
-2. Pre-trained Transformers encode rich linguistic knowledge from billions of words. Fine-tuning on your 200,000 examples adapts this knowledge to your task, typically achieving higher accuracy than an LSTM trained from scratch on only your dataset.
-
-**Explanation:**
-This is the argument for transfer learning applied to NLP, parallel to the ImageNet transfer learning argument for vision. A BERT model pre-trained on Common Crawl and Books has learned that "bank" has different meanings in "river bank" vs. "bank account" (context-dependent word meaning), that negation affects sentiment, and thousands of other linguistic patterns. An LSTM trained on 200,000 task-specific examples learns only from those examples. The 200,000 examples are sufficient to fine-tune BERT's top layers for your specific task, giving you both the broad linguistic knowledge and the task-specific adaptation. On most NLP benchmarks, fine-tuned BERT outperforms LSTM models trained on 10× more labeled data.

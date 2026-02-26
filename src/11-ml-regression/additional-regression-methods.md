@@ -339,45 +339,87 @@ In this lesson, you extended linear regression to handle non-linearity in two wa
 
 ### Knowledge Check
 
-#### **Question 1: You apply `PolynomialFeatures(degree=2)` to a dataset with 10 features. How many features are in the transformed dataset (excluding the bias term), and why does this matter for overfitting?**
+<div class="quiz-container" data-correct="2" data-explanation="`PolynomialFeatures(degree=2, include_bias=False)` generates: the 10 original features, 10 squared features (x₁², x₂², …, x₁₀²), and C(10,2) = 45 pairwise cross-products (x₁x₂, x₁x₃, …), totaling 65. With more features than the original dataset, the model has many more parameters to estimate — increasing the risk of overfitting, especially on smaller datasets. This is why polynomial regression is often paired with regularization (Ridge or Lasso) to constrain the coefficients.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You apply `PolynomialFeatures(degree=2)` to a dataset with 10 features. How many features are in the transformed dataset (excluding the bias term), and why does this matter for overfitting?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>20 features — degree 2 doubles the number of features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>100 features — one feature for each pair combination.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>65 features — 10 originals + 10 squared terms + 45 cross-products.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>10 features — `PolynomialFeatures` only adds squared terms to existing features.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. 20 features — degree 2 doubles the number of features.
-2. 100 features — one feature for each pair combination.
-3. 65 features — 10 originals + 10 squared terms + 45 cross-products.
-4. 10 features — `PolynomialFeatures` only adds squared terms to existing features.
-
-**Correct Answer:**
-3. 65 features — 10 originals + 10 squared terms + 45 cross-products.
-
-**Explanation:**
-`PolynomialFeatures(degree=2, include_bias=False)` generates: the 10 original features, 10 squared features (x₁², x₂², …, x₁₀²), and C(10,2) = 45 pairwise cross-products (x₁x₂, x₁x₃, …), totaling 65. With more features than the original dataset, the model has many more parameters to estimate — increasing the risk of overfitting, especially on smaller datasets. This is why polynomial regression is often paired with regularization (Ridge or Lasso) to constrain the coefficients.
 
 ---
 
-#### **Question 2: A decision tree regressor with `max_depth=None` achieves Train R² = 0.98 and Test R² = 0.62. What does this tell you, and what hyperparameter adjustment would you try first?**
+<div class="quiz-container" data-correct="1" data-explanation="Train R² of 0.98 means the model almost perfectly fits the training data. Test R² of 0.62 shows it generalizes poorly. An unlimited tree can create one leaf per training sample, memorizing every data point. Setting `max_depth` forces the tree to find patterns that hold across larger groups of samples — reducing variance (overfit) at the cost of a small increase in bias (underfit). The right value would be found by cross-validation, not by peeking at the test set.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A decision tree regressor with `max_depth=None` achieves Train R² = 0.98 and Test R² = 0.62. What does this tell you, and what hyperparameter adjustment would you try first?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The model is underfitting — increase `max_depth` to allow more splits.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The large gap between train and test R² indicates severe overfitting. Setting `max_depth` to a smaller value (e.g., 5–8) would prevent the tree from memorizing training noise and likely improve test performance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The model is performing normally — a large train-test gap is expected for tree models.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The test set must be too small — increase the test fraction to 40%.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model is underfitting — increase `max_depth` to allow more splits.
-2. The large gap between train and test R² indicates severe overfitting. Setting `max_depth` to a smaller value (e.g., 5–8) would prevent the tree from memorizing training noise and likely improve test performance.
-3. The model is performing normally — a large train-test gap is expected for tree models.
-4. The test set must be too small — increase the test fraction to 40%.
-
-**Correct Answer:**
-2. The large gap between train and test R² indicates severe overfitting. Setting `max_depth` to a smaller value (e.g., 5–8) would prevent the tree from memorizing training noise and likely improve test performance.
-
-**Explanation:**
-Train R² of 0.98 means the model almost perfectly fits the training data. Test R² of 0.62 shows it generalizes poorly. An unlimited tree can create one leaf per training sample, memorizing every data point. Setting `max_depth` forces the tree to find patterns that hold across larger groups of samples — reducing variance (overfit) at the cost of a small increase in bias (underfit). The right value would be found by cross-validation, not by peeking at the test set.
 
 ---
 
-#### **Question 3: Polynomial regression with degree 2 achieves Test R² = 0.686, while degree 3 achieves Train R² = 0.754 but Test R² = 0.682. Which degree should you choose for deployment, and why?**
+<div class="quiz-container" data-correct="1" data-explanation="Degree 3 uses ~165 features (vs. 44 at degree 2) and its test R² is slightly *lower* than degree 2, even though its training R² is higher. The extra complexity is fitting training noise, not genuine signal. The principle of parsimony — prefer the simpler model when performance is equivalent — applies here: degree 2 generalizes equally well and is less susceptible to instability if the deployment data distribution shifts slightly.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Polynomial regression with degree 2 achieves Test R² = 0.686, while degree 3 achieves Train R² = 0.754 but Test R² = 0.682. Which degree should you choose for deployment, and why?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Degree 3 — higher train R² always indicates a better model.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Degree 2 — it achieves nearly identical test performance to degree 3 (0.686 vs. 0.682) while being substantially simpler, with lower risk of degrading on new data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Degree 3 — the slightly lower test R² is within noise and the extra flexibility is worth it.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Neither — polynomial regression is always outperformed by decision trees, so use a tree instead.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Degree 3 — higher train R² always indicates a better model.
-2. Degree 2 — it achieves nearly identical test performance to degree 3 (0.686 vs. 0.682) while being substantially simpler, with lower risk of degrading on new data.
-3. Degree 3 — the slightly lower test R² is within noise and the extra flexibility is worth it.
-4. Neither — polynomial regression is always outperformed by decision trees, so use a tree instead.
-
-**Correct Answer:**
-2. Degree 2 — it achieves nearly identical test performance to degree 3 (0.686 vs. 0.682) while being substantially simpler, with lower risk of degrading on new data.
-
-**Explanation:**
-Degree 3 uses ~165 features (vs. 44 at degree 2) and its test R² is slightly *lower* than degree 2, even though its training R² is higher. The extra complexity is fitting training noise, not genuine signal. The principle of parsimony — prefer the simpler model when performance is equivalent — applies here: degree 2 generalizes equally well and is less susceptible to instability if the deployment data distribution shifts slightly.

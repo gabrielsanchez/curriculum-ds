@@ -296,45 +296,87 @@ In this lesson, you learned that multi-label classification addresses problems w
 
 ### Knowledge Check
 
-#### **Question 1: A developer is building a system that tags customer support tickets. Each ticket can be about billing, technical issues, shipping, or returns — and many tickets are about more than one topic. What type of classification is this?**
+<div class="quiz-container" data-correct="2" data-explanation="Since a single ticket can be tagged with multiple topics at the same time (e.g., both &quot;billing&quot; and &quot;technical&quot;), each ticket needs a binary vector of labels, not a single class. Multi-label classification is the right framework. Multi-class would force exactly one label per ticket, losing the information that it covers multiple topics. Binary would only work if there were exactly two possible outcomes.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A developer is building a system that tags customer support tickets. Each ticket can be about billing, technical issues, shipping, or returns — and many tickets are about more than one topic. What type of classification is this?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Binary classification — the model predicts whether a ticket requires escalation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Multi-class classification — the model assigns the primary topic to each ticket.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Multi-label classification — the model assigns all applicable topic tags to each ticket simultaneously.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Regression — because the number of topics per ticket can vary.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Binary classification — the model predicts whether a ticket requires escalation.
-2. Multi-class classification — the model assigns the primary topic to each ticket.
-3. Multi-label classification — the model assigns all applicable topic tags to each ticket simultaneously.
-4. Regression — because the number of topics per ticket can vary.
-
-**Correct Answer:**
-3. Multi-label classification — the model assigns all applicable topic tags to each ticket simultaneously.
-
-**Explanation:**
-Since a single ticket can be tagged with multiple topics at the same time (e.g., both "billing" and "technical"), each ticket needs a binary vector of labels, not a single class. Multi-label classification is the right framework. Multi-class would force exactly one label per ticket, losing the information that it covers multiple topics. Binary would only work if there were exactly two possible outcomes.
 
 ---
 
-#### **Question 2: You train a multi-label classifier on a 6-label dataset and compute Hamming loss = 0.08 and exact match accuracy = 22%. Which statement best interprets these results?**
+<div class="quiz-container" data-correct="1" data-explanation="Hamming loss = 0.08 means 8% of individual label-sample pairs are incorrectly predicted — so 92% are right at the individual label level, which is good performance. Exact match = 22% means only 22% of samples have every label exactly correct. This gap is expected: if a model correctly predicts 5 out of 6 labels per sample, Hamming loss would be low (≈17%), but exact match would be 0% because no sample is fully correct. These metrics measure different things and should both be reported.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You train a multi-label classifier on a 6-label dataset and compute Hamming loss = 0.08 and exact match accuracy = 22%. Which statement best interprets these results?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The model is performing poorly on all metrics and needs significant improvement.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The model correctly predicts individual labels most of the time (92% of label predictions are right), but rarely predicts the entire label set for a sample perfectly.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The model's Hamming loss of 0.08 means it gets 8% of samples entirely correct.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Exact match accuracy should always equal 1 minus Hamming loss.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model is performing poorly on all metrics and needs significant improvement.
-2. The model correctly predicts individual labels most of the time (92% of label predictions are right), but rarely predicts the entire label set for a sample perfectly.
-3. The model's Hamming loss of 0.08 means it gets 8% of samples entirely correct.
-4. Exact match accuracy should always equal 1 minus Hamming loss.
-
-**Correct Answer:**
-2. The model correctly predicts individual labels most of the time (92% of label predictions are right), but rarely predicts the entire label set for a sample perfectly.
-
-**Explanation:**
-Hamming loss = 0.08 means 8% of individual label-sample pairs are incorrectly predicted — so 92% are right at the individual label level, which is good performance. Exact match = 22% means only 22% of samples have every label exactly correct. This gap is expected: if a model correctly predicts 5 out of 6 labels per sample, Hamming loss would be low (≈17%), but exact match would be 0% because no sample is fully correct. These metrics measure different things and should both be reported.
 
 ---
 
-#### **Question 3: What is the main advantage of the Classifier Chain approach over Binary Relevance for multi-label classification?**
+<div class="quiz-container" data-correct="1" data-explanation="Binary relevance treats each label independently, ignoring the fact that some labels often appear together (e.g., &quot;action&quot; and &quot;thriller&quot;). Classifier chains pass the prediction of each label as an additional feature to the next classifier, allowing it to learn &quot;if action=1, thriller is more likely.&quot; This can improve performance when labels are correlated. The trade-off is that early prediction errors propagate through the chain, and training is sequential rather than parallelizable.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the main advantage of the Classifier Chain approach over Binary Relevance for multi-label classification?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Classifier chains are faster to train because they use fewer models.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Classifier chains model label correlations by using earlier predictions as features for later classifiers, potentially improving accuracy when labels co-occur.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Classifier chains always produce lower Hamming loss regardless of the dataset.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Classifier chains use only one model instead of one per label.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Classifier chains are faster to train because they use fewer models.
-2. Classifier chains model label correlations by using earlier predictions as features for later classifiers, potentially improving accuracy when labels co-occur.
-3. Classifier chains always produce lower Hamming loss regardless of the dataset.
-4. Classifier chains use only one model instead of one per label.
-
-**Correct Answer:**
-2. Classifier chains model label correlations by using earlier predictions as features for later classifiers, potentially improving accuracy when labels co-occur.
-
-**Explanation:**
-Binary relevance treats each label independently, ignoring the fact that some labels often appear together (e.g., "action" and "thriller"). Classifier chains pass the prediction of each label as an additional feature to the next classifier, allowing it to learn "if action=1, thriller is more likely." This can improve performance when labels are correlated. The trade-off is that early prediction errors propagate through the chain, and training is sequential rather than parallelizable.

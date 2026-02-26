@@ -280,42 +280,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: You load a dataset to train a fraud detection model. The dataset contains 99,000 legitimate transactions and 1,000 fraudulent ones. What problem does this create, and what term describes it?**
-1. Overfitting — the model has seen too many examples of fraud.
-2. Class imbalance — the model may learn to always predict "legitimate" and achieve 99% accuracy without detecting any fraud.
-3. Data leakage — the fraud labels have contaminated the training features.
-4. Underfitting — the dataset is too large for the algorithm to process.
+<div class="quiz-container" data-correct="1" data-explanation="When one class vastly outnumbers another, a naive model can achieve high overall accuracy by simply predicting the majority class every time. In fraud detection, this would mean 99% accuracy but zero fraud caught — a useless model. This is class imbalance, and it requires special handling (oversampling, class weights, or evaluation metrics beyond accuracy like precision/recall).">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You load a dataset to train a fraud detection model. The dataset contains 99,000 legitimate transactions and 1,000 fraudulent ones. What problem does this create, and what term describes it?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Overfitting — the model has seen too many examples of fraud.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Class imbalance — the model may learn to always predict "legitimate" and achieve 99% accuracy without detecting any fraud.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Data leakage — the fraud labels have contaminated the training features.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Underfitting — the dataset is too large for the algorithm to process.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Class imbalance — the model may learn to always predict "legitimate" and achieve 99% accuracy without detecting any fraud.
-
-**Explanation:**
-When one class vastly outnumbers another, a naive model can achieve high overall accuracy by simply predicting the majority class every time. In fraud detection, this would mean 99% accuracy but zero fraud caught — a useless model. This is class imbalance, and it requires special handling (oversampling, class weights, or evaluation metrics beyond accuracy like precision/recall).
 
 ---
 
-#### **Question 2: Why should the test set be kept completely separate and unseen until final evaluation?**
-1. Test data must be stored in a different file format than training data.
-2. If the model is tuned or evaluated on the test set during development, performance estimates become overly optimistic and no longer reflect true generalization.
-3. Scikit-learn's `train_test_split` automatically hides the test set from all functions.
-4. The test set needs to be smaller than the training set, so it must be separated in advance.
+<div class="quiz-container" data-correct="1" data-explanation="The test set simulates data the model will encounter after deployment. If you use it to make modeling decisions (tuning parameters, selecting features, choosing algorithms), those decisions are implicitly optimized for the test set — which then no longer measures true unseen performance. The test set should be opened once, at the very end, to report final performance.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why should the test set be kept completely separate and unseen until final evaluation?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Test data must be stored in a different file format than training data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>If the model is tuned or evaluated on the test set during development, performance estimates become overly optimistic and no longer reflect true generalization.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Scikit-learn's `train_test_split` automatically hides the test set from all functions.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The test set needs to be smaller than the training set, so it must be separated in advance.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. If the model is tuned or evaluated on the test set during development, performance estimates become overly optimistic and no longer reflect true generalization.
-
-**Explanation:**
-The test set simulates data the model will encounter after deployment. If you use it to make modeling decisions (tuning parameters, selecting features, choosing algorithms), those decisions are implicitly optimized for the test set — which then no longer measures true unseen performance. The test set should be opened once, at the very end, to report final performance.
 
 ---
 
-#### **Question 3: A company builds a resume-screening ML model trained on 10 years of past hiring decisions. After deployment, it consistently rates female candidates lower than male candidates with equivalent qualifications. What is the most likely cause?**
-1. The algorithm selected was not designed for fairness.
-2. The training data reflected historical hiring bias — the model learned and replicated the discriminatory patterns present in past decisions.
-3. The model was overfitted to the training data.
-4. The dataset was too small to include enough female candidates.
+<div class="quiz-container" data-correct="1" data-explanation="ML models learn whatever patterns exist in their training data — including biased ones. If historical hiring decisions systematically disadvantaged women, the model learns that pattern and perpetuates it at scale. This is a real-world example of data bias with serious ethical consequences. The fix is not a better algorithm — it&#039;s examining and correcting the training data, auditing model outputs across demographic groups, and building fairness constraints into the modeling process.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> A company builds a resume-screening ML model trained on 10 years of past hiring decisions. After deployment, it consistently rates female candidates lower than male candidates with equivalent qualifications. What is the most likely cause?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The algorithm selected was not designed for fairness.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The training data reflected historical hiring bias — the model learned and replicated the discriminatory patterns present in past decisions.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The model was overfitted to the training data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The dataset was too small to include enough female candidates.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The training data reflected historical hiring bias — the model learned and replicated the discriminatory patterns present in past decisions.
-
-**Explanation:**
-ML models learn whatever patterns exist in their training data — including biased ones. If historical hiring decisions systematically disadvantaged women, the model learns that pattern and perpetuates it at scale. This is a real-world example of data bias with serious ethical consequences. The fix is not a better algorithm — it's examining and correcting the training data, auditing model outputs across demographic groups, and building fairness constraints into the modeling process.

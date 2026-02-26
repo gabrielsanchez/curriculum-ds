@@ -332,42 +332,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What does `pd.read_sql_query(query, conn)` return?**
-1. A list of tuples containing the query results.
-2. A Pandas DataFrame with columns matching the query's `SELECT` aliases.
-3. A cursor object that can be iterated to retrieve rows.
-4. A JSON string representing the query results.
+<div class="quiz-container" data-correct="1" data-explanation="`pd.read_sql_query()` executes the SQL string against the provided database connection and automatically wraps the results in a Pandas DataFrame. The column names come from the `SELECT` clause — either the original column names or `AS` aliases. This is the primary bridge between SQL and the Pandas analysis environment.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What does `pd.read_sql_query(query, conn)` return?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>A list of tuples containing the query results.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>A Pandas DataFrame with columns matching the query's `SELECT` aliases.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>A cursor object that can be iterated to retrieve rows.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>A JSON string representing the query results.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. A Pandas DataFrame with columns matching the query's `SELECT` aliases.
-
-**Explanation:**
-`pd.read_sql_query()` executes the SQL string against the provided database connection and automatically wraps the results in a Pandas DataFrame. The column names come from the `SELECT` clause — either the original column names or `AS` aliases. This is the primary bridge between SQL and the Pandas analysis environment.
 
 ---
 
-#### **Question 2: You want to insert a user-supplied value into a SQL query. Which approach is correct?**
-1. `cursor.execute(f"INSERT INTO users (name) VALUES ('{user_input}')")`
-2. `cursor.execute("INSERT INTO users (name) VALUES (?)", (user_input,))`
-3. `cursor.execute("INSERT INTO users (name) VALUES (" + user_input + ")")`
-4. `cursor.execute("INSERT INTO users (name) VALUES (%s)" % user_input)`
+<div class="quiz-container" data-correct="1" data-explanation="Only option 2 uses a parameterized query with a `?` placeholder, which is the safe approach. Options 1, 3, and 4 all embed the user input directly into the SQL string, creating a SQL injection vulnerability. For example, if `user_input` is `&quot;&#039;; DROP TABLE users; --&quot;`, options 1, 3, and 4 would execute that destructive command. The `?` placeholder causes `sqlite3` to treat the value as pure data, never as SQL syntax.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You want to insert a user-supplied value into a SQL query. Which approach is correct?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`cursor.execute(f"INSERT INTO users (name) VALUES ('{user_input}')")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`cursor.execute("INSERT INTO users (name) VALUES (?)", (user_input,))`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`cursor.execute("INSERT INTO users (name) VALUES (" + user_input + ")")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>`cursor.execute("INSERT INTO users (name) VALUES (%s)" % user_input)`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `cursor.execute("INSERT INTO users (name) VALUES (?)", (user_input,))`
-
-**Explanation:**
-Only option 2 uses a parameterized query with a `?` placeholder, which is the safe approach. Options 1, 3, and 4 all embed the user input directly into the SQL string, creating a SQL injection vulnerability. For example, if `user_input` is `"'; DROP TABLE users; --"`, options 1, 3, and 4 would execute that destructive command. The `?` placeholder causes `sqlite3` to treat the value as pure data, never as SQL syntax.
 
 ---
 
-#### **Question 3: When using `df.to_sql(name="sales", con=conn, if_exists="replace", index=False)`, what does `if_exists="replace"` do?**
-1. It skips the write if the table already exists.
-2. It appends the DataFrame rows to the existing table without changing its structure.
-3. It drops the existing table and recreates it with the DataFrame's schema and data.
-4. It raises an error if any row in the DataFrame already exists in the table.
+<div class="quiz-container" data-correct="2" data-explanation="The `if_exists` parameter controls what happens when the target table already exists: `&quot;fail&quot;` raises an error, `&quot;replace&quot;` drops and recreates the table with the new data, and `&quot;append&quot;` adds the DataFrame rows to the end of the existing table without changing its structure. Use `&quot;replace&quot;` carefully — it permanently deletes the existing table and all its data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> When using `df.to_sql(name="sales", con=conn, if_exists="replace", index=False)`, what does `if_exists="replace"` do?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>It skips the write if the table already exists.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>It appends the DataFrame rows to the existing table without changing its structure.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>It drops the existing table and recreates it with the DataFrame's schema and data.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>It raises an error if any row in the DataFrame already exists in the table.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. It drops the existing table and recreates it with the DataFrame's schema and data.
-
-**Explanation:**
-The `if_exists` parameter controls what happens when the target table already exists: `"fail"` raises an error, `"replace"` drops and recreates the table with the new data, and `"append"` adds the DataFrame rows to the end of the existing table without changing its structure. Use `"replace"` carefully — it permanently deletes the existing table and all its data.

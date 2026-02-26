@@ -493,45 +493,87 @@ TF-IDF + logistic regression achieves 85.6% accuracy on a 20-class newsgroup cla
 
 ### Knowledge Check
 
-#### **Question 1: What does IDF (Inverse Document Frequency) accomplish, and why does it improve on raw term counts?**
+<div class="quiz-container" data-correct="1" data-explanation="The key insight is that a word&#039;s discriminative value is inversely proportional to how many documents it appears in. &quot;The&quot; appears in every document — knowing it&#039;s in a document tells you nothing about its topic. &quot;Cryptography&quot; appears in only a fraction of documents — knowing it&#039;s in a document strongly predicts the `sci.crypt` category. IDF = log(N/df) is large when df is small (word appears in few documents = distinctive) and near-zero when df ≈ N (word appears in almost all documents = uninformative). Multiplying TF by IDF produces a representation that emphasizes distinctive terms.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What does IDF (Inverse Document Frequency) accomplish, and why does it improve on raw term counts?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>IDF increases the weight of words that appear frequently across all documents, making them more representative features for classification.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>IDF downweights words that appear in many documents (e.g., "the," "is," "said") and upweights words that are distinctive to specific documents. Raw term counts give high weight to common words like "the" that appear in every document — they carry no discriminative information. IDF's log(N/df) is large for rare words and near-zero for words in almost every document, effectively filtering out uninformative terms without explicit stopword lists.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>IDF normalizes term frequencies by document length, preventing longer documents from having systematically higher term counts than shorter ones.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>IDF applies stemming to reduce different word forms to their roots, reducing vocabulary size and improving generalization.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. IDF increases the weight of words that appear frequently across all documents, making them more representative features for classification.
-2. IDF downweights words that appear in many documents (e.g., "the," "is," "said") and upweights words that are distinctive to specific documents. Raw term counts give high weight to common words like "the" that appear in every document — they carry no discriminative information. IDF's log(N/df) is large for rare words and near-zero for words in almost every document, effectively filtering out uninformative terms without explicit stopword lists.
-3. IDF normalizes term frequencies by document length, preventing longer documents from having systematically higher term counts than shorter ones.
-4. IDF applies stemming to reduce different word forms to their roots, reducing vocabulary size and improving generalization.
-
-**Correct Answer:**
-2. IDF downweights words common across all documents (uninformative) and upweights words distinctive to specific documents (informative), addressing the limitation of raw counts where frequent but meaningless words dominate.
-
-**Explanation:**
-The key insight is that a word's discriminative value is inversely proportional to how many documents it appears in. "The" appears in every document — knowing it's in a document tells you nothing about its topic. "Cryptography" appears in only a fraction of documents — knowing it's in a document strongly predicts the `sci.crypt` category. IDF = log(N/df) is large when df is small (word appears in few documents = distinctive) and near-zero when df ≈ N (word appears in almost all documents = uninformative). Multiplying TF by IDF produces a representation that emphasizes distinctive terms.
 
 ---
 
-#### **Question 2: You train a TF-IDF + logistic regression classifier on customer reviews. A new product is released and reviews start containing the word "OLED" (a display technology) that never appeared in training data. What happens to this word in the classifier?**
+<div class="quiz-container" data-correct="1" data-explanation="This is a real limitation of fixed-vocabulary approaches. When you call `vectorizer.transform(new_data)`, any token not in `vectorizer.vocabulary_` is simply dropped — the output vector has a zero for that feature position. The model has no way to use information from unseen words. This matters when: (1) new domain-specific terms emerge over time (product names, slang, technical jargon), (2) you&#039;re applying a model to a different domain than training. Solutions: periodically retrain on fresh data to refresh the vocabulary, use character-level features that handle novel words, or use subword tokenizers (BPE, WordPiece — the approach BERT uses) that can represent any word as a sequence of known subword units.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You train a TF-IDF + logistic regression classifier on customer reviews. A new product is released and reviews start containing the word "OLED" (a display technology) that never appeared in training data. What happens to this word in the classifier?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The classifier will automatically add "OLED" to its vocabulary and assign it a weight based on how often it appears in new reviews.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>"OLED" will be treated as an out-of-vocabulary (OOV) word and silently ignored. The vectorizer applies `transform()` using the vocabulary learned during `fit()` — any word not in that vocabulary produces no feature in the output vector. The model predicts based only on the vocabulary words it knows, potentially missing an important signal.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The classifier will map "OLED" to the most similar word in its vocabulary using edit distance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The presence of "OLED" will cause an error — scikit-learn vectorizers raise exceptions for unseen vocabulary words.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The classifier will automatically add "OLED" to its vocabulary and assign it a weight based on how often it appears in new reviews.
-2. "OLED" will be treated as an out-of-vocabulary (OOV) word and silently ignored. The vectorizer applies `transform()` using the vocabulary learned during `fit()` — any word not in that vocabulary produces no feature in the output vector. The model predicts based only on the vocabulary words it knows, potentially missing an important signal.
-3. The classifier will map "OLED" to the most similar word in its vocabulary using edit distance.
-4. The presence of "OLED" will cause an error — scikit-learn vectorizers raise exceptions for unseen vocabulary words.
-
-**Correct Answer:**
-2. "OLED" is an out-of-vocabulary word and will be silently ignored. Predictions are made only from vocabulary words the vectorizer saw during training.
-
-**Explanation:**
-This is a real limitation of fixed-vocabulary approaches. When you call `vectorizer.transform(new_data)`, any token not in `vectorizer.vocabulary_` is simply dropped — the output vector has a zero for that feature position. The model has no way to use information from unseen words. This matters when: (1) new domain-specific terms emerge over time (product names, slang, technical jargon), (2) you're applying a model to a different domain than training. Solutions: periodically retrain on fresh data to refresh the vocabulary, use character-level features that handle novel words, or use subword tokenizers (BPE, WordPiece — the approach BERT uses) that can represent any word as a sequence of known subword units.
 
 ---
 
-#### **Question 3: The 20 Newsgroups model achieves 97% F1 on `rec.sport.hockey` but only 62% F1 on `talk.religion.misc`. What is the most likely explanation?**
+<div class="quiz-container" data-correct="2" data-explanation="This is the class boundary problem in text classification. &quot;Easy&quot; categories have unique vocabulary: hockey articles discuss pucks, goalies, and NHL; space articles discuss NASA and orbits. These words simply don&#039;t appear much in other categories. &quot;Hard&quot; categories share vocabulary with related categories: a `talk.religion.misc` post and a `soc.religion.christian` post might both discuss prayer, faith, and scripture — the distinguishing features are subtle differences in tone, specificity, or theological perspective that TF-IDF struggles to capture. Transformer models (BERT) handle this better because they capture contextual nuance: the same words in different argumentative contexts produce different embedding representations.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> The 20 Newsgroups model achieves 97% F1 on `rec.sport.hockey` but only 62% F1 on `talk.religion.misc`. What is the most likely explanation?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The model was trained on more hockey examples than religion examples — unbalanced training data causes this pattern.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Hockey and religion articles use fundamentally different lengths — longer articles are harder to classify correctly.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`rec.sport.hockey` has a distinctive vocabulary (team names, hockey terms, scores) that strongly separates it from other categories. `talk.religion.misc` shares vocabulary with `alt.atheism`, `soc.religion.christian`, and `talk.politics.misc` — posts about religious and political topics use similar words, making the category boundaries blurry for a bag-of-words model.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The model has seen more hockey articles in general because sports are more commonly discussed online.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model was trained on more hockey examples than religion examples — unbalanced training data causes this pattern.
-2. Hockey and religion articles use fundamentally different lengths — longer articles are harder to classify correctly.
-3. `rec.sport.hockey` has a distinctive vocabulary (team names, hockey terms, scores) that strongly separates it from other categories. `talk.religion.misc` shares vocabulary with `alt.atheism`, `soc.religion.christian`, and `talk.politics.misc` — posts about religious and political topics use similar words, making the category boundaries blurry for a bag-of-words model.
-4. The model has seen more hockey articles in general because sports are more commonly discussed online.
-
-**Correct Answer:**
-3. `rec.sport.hockey` has distinctive vocabulary (puck, goalie, NHL) that separates it clearly. `talk.religion.misc` overlaps heavily with related categories (`alt.atheism`, `soc.religion.christian`, `talk.politics.misc`) that discuss similar topics with similar words.
-
-**Explanation:**
-This is the class boundary problem in text classification. "Easy" categories have unique vocabulary: hockey articles discuss pucks, goalies, and NHL; space articles discuss NASA and orbits. These words simply don't appear much in other categories. "Hard" categories share vocabulary with related categories: a `talk.religion.misc` post and a `soc.religion.christian` post might both discuss prayer, faith, and scripture — the distinguishing features are subtle differences in tone, specificity, or theological perspective that TF-IDF struggles to capture. Transformer models (BERT) handle this better because they capture contextual nuance: the same words in different argumentative contexts produce different embedding representations.

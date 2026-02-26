@@ -238,42 +238,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What is the purpose of the `__init__()` method in a Python class?**
-1. It imports the class from an external module.
-2. It is called automatically when a new object is created and sets up the object's initial attributes.
-3. It defines what is printed when the object is displayed.
-4. It deletes the object when it is no longer needed.
+<div class="quiz-container" data-correct="1" data-explanation="`__init__()` is the constructor method. Python calls it automatically every time you create a new instance of the class (e.g., `Student(&quot;Alex&quot;, &quot;Data Science&quot;, 3.8)`). It uses `self` to assign initial values to the object&#039;s attributes.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the purpose of the `__init__()` method in a Python class?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>It imports the class from an external module.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>It is called automatically when a new object is created and sets up the object's initial attributes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>It defines what is printed when the object is displayed.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>It deletes the object when it is no longer needed.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It is called automatically when a new object is created and sets up the object's initial attributes.
-
-**Explanation:**
-`__init__()` is the constructor method. Python calls it automatically every time you create a new instance of the class (e.g., `Student("Alex", "Data Science", 3.8)`). It uses `self` to assign initial values to the object's attributes.
 
 ---
 
-#### **Question 2: What does `self` refer to inside a class method?**
-1. The class itself.
-2. The specific object instance that the method was called on.
-3. The first argument passed to the method by the user.
-4. The parent class.
+<div class="quiz-container" data-correct="1" data-explanation="`self` is a reference to the object that the method is being called on. When you write `student1.introduce()`, Python automatically passes `student1` as the `self` argument, so `self.name` inside the method refers to `student1.name`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does `self` refer to inside a class method?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The class itself.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The specific object instance that the method was called on.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The first argument passed to the method by the user.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The parent class.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The specific object instance that the method was called on.
-
-**Explanation:**
-`self` is a reference to the object that the method is being called on. When you write `student1.introduce()`, Python automatically passes `student1` as the `self` argument, so `self.name` inside the method refers to `student1.name`.
 
 ---
 
-#### **Question 3: What is the relationship between a class and an object?**
-1. A class is a specific realization of an object.
-2. An object is the same as a class — the terms are interchangeable.
-3. A class is a blueprint, and an object is a specific instance created from that blueprint.
-4. An object defines the structure; a class uses that structure to store data.
+<div class="quiz-container" data-correct="2" data-explanation="A **class** defines the structure and behavior (like an architectural blueprint). An **object** is a specific thing built from that blueprint — it has its own attribute values but follows the structure defined by the class. You can create many objects from a single class, each with different data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the relationship between a class and an object?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>A class is a specific realization of an object.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>An object is the same as a class — the terms are interchangeable.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>A class is a blueprint, and an object is a specific instance created from that blueprint.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>An object defines the structure; a class uses that structure to store data.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. A class is a blueprint, and an object is a specific instance created from that blueprint.
-
-**Explanation:**
-A **class** defines the structure and behavior (like an architectural blueprint). An **object** is a specific thing built from that blueprint — it has its own attribute values but follows the structure defined by the class. You can create many objects from a single class, each with different data.

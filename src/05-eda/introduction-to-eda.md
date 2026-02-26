@@ -134,42 +134,87 @@ In this lesson, you learned what Exploratory Data Analysis is, why it is an esse
 
 ### Knowledge Check
 
-#### **Question 1: Where does EDA sit in the data science lifecycle?**
-1. At the very end, after modeling is complete, to validate results.
-2. Before data collection, to plan what data to gather.
-3. After data cleaning and before feature engineering and modeling.
-4. EDA is a one-time step done only at the beginning of a project.
+<div class="quiz-container" data-correct="2" data-explanation="EDA comes after the data has been collected and initially cleaned, and before you commit to specific modeling decisions. However, EDA often loops back — you discover new cleaning needs during exploration — and forward — EDA insights directly inform feature engineering choices. It is an iterative, central part of the workflow.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Where does EDA sit in the data science lifecycle?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>At the very end, after modeling is complete, to validate results.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Before data collection, to plan what data to gather.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>After data cleaning and before feature engineering and modeling.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>EDA is a one-time step done only at the beginning of a project.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. After data cleaning and before feature engineering and modeling.
-
-**Explanation:**
-EDA comes after the data has been collected and initially cleaned, and before you commit to specific modeling decisions. However, EDA often loops back — you discover new cleaning needs during exploration — and forward — EDA insights directly inform feature engineering choices. It is an iterative, central part of the workflow.
 
 ---
 
-#### **Question 2: Which of the following is a goal of EDA?**
-1. Training a machine learning model on the full dataset.
-2. Writing the final report for stakeholders.
-3. Understanding the distribution of variables, identifying data quality issues, and generating hypotheses.
-4. Choosing a production deployment strategy for the model.
+<div class="quiz-container" data-correct="2" data-explanation="EDA is about **understanding** the data — its structure, distributions, relationships, and problems. It does not involve training models or writing final reports. The insights from EDA guide all subsequent steps, including data cleaning, feature engineering, and model selection.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Which of the following is a goal of EDA?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Training a machine learning model on the full dataset.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Writing the final report for stakeholders.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Understanding the distribution of variables, identifying data quality issues, and generating hypotheses.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Choosing a production deployment strategy for the model.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Understanding the distribution of variables, identifying data quality issues, and generating hypotheses.
-
-**Explanation:**
-EDA is about **understanding** the data — its structure, distributions, relationships, and problems. It does not involve training models or writing final reports. The insights from EDA guide all subsequent steps, including data cleaning, feature engineering, and model selection.
 
 ---
 
-#### **Question 3: Why is it important to run `df.isnull().sum()` early in EDA?**
-1. It identifies which rows have duplicate values.
-2. It reveals how many missing values exist per column, which affects how you clean the data and which analyses are valid.
-3. It computes the mean and standard deviation of each column.
-4. It checks whether the dataset has been correctly loaded from the CSV file.
+<div class="quiz-container" data-correct="1" data-explanation="Missing values are one of the most common data quality issues and can silently distort summary statistics, correlations, and model training. Knowing early where data is missing allows you to decide whether to drop affected rows, impute values, or investigate whether the missingness itself is meaningful (e.g., a missing income field could indicate unemployed respondents).">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Why is it important to run `df.isnull().sum()` early in EDA?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>It identifies which rows have duplicate values.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>It reveals how many missing values exist per column, which affects how you clean the data and which analyses are valid.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>It computes the mean and standard deviation of each column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>It checks whether the dataset has been correctly loaded from the CSV file.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It reveals how many missing values exist per column, which affects how you clean the data and which analyses are valid.
-
-**Explanation:**
-Missing values are one of the most common data quality issues and can silently distort summary statistics, correlations, and model training. Knowing early where data is missing allows you to decide whether to drop affected rows, impute values, or investigate whether the missingness itself is meaningful (e.g., a missing income field could indicate unemployed respondents).

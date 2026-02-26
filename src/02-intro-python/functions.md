@@ -193,42 +193,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What keyword is used to define a function in Python?**
-1. `function`
-2. `define`
-3. `def`
-4. `fn`
+<div class="quiz-container" data-correct="2" data-explanation="In Python, the `def` keyword is used to define a function. It is followed by the function name, parentheses (which can contain parameters), and a colon. The indented block below becomes the function&#039;s body.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What keyword is used to define a function in Python?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`function`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`define`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`def`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`fn`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `def`
-
-**Explanation:**
-In Python, the `def` keyword is used to define a function. It is followed by the function name, parentheses (which can contain parameters), and a colon. The indented block below becomes the function's body.
 
 ---
 
-#### **Question 2: What is the difference between a parameter and an argument?**
-1. Parameters are used only with `return` statements; arguments are used with `print`.
-2. Parameters are placeholders defined in the function; arguments are the actual values passed when calling the function.
-3. Parameters are the output of a function; arguments are the input.
-4. There is no difference — the terms are interchangeable.
+<div class="quiz-container" data-correct="1" data-explanation="When you write `def greet(name):`, `name` is a **parameter** — a placeholder. When you call `greet(&quot;Alex&quot;)`, `&quot;Alex&quot;` is the **argument** — the real value supplied to that placeholder.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What is the difference between a parameter and an argument?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Parameters are used only with `return` statements; arguments are used with `print`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Parameters are placeholders defined in the function; arguments are the actual values passed when calling the function.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Parameters are the output of a function; arguments are the input.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>There is no difference — the terms are interchangeable.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Parameters are placeholders defined in the function; arguments are the actual values passed when calling the function.
-
-**Explanation:**
-When you write `def greet(name):`, `name` is a **parameter** — a placeholder. When you call `greet("Alex")`, `"Alex"` is the **argument** — the real value supplied to that placeholder.
 
 ---
 
-#### **Question 3: What happens if a function does not have a `return` statement?**
-1. Python raises an error.
-2. The function returns `0` by default.
-3. The function returns `None` by default.
-4. The function runs indefinitely.
+<div class="quiz-container" data-correct="2" data-explanation="In Python, every function returns a value. If no `return` statement is present (or `return` is used without a value), the function automatically returns `None`, which represents the absence of a value. This is why using `print` inside a function instead of `return` can lead to unexpected behavior when you try to use the function&#039;s result elsewhere.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What happens if a function does not have a `return` statement?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Python raises an error.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The function returns `0` by default.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The function returns `None` by default.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The function runs indefinitely.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. The function returns `None` by default.
-
-**Explanation:**
-In Python, every function returns a value. If no `return` statement is present (or `return` is used without a value), the function automatically returns `None`, which represents the absence of a value. This is why using `print` inside a function instead of `return` can lead to unexpected behavior when you try to use the function's result elsewhere.

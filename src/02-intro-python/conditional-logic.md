@@ -226,58 +226,103 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What does the following code print?**
-```python
-x = 15
-if x > 20:
-    print("Big")
-elif x > 10:
-    print("Medium")
+<div class="quiz-container" data-correct="1" data-explanation="Python evaluates conditions from top to bottom. The first condition `x &gt; 20` is `False` (15 is not greater than 20), so Python moves to `elif x &gt; 10`, which is `True` (15 is greater than 10). `&quot;Medium&quot;` is printed and the `else` block is skipped.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What does the following code print?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>x = 15
+if x &gt; 20:
+    print(&quot;Big&quot;)
+elif x &gt; 10:
+    print(&quot;Medium&quot;)
 else:
-    print("Small")
-```
-1. `Big`
-2. `Medium`
-3. `Small`
-4. Nothing is printed
+    print(&quot;Small&quot;)</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`Big`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`Medium`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`Small`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Nothing is printed</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `Medium`
-
-**Explanation:**
-Python evaluates conditions from top to bottom. The first condition `x > 20` is `False` (15 is not greater than 20), so Python moves to `elif x > 10`, which is `True` (15 is greater than 10). `"Medium"` is printed and the `else` block is skipped.
 
 ---
 
-#### **Question 2: Which logical operator returns `True` only when BOTH conditions are `True`?**
-1. `or`
-2. `not`
-3. `and`
-4. `in`
+<div class="quiz-container" data-correct="2" data-explanation="The `and` operator requires all conditions to be `True`. If any one condition is `False`, the entire `and` expression is `False`. The `or` operator returns `True` if at least one condition is `True`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Which logical operator returns `True` only when BOTH conditions are `True`?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`or`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`not`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`and`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>`in`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `and`
-
-**Explanation:**
-The `and` operator requires all conditions to be `True`. If any one condition is `False`, the entire `and` expression is `False`. The `or` operator returns `True` if at least one condition is `True`.
 
 ---
 
-#### **Question 3: What is the output of the following code?**
-```python
-items = ["apple", "banana", "cherry"]
-if "grape" not in items:
-    print("Grape is not in the list.")
+<div class="quiz-container" data-correct="1" data-explanation="The `in` operator checks for membership. Since `&quot;grape&quot;` is not in the list `[&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]`, `&quot;grape&quot; in items` is `False`. Applying `not` flips it to `True`, so the `if` block runs and prints `&quot;Grape is not in the list.&quot;`.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the output of the following code?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>items = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]
+if &quot;grape&quot; not in items:
+    print(&quot;Grape is not in the list.&quot;)
 else:
-    print("Grape is in the list.")
-```
-1. `Grape is in the list.`
-2. `Grape is not in the list.`
-3. `True`
-4. `False`
+    print(&quot;Grape is in the list.&quot;)</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`Grape is in the list.`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`Grape is not in the list.`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`True`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`False`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `Grape is not in the list.`
-
-**Explanation:**
-The `in` operator checks for membership. Since `"grape"` is not in the list `["apple", "banana", "cherry"]`, `"grape" in items` is `False`. Applying `not` flips it to `True`, so the `if` block runs and prints `"Grape is not in the list."`.

@@ -286,42 +286,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: Using the IQR method, what are the outlier boundaries for a column where Q1 = 100 and Q3 = 200?**
-1. Lower: 50, Upper: 250
-2. Lower: 0, Upper: 300
-3. Lower: −50, Upper: 350
-4. Lower: 75, Upper: 225
+<div class="quiz-container" data-correct="2" data-explanation="IQR = Q3 − Q1 = 200 − 100 = 100. Lower bound = Q1 − 1.5 × IQR = 100 − 150 = −50. Upper bound = Q3 + 1.5 × IQR = 200 + 150 = 350. Any value below −50 or above 350 is flagged as a potential outlier.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> Using the IQR method, what are the outlier boundaries for a column where Q1 = 100 and Q3 = 200?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Lower: 50, Upper: 250</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Lower: 0, Upper: 300</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Lower: −50, Upper: 350</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Lower: 75, Upper: 225</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Lower: −50, Upper: 350
-
-**Explanation:**
-IQR = Q3 − Q1 = 200 − 100 = 100. Lower bound = Q1 − 1.5 × IQR = 100 − 150 = −50. Upper bound = Q3 + 1.5 × IQR = 200 + 150 = 350. Any value below −50 or above 350 is flagged as a potential outlier.
 
 ---
 
-#### **Question 2: A dataset of employee ages contains the value 187. What is the most appropriate action?**
-1. Keep the value — it might represent a very old employee.
-2. Apply a log transformation to reduce its influence.
-3. Remove or correct the value — 187 is an impossible age and is clearly a data error.
-4. Cap it using Winsorization to the 99th percentile.
+<div class="quiz-container" data-correct="2" data-explanation="An age of 187 is impossible — the oldest verified human was 122. This is clearly a data entry error (possibly a typo of 87, or a placeholder). Impossible values should be corrected if the correct value can be determined, or removed/imputed if it cannot. Applying transformations or capping would still leave an erroneous value in the dataset.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A dataset of employee ages contains the value 187. What is the most appropriate action?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Keep the value — it might represent a very old employee.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Apply a log transformation to reduce its influence.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Remove or correct the value — 187 is an impossible age and is clearly a data error.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Cap it using Winsorization to the 99th percentile.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Remove or correct the value — 187 is an impossible age and is clearly a data error.
-
-**Explanation:**
-An age of 187 is impossible — the oldest verified human was 122. This is clearly a data entry error (possibly a typo of 87, or a placeholder). Impossible values should be corrected if the correct value can be determined, or removed/imputed if it cannot. Applying transformations or capping would still leave an erroneous value in the dataset.
 
 ---
 
-#### **Question 3: What is the key difference between removing an outlier and Winsorizing it?**
-1. Removing an outlier eliminates the entire row; Winsorizing replaces the extreme value with a boundary value and keeps the row.
-2. Winsorizing can only be applied to positive values; removing works on any value.
-3. Removing always improves model performance; Winsorizing always makes it worse.
-4. There is no difference — both result in the value being excluded from analysis.
+<div class="quiz-container" data-correct="0" data-explanation="When you remove a row, all information in that row — including values in other columns that may be perfectly valid — is lost. Winsorization (capping) replaces only the extreme value with the boundary value (e.g., the 99th percentile), preserving the entire row. This is preferable when the outlier is in just one column but the rest of the row contains useful data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the key difference between removing an outlier and Winsorizing it?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Removing an outlier eliminates the entire row; Winsorizing replaces the extreme value with a boundary value and keeps the row.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Winsorizing can only be applied to positive values; removing works on any value.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Removing always improves model performance; Winsorizing always makes it worse.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>There is no difference — both result in the value being excluded from analysis.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-1. Removing an outlier eliminates the entire row; Winsorizing replaces the extreme value with a boundary value and keeps the row.
-
-**Explanation:**
-When you remove a row, all information in that row — including values in other columns that may be perfectly valid — is lost. Winsorization (capping) replaces only the extreme value with the boundary value (e.g., the 99th percentile), preserving the entire row. This is preferable when the outlier is in just one column but the rest of the row contains useful data.

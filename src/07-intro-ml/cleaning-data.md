@@ -267,42 +267,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: You are preparing a dataset to predict customer churn. The dataset includes a column `cancellation_date` that contains the date a customer cancelled their subscription, and is `NaN` for active customers. Should you include this feature? Why or why not?**
-1. Yes — dates are always useful features for ML models.
-2. Yes — after imputing the `NaN` values with the median date.
-3. No — this is data leakage. At prediction time (when a customer is still active), this value would not exist, so including it gives the model information it won't have in production.
-4. No — date columns cannot be used in ML models.
+<div class="quiz-container" data-correct="2" data-explanation="Data leakage occurs when training features contain information that would not be available when making real predictions. `cancellation_date` is only filled in for customers who have already churned — it directly encodes the answer. Including it would make the model appear accurate during training but fail completely in production where the column is always empty for the customers you&#039;re trying to score.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You are preparing a dataset to predict customer churn. The dataset includes a column `cancellation_date` that contains the date a customer cancelled their subscription, and is `NaN` for active customers. Should you include this feature? Why or why not?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Yes — dates are always useful features for ML models.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Yes — after imputing the `NaN` values with the median date.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>No — this is data leakage. At prediction time (when a customer is still active), this value would not exist, so including it gives the model information it won't have in production.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>No — date columns cannot be used in ML models.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. No — this is data leakage. At prediction time (when a customer is still active), this value would not exist, so including it gives the model information it won't have in production.
-
-**Explanation:**
-Data leakage occurs when training features contain information that would not be available when making real predictions. `cancellation_date` is only filled in for customers who have already churned — it directly encodes the answer. Including it would make the model appear accurate during training but fail completely in production where the column is always empty for the customers you're trying to score.
 
 ---
 
-#### **Question 2: A numeric column has 40% missing values and is moderately right-skewed. What is the best imputation strategy?**
-1. Drop the column — 40% missing is too high to impute reliably.
-2. Impute with the mean — it's the most common strategy.
-3. Impute with the median — it is robust to the right skew and extreme values that would distort the mean.
-4. Impute with 0 — it preserves the structure of the dataset.
+<div class="quiz-container" data-correct="2" data-explanation="For skewed distributions, the mean is pulled toward the extreme values (the tail), making it a poor representation of the &quot;typical&quot; value. The median is the midpoint of the actual values and is unaffected by extreme observations. While 40% missingness is high and should be noted, imputing with the median is the most defensible strategy for a skewed column. Whether to drop the column depends on its predictive importance — worth investigating before dropping.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A numeric column has 40% missing values and is moderately right-skewed. What is the best imputation strategy?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Drop the column — 40% missing is too high to impute reliably.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Impute with the mean — it's the most common strategy.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Impute with the median — it is robust to the right skew and extreme values that would distort the mean.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Impute with 0 — it preserves the structure of the dataset.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Impute with the median — it is robust to the right skew and extreme values that would distort the mean.
-
-**Explanation:**
-For skewed distributions, the mean is pulled toward the extreme values (the tail), making it a poor representation of the "typical" value. The median is the midpoint of the actual values and is unaffected by extreme observations. While 40% missingness is high and should be noted, imputing with the median is the most defensible strategy for a skewed column. Whether to drop the column depends on its predictive importance — worth investigating before dropping.
 
 ---
 
-#### **Question 3: Why must `SimpleImputer` be fitted on training data only, and then used to transform both training and test data — rather than being fitted on the entire dataset?**
-1. `SimpleImputer` is too slow to process the entire dataset at once.
-2. Fitting on the full dataset would expose the model to test set statistics during training, constituting data leakage that inflates performance estimates.
-3. scikit-learn's API requires separate `fit` and `transform` calls for technical reasons unrelated to statistics.
-4. Test data always has different missing value patterns, so it cannot be included in fitting.
+<div class="quiz-container" data-correct="1" data-explanation="The imputation value (e.g., median age) computed on the full dataset is influenced by the test set. In production, you&#039;ll only have training data when deciding how to impute — not future data. Fitting only on the training set and applying those same statistics to the test set simulates the real production scenario accurately. This principle applies to all preprocessing steps: scalers, encoders, and imputers must all be fit on training data only.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Why must `SimpleImputer` be fitted on training data only, and then used to transform both training and test data — rather than being fitted on the entire dataset?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`SimpleImputer` is too slow to process the entire dataset at once.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Fitting on the full dataset would expose the model to test set statistics during training, constituting data leakage that inflates performance estimates.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>scikit-learn's API requires separate `fit` and `transform` calls for technical reasons unrelated to statistics.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Test data always has different missing value patterns, so it cannot be included in fitting.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Fitting on the full dataset would expose the model to test set statistics during training, constituting data leakage that inflates performance estimates.
-
-**Explanation:**
-The imputation value (e.g., median age) computed on the full dataset is influenced by the test set. In production, you'll only have training data when deciding how to impute — not future data. Fitting only on the training set and applying those same statistics to the test set simulates the real production scenario accurately. This principle applies to all preprocessing steps: scalers, encoders, and imputers must all be fit on training data only.

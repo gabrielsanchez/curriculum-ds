@@ -282,47 +282,92 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What is the index of the first item in a Python list?**
-1. `1`
-2. `-1`
-3. `0`
-4. It depends on the list.
+<div class="quiz-container" data-correct="2" data-explanation="Python uses **zero-based indexing**, meaning the first item in a list is always at index `0`. This is consistent across strings, lists, and other ordered sequences in Python.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the index of the first item in a Python list?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`1`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`-1`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`0`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>It depends on the list.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `0`
-
-**Explanation:**
-Python uses **zero-based indexing**, meaning the first item in a list is always at index `0`. This is consistent across strings, lists, and other ordered sequences in Python.
 
 ---
 
-#### **Question 2: What does the `append()` method do?**
-1. Removes the last item from a list.
-2. Inserts an item at a specified index.
-3. Adds a single item to the end of a list.
-4. Sorts the list in ascending order.
+<div class="quiz-container" data-correct="2" data-explanation="`append()` adds one item to the **end** of a list and modifies the list in place. If you want to add an item at a specific position, use `insert(index, value)` instead.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does the `append()` method do?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Removes the last item from a list.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Inserts an item at a specified index.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Adds a single item to the end of a list.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Sorts the list in ascending order.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Adds a single item to the end of a list.
-
-**Explanation:**
-`append()` adds one item to the **end** of a list and modifies the list in place. If you want to add an item at a specific position, use `insert(index, value)` instead.
 
 ---
 
-#### **Question 3: What does the following list comprehension produce?**
-```python
-numbers = [1, 2, 3, 4, 5, 6]
+<div class="quiz-container" data-correct="1" data-explanation="The comprehension filters numbers where `n % 2 == 0` (even numbers: 2, 4, 6), then multiplies each by 2. The result is `[2*2, 4*2, 6*2]` = `[4, 8, 12]`.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What does the following list comprehension produce?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>numbers = [1, 2, 3, 4, 5, 6]
 result = [n * 2 for n in numbers if n % 2 == 0]
-print(result)
-```
-1. `[2, 4, 6, 8, 10, 12]`
-2. `[4, 8, 12]`
-3. `[2, 6, 10]`
-4. `[1, 3, 5]`
+print(result)</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`[2, 4, 6, 8, 10, 12]`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`[4, 8, 12]`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`[2, 6, 10]`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`[1, 3, 5]`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `[4, 8, 12]`
-
-**Explanation:**
-The comprehension filters numbers where `n % 2 == 0` (even numbers: 2, 4, 6), then multiplies each by 2. The result is `[2*2, 4*2, 6*2]` = `[4, 8, 12]`.

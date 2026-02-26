@@ -260,42 +260,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What is a lambda function in Python?**
-1. A function imported from the `lambda` library.
-2. A named function that can be reused multiple times throughout a program.
-3. A small, anonymous function defined inline using the `lambda` keyword.
-4. A function that only works with Pandas DataFrames.
+<div class="quiz-container" data-correct="2" data-explanation="A lambda function is written as `lambda arguments: expression`. It has no name and is typically used once, inline — for example, inside `.map()` or `.apply()`. It is equivalent to a `def` function but more concise for simple transformations.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is a lambda function in Python?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>A function imported from the `lambda` library.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>A named function that can be reused multiple times throughout a program.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>A small, anonymous function defined inline using the `lambda` keyword.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>A function that only works with Pandas DataFrames.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. A small, anonymous function defined inline using the `lambda` keyword.
-
-**Explanation:**
-A lambda function is written as `lambda arguments: expression`. It has no name and is typically used once, inline — for example, inside `.map()` or `.apply()`. It is equivalent to a `def` function but more concise for simple transformations.
 
 ---
 
-#### **Question 2: What happens when you pass a dictionary to `.map()` on a Series?**
-1. Each key in the dictionary becomes a new column.
-2. Values in the Series that match a dictionary key are replaced with the corresponding value; unmatched values become `NaN`.
-3. The dictionary is appended as a new row in the DataFrame.
-4. The Series is sorted according to the dictionary's key order.
+<div class="quiz-container" data-correct="1" data-explanation="When you pass a dictionary to `.map()`, it acts as a lookup table. Each value in the Series is looked up in the dictionary&#039;s keys; if found, it&#039;s replaced with the corresponding value. Any value not present as a key becomes `NaN`. This is useful for recoding categorical variables (e.g., replacing `&quot;M&quot;` with `&quot;Male&quot;`).">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What happens when you pass a dictionary to `.map()` on a Series?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Each key in the dictionary becomes a new column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Values in the Series that match a dictionary key are replaced with the corresponding value; unmatched values become `NaN`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The dictionary is appended as a new row in the DataFrame.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The Series is sorted according to the dictionary's key order.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Values in the Series that match a dictionary key are replaced with the corresponding value; unmatched values become `NaN`.
-
-**Explanation:**
-When you pass a dictionary to `.map()`, it acts as a lookup table. Each value in the Series is looked up in the dictionary's keys; if found, it's replaced with the corresponding value. Any value not present as a key becomes `NaN`. This is useful for recoding categorical variables (e.g., replacing `"M"` with `"Male"`).
 
 ---
 
-#### **Question 3: When should you use `.apply(func, axis=1)` instead of a vectorized operation?**
-1. Whenever you need to process a single column.
-2. When the transformation involves multiple columns or complex logic that can't be expressed as a simple arithmetic expression.
-3. When you want the fastest possible performance on large datasets.
-4. Only when the function returns a string value.
+<div class="quiz-container" data-correct="1" data-explanation="Vectorized operations (like `df[&quot;col&quot;] * 2`) are the fastest and should be preferred for simple math. `.apply(axis=1)` is used when a calculation requires values from multiple columns in the same row, or when the logic is complex enough to need a full function. It is slower than vectorized operations, so it should not be the first choice when a simpler approach works.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> When should you use `.apply(func, axis=1)` instead of a vectorized operation?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Whenever you need to process a single column.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>When the transformation involves multiple columns or complex logic that can't be expressed as a simple arithmetic expression.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>When you want the fastest possible performance on large datasets.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Only when the function returns a string value.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. When the transformation involves multiple columns or complex logic that can't be expressed as a simple arithmetic expression.
-
-**Explanation:**
-Vectorized operations (like `df["col"] * 2`) are the fastest and should be preferred for simple math. `.apply(axis=1)` is used when a calculation requires values from multiple columns in the same row, or when the logic is complex enough to need a full function. It is slower than vectorized operations, so it should not be the first choice when a simpler approach works.

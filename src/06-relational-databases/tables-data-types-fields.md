@@ -310,42 +310,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: How does SQLite store dates?**
-1. In a dedicated `DATE` column type that formats values automatically.
-2. As `TEXT` in `'YYYY-MM-DD'` format, `REAL` as Julian day numbers, or `INTEGER` as Unix timestamps.
-3. Only as integers representing the number of days since January 1, 1970.
-4. SQLite cannot store dates — you must use a separate string-formatting library.
+<div class="quiz-container" data-correct="1" data-explanation="SQLite has no built-in `DATE` or `DATETIME` type. The standard convention is to store dates as `TEXT` in ISO 8601 format (`&#039;YYYY-MM-DD&#039;`), which sorts correctly as a string and works with SQLite&#039;s built-in date functions like `date()`, `strftime()`, and `datetime()`.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> How does SQLite store dates?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>In a dedicated `DATE` column type that formats values automatically.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>As `TEXT` in `'YYYY-MM-DD'` format, `REAL` as Julian day numbers, or `INTEGER` as Unix timestamps.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Only as integers representing the number of days since January 1, 1970.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>SQLite cannot store dates — you must use a separate string-formatting library.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. As `TEXT` in `'YYYY-MM-DD'` format, `REAL` as Julian day numbers, or `INTEGER` as Unix timestamps.
-
-**Explanation:**
-SQLite has no built-in `DATE` or `DATETIME` type. The standard convention is to store dates as `TEXT` in ISO 8601 format (`'YYYY-MM-DD'`), which sorts correctly as a string and works with SQLite's built-in date functions like `date()`, `strftime()`, and `datetime()`.
 
 ---
 
-#### **Question 2: What does `INTEGER PRIMARY KEY` do in SQLite specifically?**
-1. It ensures the column only stores positive integers.
-2. It makes the column an auto-incrementing unique identifier — SQLite automatically assigns the next available integer when you insert a row without specifying the value.
-3. It creates an index on the column to speed up queries.
-4. It prevents the column from being updated after the row is inserted.
+<div class="quiz-container" data-correct="1" data-explanation="In SQLite, `INTEGER PRIMARY KEY` is a special declaration that aliases the column to SQLite&#039;s internal row ID. When you insert a row without providing a value for this column, SQLite assigns the next available integer automatically. This is SQLite&#039;s equivalent of `SERIAL` in PostgreSQL or `AUTO_INCREMENT` in MySQL.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does `INTEGER PRIMARY KEY` do in SQLite specifically?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It ensures the column only stores positive integers.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>It makes the column an auto-incrementing unique identifier — SQLite automatically assigns the next available integer when you insert a row without specifying the value.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>It creates an index on the column to speed up queries.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>It prevents the column from being updated after the row is inserted.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It makes the column an auto-incrementing unique identifier — SQLite automatically assigns the next available integer when you insert a row without specifying the value.
-
-**Explanation:**
-In SQLite, `INTEGER PRIMARY KEY` is a special declaration that aliases the column to SQLite's internal row ID. When you insert a row without providing a value for this column, SQLite assigns the next available integer automatically. This is SQLite's equivalent of `SERIAL` in PostgreSQL or `AUTO_INCREMENT` in MySQL.
 
 ---
 
-#### **Question 3: You try to insert an order with `customer_id = 99` but no customer with that ID exists. Foreign keys are enabled. What happens?**
-1. The insert succeeds and a new customer with ID 99 is created automatically.
-2. SQLite raises an error because the foreign key constraint is violated — `customer_id = 99` does not exist in the customers table.
-3. SQLite silently ignores the invalid `customer_id` and stores `NULL` instead.
-4. SQLite disables the foreign key check for this insert only.
+<div class="quiz-container" data-correct="1" data-explanation="When `PRAGMA foreign_keys = ON` is set, SQLite enforces referential integrity. Any attempt to insert a row with a foreign key value that doesn&#039;t match an existing primary key in the referenced table will raise an `IntegrityError`. This is the correct behavior — it prevents orphaned records (orders with no customer) from entering the database.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You try to insert an order with `customer_id = 99` but no customer with that ID exists. Foreign keys are enabled. What happens?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>The insert succeeds and a new customer with ID 99 is created automatically.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>SQLite raises an error because the foreign key constraint is violated — `customer_id = 99` does not exist in the customers table.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>SQLite silently ignores the invalid `customer_id` and stores `NULL` instead.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>SQLite disables the foreign key check for this insert only.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. SQLite raises an error because the foreign key constraint is violated — `customer_id = 99` does not exist in the customers table.
-
-**Explanation:**
-When `PRAGMA foreign_keys = ON` is set, SQLite enforces referential integrity. Any attempt to insert a row with a foreign key value that doesn't match an existing primary key in the referenced table will raise an `IntegrityError`. This is the correct behavior — it prevents orphaned records (orders with no customer) from entering the database.

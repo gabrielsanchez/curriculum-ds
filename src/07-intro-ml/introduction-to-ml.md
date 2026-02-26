@@ -174,42 +174,87 @@ In this lesson, you learned that machine learning is a paradigm shift — instea
 
 ### Knowledge Check
 
-#### **Question 1: What is the fundamental difference between traditional programming and machine learning?**
-1. Traditional programming uses Python; machine learning uses R.
-2. Traditional programming uses data and rules to produce output; machine learning uses data and output to discover rules (a model).
-3. Machine learning is faster than traditional programming for all tasks.
-4. Traditional programming can only handle numeric data; machine learning handles all data types.
+<div class="quiz-container" data-correct="1" data-explanation="In traditional programming, a developer explicitly codes the logic that transforms inputs into outputs. In machine learning, the algorithm is given many examples of inputs paired with correct outputs, and it infers the underlying rules (the model) on its own. The trained model can then make predictions on new inputs.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the fundamental difference between traditional programming and machine learning?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Traditional programming uses Python; machine learning uses R.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Traditional programming uses data and rules to produce output; machine learning uses data and output to discover rules (a model).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Machine learning is faster than traditional programming for all tasks.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Traditional programming can only handle numeric data; machine learning handles all data types.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Traditional programming uses data and rules to produce output; machine learning uses data and output to discover rules (a model).
-
-**Explanation:**
-In traditional programming, a developer explicitly codes the logic that transforms inputs into outputs. In machine learning, the algorithm is given many examples of inputs paired with correct outputs, and it infers the underlying rules (the model) on its own. The trained model can then make predictions on new inputs.
 
 ---
 
-#### **Question 2: A company wants to predict whether a new loan application will default. This is a machine learning problem because:**
-1. The company has a computer, which is required for machine learning.
-2. The rules that determine default are too complex and numerous to write manually, but historical loan data with known outcomes can be used to train a model to learn those patterns.
-3. Machine learning is always better than rule-based approaches for financial problems.
-4. The problem involves numbers, and machine learning only works with numerical data.
+<div class="quiz-container" data-correct="1" data-explanation="Machine learning is most valuable when explicit rules are hard to formulate but labeled examples are available. Loan default depends on dozens of interacting factors (income, debt, employment history, economic conditions) in ways too complex for manual rule-writing. Historical loan records with known default outcomes provide exactly the training signal a model needs to learn those patterns.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A company wants to predict whether a new loan application will default. This is a machine learning problem because:
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The company has a computer, which is required for machine learning.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The rules that determine default are too complex and numerous to write manually, but historical loan data with known outcomes can be used to train a model to learn those patterns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Machine learning is always better than rule-based approaches for financial problems.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The problem involves numbers, and machine learning only works with numerical data.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The rules that determine default are too complex and numerous to write manually, but historical loan data with known outcomes can be used to train a model to learn those patterns.
-
-**Explanation:**
-Machine learning is most valuable when explicit rules are hard to formulate but labeled examples are available. Loan default depends on dozens of interacting factors (income, debt, employment history, economic conditions) in ways too complex for manual rule-writing. Historical loan records with known default outcomes provide exactly the training signal a model needs to learn those patterns.
 
 ---
 
-#### **Question 3: Why is model evaluation performed on held-out test data rather than the training data?**
-1. Test data is always cleaner than training data, so it gives more accurate results.
-2. Training data is too large to evaluate efficiently.
-3. A model evaluated on its own training data will appear to perform better than it actually does on new cases — test data measures real-world generalization ability.
-4. Scikit-learn requires a separate test set for technical reasons.
+<div class="quiz-container" data-correct="2" data-explanation="A model can &quot;memorize&quot; its training data and score perfectly on it without learning any generalizable patterns. Evaluating on held-out test data — examples the model has never seen — measures whether it has truly learned the underlying relationship or just memorized the training examples. This distinction (training performance vs. generalization performance) is one of the most fundamental concepts in machine learning.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Why is model evaluation performed on held-out test data rather than the training data?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Test data is always cleaner than training data, so it gives more accurate results.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Training data is too large to evaluate efficiently.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>A model evaluated on its own training data will appear to perform better than it actually does on new cases — test data measures real-world generalization ability.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Scikit-learn requires a separate test set for technical reasons.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. A model evaluated on its own training data will appear to perform better than it actually does on new cases — test data measures real-world generalization ability.
-
-**Explanation:**
-A model can "memorize" its training data and score perfectly on it without learning any generalizable patterns. Evaluating on held-out test data — examples the model has never seen — measures whether it has truly learned the underlying relationship or just memorized the training examples. This distinction (training performance vs. generalization performance) is one of the most fundamental concepts in machine learning.

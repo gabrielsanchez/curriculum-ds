@@ -267,45 +267,87 @@ kNN is one of the most transparent algorithms in machine learning — it's easy 
 
 ### Knowledge Check
 
-#### **Question 1: A kNN classifier (k=1) achieves 100% accuracy on the training set but 72% on the test set. What is happening and how would you fix it?**
+<div class="quiz-container" data-correct="1" data-explanation="With k=1, a new point is classified by its single nearest neighbor — which is always itself when predicting on training data, giving 100% training accuracy. On the test set, the model relies on whichever training point happens to be closest, which may not be representative of the true class boundary. Larger k smooths out this sensitivity by averaging over multiple neighbors, reducing variance at a small cost in bias.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A kNN classifier (k=1) achieves 100% accuracy on the training set but 72% on the test set. What is happening and how would you fix it?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The model is underfitting — increase k to allow the model to learn more patterns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The model is overfitting — k=1 makes each training point its own nearest neighbor, so it memorizes all training labels perfectly but doesn't generalize. Increase k (e.g., try values from 5 to 30 with cross-validation) to smooth the decision boundary.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The model needs more training data — 100% training accuracy means the dataset is too small.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>kNN cannot overfit because it has no parameters to tune.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model is underfitting — increase k to allow the model to learn more patterns.
-2. The model is overfitting — k=1 makes each training point its own nearest neighbor, so it memorizes all training labels perfectly but doesn't generalize. Increase k (e.g., try values from 5 to 30 with cross-validation) to smooth the decision boundary.
-3. The model needs more training data — 100% training accuracy means the dataset is too small.
-4. kNN cannot overfit because it has no parameters to tune.
-
-**Correct Answer:**
-2. The model is overfitting — k=1 makes each training point its own nearest neighbor, so it memorizes all training labels perfectly but doesn't generalize. Increase k to smooth the decision boundary.
-
-**Explanation:**
-With k=1, a new point is classified by its single nearest neighbor — which is always itself when predicting on training data, giving 100% training accuracy. On the test set, the model relies on whichever training point happens to be closest, which may not be representative of the true class boundary. Larger k smooths out this sensitivity by averaging over multiple neighbors, reducing variance at a small cost in bias.
 
 ---
 
-#### **Question 2: You apply kNN (k=5) to a dataset with features `income` (range $20,000–$200,000) and `age` (range 18–90) without scaling. What is the likely effect on predictions?**
+<div class="quiz-container" data-correct="2" data-explanation="A $10,000 income difference contributes (10,000)² = 10⁸ to the squared Euclidean distance. A 10-year age difference contributes only 100. Without scaling, income differences are a billion times more influential than age differences in the distance calculation. If age is actually an important predictor, the model will perform poorly. `StandardScaler` maps both features to mean=0, std=1, ensuring each feature contributes proportionally to distance.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You apply kNN (k=5) to a dataset with features `income` (range $20,000–$200,000) and `age` (range 18–90) without scaling. What is the likely effect on predictions?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>No effect — kNN computes the majority vote which is scale-invariant.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Age will dominate the distance calculation because it has a larger range.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Income will dominate the distance calculation because it has a much larger range. The model will effectively ignore age, finding "nearest neighbors" based almost entirely on income similarity.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The algorithm will automatically normalize features internally.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. No effect — kNN computes the majority vote which is scale-invariant.
-2. Age will dominate the distance calculation because it has a larger range.
-3. Income will dominate the distance calculation because it has a much larger range. The model will effectively ignore age, finding "nearest neighbors" based almost entirely on income similarity.
-4. The algorithm will automatically normalize features internally.
-
-**Correct Answer:**
-3. Income will dominate the distance calculation because it has a much larger range. The model will effectively ignore age, finding "nearest neighbors" based almost entirely on income similarity.
-
-**Explanation:**
-A $10,000 income difference contributes (10,000)² = 10⁸ to the squared Euclidean distance. A 10-year age difference contributes only 100. Without scaling, income differences are a billion times more influential than age differences in the distance calculation. If age is actually an important predictor, the model will perform poorly. `StandardScaler` maps both features to mean=0, std=1, ensuring each feature contributes proportionally to distance.
 
 ---
 
-#### **Question 3: Why is kNN called a "lazy learner," and what are the computational consequences of this approach?**
+<div class="quiz-container" data-correct="1" data-explanation="&quot;Lazy&quot; refers to deferred generalization: logistic regression eagerly summarizes the training data into a set of weights at training time, then uses only those weights (not the training data) for prediction. kNN stores every training point and consults them all at prediction time. With 1 million training samples and 100 features, each prediction requires 100 million distance calculations. This makes kNN impractical for large-scale production systems unless approximate nearest-neighbor structures (e.g., KD-trees, ball trees) are used.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Why is kNN called a "lazy learner," and what are the computational consequences of this approach?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>kNN is called lazy because it uses heuristic rules rather than optimization, which makes it inaccurate.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>kNN is lazy because it stores all training data without learning any explicit model at training time. The consequence is zero training cost but O(n × d) prediction cost per sample, where n is training set size and d is the number of features — making it slow for large datasets at inference time.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>kNN is lazy because it requires fewer hyperparameters than other algorithms.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>kNN is lazy because it uses default scikit-learn settings without any configuration.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. kNN is called lazy because it uses heuristic rules rather than optimization, which makes it inaccurate.
-2. kNN is lazy because it stores all training data without learning any explicit model at training time. The consequence is zero training cost but O(n × d) prediction cost per sample, where n is training set size and d is the number of features — making it slow for large datasets at inference time.
-3. kNN is lazy because it requires fewer hyperparameters than other algorithms.
-4. kNN is lazy because it uses default scikit-learn settings without any configuration.
-
-**Correct Answer:**
-2. kNN is lazy because it stores all training data without learning any explicit model at training time. The consequence is zero training cost but O(n × d) prediction cost per sample — making it slow for large datasets at inference time.
-
-**Explanation:**
-"Lazy" refers to deferred generalization: logistic regression eagerly summarizes the training data into a set of weights at training time, then uses only those weights (not the training data) for prediction. kNN stores every training point and consults them all at prediction time. With 1 million training samples and 100 features, each prediction requires 100 million distance calculations. This makes kNN impractical for large-scale production systems unless approximate nearest-neighbor structures (e.g., KD-trees, ball trees) are used.

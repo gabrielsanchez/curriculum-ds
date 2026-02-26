@@ -275,17 +275,32 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What is the difference between `WHERE` and `HAVING`?**
-1. `WHERE` filters columns; `HAVING` filters rows.
-2. `WHERE` filters rows before grouping; `HAVING` filters groups after aggregation.
-3. `WHERE` is used with `GROUP BY`; `HAVING` is used without `GROUP BY`.
-4. There is no difference — they are interchangeable.
+<div class="quiz-container" data-correct="1" data-explanation="`WHERE` applies to individual rows before the `GROUP BY` step — rows that don&#039;t match are excluded from grouping entirely. `HAVING` applies to the groups produced by `GROUP BY` and can reference aggregate functions like `COUNT(*)` or `SUM(price)`. You cannot use aggregate functions in a `WHERE` clause.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the difference between `WHERE` and `HAVING`?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`WHERE` filters columns; `HAVING` filters rows.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`WHERE` filters rows before grouping; `HAVING` filters groups after aggregation.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`WHERE` is used with `GROUP BY`; `HAVING` is used without `GROUP BY`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>There is no difference — they are interchangeable.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `WHERE` filters rows before grouping; `HAVING` filters groups after aggregation.
-
-**Explanation:**
-`WHERE` applies to individual rows before the `GROUP BY` step — rows that don't match are excluded from grouping entirely. `HAVING` applies to the groups produced by `GROUP BY` and can reference aggregate functions like `COUNT(*)` or `SUM(price)`. You cannot use aggregate functions in a `WHERE` clause.
 
 ---
 
@@ -303,20 +318,35 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ---
 
-#### **Question 3: The following query produces an error. Why?**
-```sql
-SELECT customer_id, COUNT(*) AS order_count
+<div class="quiz-container" data-correct="3" data-explanation="There are two problems. First, `WHERE order_count &gt; 2` references the alias `order_count`, but aliases defined in `SELECT` are not available in `WHERE` (the `WHERE` clause is evaluated before `SELECT`). Second, aggregate functions cannot appear in `WHERE` — `WHERE COUNT(*) &gt; 2` is invalid SQL. The correct clause to filter aggregated results is `HAVING`: `GROUP BY customer_id HAVING COUNT(*) &gt; 2`.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> The following query produces an error. Why?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>SELECT customer_id, COUNT(*) AS order_count
 FROM orders
-WHERE order_count > 2
-GROUP BY customer_id;
-```
-1. `COUNT(*)` cannot be used with `GROUP BY`.
-2. `WHERE` cannot reference an alias defined in `SELECT`.
-3. Aggregate functions like `COUNT(*)` cannot be used in a `WHERE` clause — use `HAVING` instead.
-4. Both B and C are correct reasons.
+WHERE order_count &gt; 2
+GROUP BY customer_id;</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`COUNT(*)` cannot be used with `GROUP BY`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`WHERE` cannot reference an alias defined in `SELECT`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Aggregate functions like `COUNT(*)` cannot be used in a `WHERE` clause — use `HAVING` instead.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Both B and C are correct reasons.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-4. Both B and C are correct reasons.
-
-**Explanation:**
-There are two problems. First, `WHERE order_count > 2` references the alias `order_count`, but aliases defined in `SELECT` are not available in `WHERE` (the `WHERE` clause is evaluated before `SELECT`). Second, aggregate functions cannot appear in `WHERE` — `WHERE COUNT(*) > 2` is invalid SQL. The correct clause to filter aggregated results is `HAVING`: `GROUP BY customer_id HAVING COUNT(*) > 2`.

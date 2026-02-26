@@ -342,45 +342,87 @@ Neural networks offer unmatched flexibility — they can learn arbitrary mapping
 
 ### Knowledge Check
 
-#### **Question 1: A neural network with one hidden layer of 100 ReLU neurons is trained on the breast cancer dataset. The training loss decreases rapidly for the first 50 epochs, then plateaus. The training accuracy is 100% but test accuracy is 88%. What is happening and what would you try first?**
+<div class="quiz-container" data-correct="1" data-explanation="A plateau in training loss combined with 100% training accuracy means the model has converged on a solution that fits the training data perfectly. The 12% gap to test accuracy indicates this solution is not general — the network memorized specific training examples rather than underlying patterns. On a 455-sample dataset, a 100-neuron network (with ~3,300 parameters) is actually overparameterized. The standard remedies: L2 weight decay (alpha), smaller network, or early stopping (halting training when validation performance stops improving).">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A neural network with one hidden layer of 100 ReLU neurons is trained on the breast cancer dataset. The training loss decreases rapidly for the first 50 epochs, then plateaus. The training accuracy is 100% but test accuracy is 88%. What is happening and what would you try first?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The network has not converged — increase max_iter so training continues past the plateau.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The network is overfitting — it has memorized training examples. The 100% training accuracy and significant train-test gap indicate the model has learned noise. Try: increasing the alpha regularization parameter, reducing hidden_layer_sizes, or using early stopping.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The network is underfitting — the loss plateau means it has not learned enough. Add more hidden layers to increase capacity.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The loss plateau is a sign that the learning rate is too high and training is oscillating. Switch to a smaller learning rate.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The network has not converged — increase max_iter so training continues past the plateau.
-2. The network is overfitting — it has memorized training examples. The 100% training accuracy and significant train-test gap indicate the model has learned noise. Try: increasing the alpha regularization parameter, reducing hidden_layer_sizes, or using early stopping.
-3. The network is underfitting — the loss plateau means it has not learned enough. Add more hidden layers to increase capacity.
-4. The loss plateau is a sign that the learning rate is too high and training is oscillating. Switch to a smaller learning rate.
-
-**Correct Answer:**
-2. The network is overfitting — it has memorized training examples. The 100% training accuracy with 88% test accuracy indicates the model has learned noise. Try increasing alpha (L2 regularization), reducing hidden_layer_sizes, or using early stopping.
-
-**Explanation:**
-A plateau in training loss combined with 100% training accuracy means the model has converged on a solution that fits the training data perfectly. The 12% gap to test accuracy indicates this solution is not general — the network memorized specific training examples rather than underlying patterns. On a 455-sample dataset, a 100-neuron network (with ~3,300 parameters) is actually overparameterized. The standard remedies: L2 weight decay (alpha), smaller network, or early stopping (halting training when validation performance stops improving).
 
 ---
 
-#### **Question 2: Why do neural networks outperform traditional ML methods on image classification, but not necessarily on tabular data?**
+<div class="quiz-container" data-correct="1" data-explanation="The architecture of a model encodes assumptions about data structure. CNNs assume local correlations and translation invariance (a cat looks like a cat regardless of where it is in the image). Transformers assume sequential or relational structure between tokens. These assumptions are right for images and text. Tabular data — where column order is arbitrary and each feature is a different measurement type — violates these assumptions. Random forests and gradient boosting, which treat each feature independently, are often better matched to tabular data structure.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why do neural networks outperform traditional ML methods on image classification, but not necessarily on tabular data?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Neural networks outperform on images because they are faster to train on pixel data than decision trees.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Neural networks use convolutional layers that exploit the spatial structure of images — nearby pixels are highly correlated, and edges/textures are meaningful local patterns. This inductive bias is perfectly matched to image data. Tabular data has no spatial structure — each feature is independent and unordered — so the spatial assumptions of CNNs don't apply. Gradient boosting and even logistic regression often match or outperform neural networks on tabular data because they don't need to re-learn that feature ordering is irrelevant.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Neural networks outperform on images because they were specifically designed for classification, while decision trees were designed for regression.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Neural networks outperform on images because they use more training data — image datasets are always larger than tabular datasets.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Neural networks outperform on images because they are faster to train on pixel data than decision trees.
-2. Neural networks use convolutional layers that exploit the spatial structure of images — nearby pixels are highly correlated, and edges/textures are meaningful local patterns. This inductive bias is perfectly matched to image data. Tabular data has no spatial structure — each feature is independent and unordered — so the spatial assumptions of CNNs don't apply. Gradient boosting and even logistic regression often match or outperform neural networks on tabular data because they don't need to re-learn that feature ordering is irrelevant.
-3. Neural networks outperform on images because they were specifically designed for classification, while decision trees were designed for regression.
-4. Neural networks outperform on images because they use more training data — image datasets are always larger than tabular datasets.
-
-**Correct Answer:**
-2. Neural networks use convolutional layers that exploit the spatial structure of images — nearby pixels are highly correlated and edges/textures are meaningful local patterns. Tabular data has no such structure, so gradient boosting often matches or beats neural networks on tabular tasks.
-
-**Explanation:**
-The architecture of a model encodes assumptions about data structure. CNNs assume local correlations and translation invariance (a cat looks like a cat regardless of where it is in the image). Transformers assume sequential or relational structure between tokens. These assumptions are right for images and text. Tabular data — where column order is arbitrary and each feature is a different measurement type — violates these assumptions. Random forests and gradient boosting, which treat each feature independently, are often better matched to tabular data structure.
 
 ---
 
-#### **Question 3: You are asked to build a model that classifies X-ray images as normal or pneumonia. You have 5,000 labeled images. Which approach is most appropriate?**
+<div class="quiz-container" data-correct="2" data-explanation="5,000 images is too few to train a deep CNN from scratch (typical ImageNet models train on 1.2 million images). A pre-trained CNN has already learned general visual features (edges, textures, shapes) from millions of images. Fine-tuning the last few layers adapts these general features to the specific task of detecting pneumonia. This approach typically outperforms both MLPClassifier (which ignores spatial structure) and handcrafted features (which require domain expertise to design). Transfer learning is the standard practice in medical imaging with limited labeled data.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> You are asked to build a model that classifies X-ray images as normal or pneumonia. You have 5,000 labeled images. Which approach is most appropriate?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Train an MLPClassifier on flattened pixel values — neural networks handle images natively.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Use gradient boosting on handcrafted features extracted from the images (mean brightness, edge density).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Use a pre-trained convolutional neural network (e.g., ResNet or EfficientNet from ImageNet) and fine-tune the final layers on your 5,000 images. This transfer learning approach gets the benefit of deep learning without needing millions of labeled medical images.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Use logistic regression on the raw pixels — it is the simplest and most interpretable approach.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Train an MLPClassifier on flattened pixel values — neural networks handle images natively.
-2. Use gradient boosting on handcrafted features extracted from the images (mean brightness, edge density).
-3. Use a pre-trained convolutional neural network (e.g., ResNet or EfficientNet from ImageNet) and fine-tune the final layers on your 5,000 images. This transfer learning approach gets the benefit of deep learning without needing millions of labeled medical images.
-4. Use logistic regression on the raw pixels — it is the simplest and most interpretable approach.
-
-**Correct Answer:**
-3. Use a pre-trained CNN (e.g., ResNet) and fine-tune the final layers on your 5,000 images. Transfer learning enables deep learning with limited labeled data.
-
-**Explanation:**
-5,000 images is too few to train a deep CNN from scratch (typical ImageNet models train on 1.2 million images). A pre-trained CNN has already learned general visual features (edges, textures, shapes) from millions of images. Fine-tuning the last few layers adapts these general features to the specific task of detecting pneumonia. This approach typically outperforms both MLPClassifier (which ignores spatial structure) and handcrafted features (which require domain expertise to design). Transfer learning is the standard practice in medical imaging with limited labeled data.

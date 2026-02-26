@@ -333,45 +333,87 @@ You now have a complete Keras workflow: normalize data, build a Sequential model
 
 ### Knowledge Check
 
-#### **Question 1: You build a Keras model with `Dense(10, activation="softmax")` as the output layer and compile it with `loss="sparse_categorical_crossentropy"`. The training data has labels stored as integers 0–9. Is this correct?**
+<div class="quiz-container" data-correct="1" data-explanation="Keras offers two equivalent cross-entropy losses for multi-class classification: `&quot;categorical_crossentropy&quot;` (expects one-hot vectors like `[0, 0, 1, 0, ...]`) and `&quot;sparse_categorical_crossentropy&quot;` (expects integer class indices like `2`). Both compute the same math — `sparse` simply skips the one-hot encoding step. Using `&quot;sparse_categorical_crossentropy&quot;` with integer labels is correct and avoids an unnecessary preprocessing step.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> You build a Keras model with `Dense(10, activation="softmax")` as the output layer and compile it with `loss="sparse_categorical_crossentropy"`. The training data has labels stored as integers 0–9. Is this correct?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>No — softmax with sparse_categorical_crossentropy is incorrect. You should use sigmoid with binary_crossentropy for 10-class classification.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Yes — this is correct. Softmax converts raw scores into class probabilities that sum to 1, and sparse_categorical_crossentropy expects integer class labels (not one-hot encoded vectors). This is the standard configuration for multi-class classification with integer labels.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>No — you should use `activation="relu"` in the output layer and `loss="mse"` for classification with integer labels.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>No — you need to one-hot encode the labels first and use `loss="categorical_crossentropy"` instead of sparse.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. No — softmax with sparse_categorical_crossentropy is incorrect. You should use sigmoid with binary_crossentropy for 10-class classification.
-2. Yes — this is correct. Softmax converts raw scores into class probabilities that sum to 1, and sparse_categorical_crossentropy expects integer class labels (not one-hot encoded vectors). This is the standard configuration for multi-class classification with integer labels.
-3. No — you should use `activation="relu"` in the output layer and `loss="mse"` for classification with integer labels.
-4. No — you need to one-hot encode the labels first and use `loss="categorical_crossentropy"` instead of sparse.
-
-**Correct Answer:**
-2. Yes — this is correct. Softmax produces class probabilities that sum to 1, and sparse_categorical_crossentropy expects integer class labels. This is the standard configuration for multi-class classification with integer labels.
-
-**Explanation:**
-Keras offers two equivalent cross-entropy losses for multi-class classification: `"categorical_crossentropy"` (expects one-hot vectors like `[0, 0, 1, 0, ...]`) and `"sparse_categorical_crossentropy"` (expects integer class indices like `2`). Both compute the same math — `sparse` simply skips the one-hot encoding step. Using `"sparse_categorical_crossentropy"` with integer labels is correct and avoids an unnecessary preprocessing step.
 
 ---
 
-#### **Question 2: What does `validation_split=0.1` do in `model.fit()`, and why is it important?**
+<div class="quiz-container" data-correct="1" data-explanation="Without a validation set, you can only tell if training loss is decreasing — not whether the model is generalizing. The validation set gives a live view of generalization performance at each epoch. The &quot;last 10%&quot; detail matters: Keras takes the last `validation_split × n` samples, not a random sample. If your data is ordered by class (e.g., all digit 0s then all digit 1s), the last 10% may be unrepresentative. In that case, shuffle before fitting or use `validation_data=(X_val, y_val)` with a pre-shuffled split.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does `validation_split=0.1` do in `model.fit()`, and why is it important?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It reserves 10% of the test data for validation — the model is evaluated on 10% of the test set during each epoch.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>It reserves the last 10% of the training data as a validation set, evaluating the model on these examples after each epoch without using them for training. This allows monitoring for overfitting: if training loss keeps decreasing while validation loss plateaues or rises, the model is overfitting.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>It randomly selects 10% of training batches to skip, reducing training time by 10%.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>It applies 10% dropout to the input layer, preventing overfitting.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. It reserves 10% of the test data for validation — the model is evaluated on 10% of the test set during each epoch.
-2. It reserves the last 10% of the training data as a validation set, evaluating the model on these examples after each epoch without using them for training. This allows monitoring for overfitting: if training loss keeps decreasing while validation loss plateaues or rises, the model is overfitting.
-3. It randomly selects 10% of training batches to skip, reducing training time by 10%.
-4. It applies 10% dropout to the input layer, preventing overfitting.
-
-**Correct Answer:**
-2. It reserves the last 10% of the training data as a validation set, evaluating after each epoch without using those examples for training. This enables monitoring for overfitting during training.
-
-**Explanation:**
-Without a validation set, you can only tell if training loss is decreasing — not whether the model is generalizing. The validation set gives a live view of generalization performance at each epoch. The "last 10%" detail matters: Keras takes the last `validation_split × n` samples, not a random sample. If your data is ordered by class (e.g., all digit 0s then all digit 1s), the last 10% may be unrepresentative. In that case, shuffle before fitting or use `validation_data=(X_val, y_val)` with a pre-shuffled split.
 
 ---
 
-#### **Question 3: What does `restore_best_weights=True` do in the `EarlyStopping` callback, and why does it matter?**
+<div class="quiz-container" data-correct="1" data-explanation="Consider training for 25 epochs where validation loss bottoms at epoch 18 then rises. Without `restore_best_weights=True`, early stopping halts at epoch 23 (patience=5) and you&#039;re left with epoch 23&#039;s overfit weights. With `restore_best_weights=True`, Keras automatically rolls back to epoch 18&#039;s weights — the most generalizing checkpoint. This is equivalent to running `ModelCheckpoint` to save the best epoch and then loading it, but handled automatically. Always set `restore_best_weights=True` when using `EarlyStopping`.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What does `restore_best_weights=True` do in the `EarlyStopping` callback, and why does it matter?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>It restores the model to its initial random weights if training gets worse than baseline performance.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>When `EarlyStopping` halts training because validation loss stopped improving, `restore_best_weights=True` resets the model's weights to the epoch where validation loss was lowest — not the last epoch where training was stopped. Without this, you'd get the weights from the final (overfit) epoch, not the best-generalizing epoch.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>It saves the best weights to disk automatically and reloads them after training completes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>It averages the weights across all epochs to produce a more stable final model.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. It restores the model to its initial random weights if training gets worse than baseline performance.
-2. When `EarlyStopping` halts training because validation loss stopped improving, `restore_best_weights=True` resets the model's weights to the epoch where validation loss was lowest — not the last epoch where training was stopped. Without this, you'd get the weights from the final (overfit) epoch, not the best-generalizing epoch.
-3. It saves the best weights to disk automatically and reloads them after training completes.
-4. It averages the weights across all epochs to produce a more stable final model.
-
-**Correct Answer:**
-2. `restore_best_weights=True` resets the model's weights to the epoch where validation loss was lowest. Without it, early stopping stops training but the model retains the last epoch's weights, which may be overfit.
-
-**Explanation:**
-Consider training for 25 epochs where validation loss bottoms at epoch 18 then rises. Without `restore_best_weights=True`, early stopping halts at epoch 23 (patience=5) and you're left with epoch 23's overfit weights. With `restore_best_weights=True`, Keras automatically rolls back to epoch 18's weights — the most generalizing checkpoint. This is equivalent to running `ModelCheckpoint` to save the best epoch and then loading it, but handled automatically. Always set `restore_best_weights=True` when using `EarlyStopping`.

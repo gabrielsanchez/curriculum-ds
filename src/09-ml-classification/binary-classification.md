@@ -418,45 +418,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: A fraud detection model catches 95% of all fraudulent transactions but incorrectly flags 30% of legitimate transactions. Which metrics best describe this situation?**
+<div class="quiz-container" data-correct="1" data-explanation="Recall measures how many actual positives are correctly identified — catching 95% of fraud is high recall. Precision measures how many predicted positives are truly positive — flagging 30% of legitimate transactions means many false positives, which corresponds to low precision. Accuracy would be misleading here because it includes the large number of correct negatives, masking how many legitimate transactions are being wrongly flagged.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A fraud detection model catches 95% of all fraudulent transactions but incorrectly flags 30% of legitimate transactions. Which metrics best describe this situation?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>The model has high accuracy and high precision.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The model has high recall (95%) but low precision (many false positives from flagging 30% of legitimate transactions).</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>The model has high precision and low recall.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Accuracy is the best metric to report here since it combines all outcomes.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. The model has high accuracy and high precision.
-2. The model has high recall (95%) but low precision (many false positives from flagging 30% of legitimate transactions).
-3. The model has high precision and low recall.
-4. Accuracy is the best metric to report here since it combines all outcomes.
-
-**Correct Answer:**
-2. The model has high recall (95%) but low precision (many false positives from flagging 30% of legitimate transactions).
-
-**Explanation:**
-Recall measures how many actual positives are correctly identified — catching 95% of fraud is high recall. Precision measures how many predicted positives are truly positive — flagging 30% of legitimate transactions means many false positives, which corresponds to low precision. Accuracy would be misleading here because it includes the large number of correct negatives, masking how many legitimate transactions are being wrongly flagged.
 
 ---
 
-#### **Question 2: A logistic regression model is trained to predict hospital readmission within 30 days. You want to catch as many at-risk patients as possible, even at the cost of some unnecessary follow-up calls. Which action best achieves this?**
+<div class="quiz-container" data-correct="2" data-explanation="Lowering the threshold means the model predicts &quot;high risk&quot; whenever `P(readmission) ≥ 0.3` instead of `≥ 0.5`. This flags more patients — including more true positives (improving recall) but also more false positives (unnecessary calls). Since the goal is to catch as many at-risk patients as possible (high recall), at the acceptable cost of some false alarms, lowering the threshold is the right lever. Raising the threshold does the opposite.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A logistic regression model is trained to predict hospital readmission within 30 days. You want to catch as many at-risk patients as possible, even at the cost of some unnecessary follow-up calls. Which action best achieves this?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Raise the prediction threshold from 0.5 to 0.7.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Optimize for precision using `class_weight="balanced"`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Lower the prediction threshold from 0.5 to 0.3 to predict more patients as high-risk.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Remove low-probability samples from the training set.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Raise the prediction threshold from 0.5 to 0.7.
-2. Optimize for precision using `class_weight="balanced"`.
-3. Lower the prediction threshold from 0.5 to 0.3 to predict more patients as high-risk.
-4. Remove low-probability samples from the training set.
-
-**Correct Answer:**
-3. Lower the prediction threshold from 0.5 to 0.3 to predict more patients as high-risk.
-
-**Explanation:**
-Lowering the threshold means the model predicts "high risk" whenever `P(readmission) ≥ 0.3` instead of `≥ 0.5`. This flags more patients — including more true positives (improving recall) but also more false positives (unnecessary calls). Since the goal is to catch as many at-risk patients as possible (high recall), at the acceptable cost of some false alarms, lowering the threshold is the right lever. Raising the threshold does the opposite.
 
 ---
 
-#### **Question 3: Two classifiers are compared on a fraud detection dataset (1% fraud, 99% legitimate). Classifier A has 99.1% accuracy. Classifier B has 72% accuracy but an AUC of 0.94. Which should you prefer, and why?**
+<div class="quiz-container" data-correct="1" data-explanation="With 99% of cases being legitimate, a trivial classifier that predicts &quot;legitimate&quot; for everything achieves 99% accuracy while catching zero fraud — useless. Classifier A&#039;s 99.1% accuracy is suspiciously close to this naive baseline. Classifier B&#039;s AUC of 0.94 means it correctly ranks a random fraudulent transaction above a random legitimate one 94% of the time, demonstrating genuine discriminative power. On highly imbalanced datasets, AUC (or precision-recall metrics) are far more informative than accuracy.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Two classifiers are compared on a fraud detection dataset (1% fraud, 99% legitimate). Classifier A has 99.1% accuracy. Classifier B has 72% accuracy but an AUC of 0.94. Which should you prefer, and why?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Classifier A, because higher accuracy always means a better classifier.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Classifier B, because AUC of 0.94 indicates it separates fraudulent from legitimate transactions far better than chance, while Classifier A may simply be predicting "legitimate" for every sample.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>Classifier A, because accuracy is the standard metric and 99.1% is excellent.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>Neither — both classifiers fail because the AUC should equal the accuracy.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-1. Classifier A, because higher accuracy always means a better classifier.
-2. Classifier B, because AUC of 0.94 indicates it separates fraudulent from legitimate transactions far better than chance, while Classifier A may simply be predicting "legitimate" for every sample.
-3. Classifier A, because accuracy is the standard metric and 99.1% is excellent.
-4. Neither — both classifiers fail because the AUC should equal the accuracy.
-
-**Correct Answer:**
-2. Classifier B, because AUC of 0.94 indicates it separates fraudulent from legitimate transactions far better than chance, while Classifier A may simply be predicting "legitimate" for every sample.
-
-**Explanation:**
-With 99% of cases being legitimate, a trivial classifier that predicts "legitimate" for everything achieves 99% accuracy while catching zero fraud — useless. Classifier A's 99.1% accuracy is suspiciously close to this naive baseline. Classifier B's AUC of 0.94 means it correctly ranks a random fraudulent transaction above a random legitimate one 94% of the time, demonstrating genuine discriminative power. On highly imbalanced datasets, AUC (or precision-recall metrics) are far more informative than accuracy.

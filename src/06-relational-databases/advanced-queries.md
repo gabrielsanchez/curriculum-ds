@@ -290,47 +290,92 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What does the following query return?**
-```sql
-SELECT title, price
+<div class="quiz-container" data-correct="2" data-explanation="The subquery `(SELECT AVG(price) FROM books)` runs first and returns a single number — the average price. The outer query then filters `books` to return only rows where `price` is greater than that computed average. This is a scalar subquery: it returns one value used as a comparison threshold.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What does the following query return?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>SELECT title, price
 FROM books
-WHERE price > (SELECT AVG(price) FROM books);
-```
-1. All books, with each book's price compared to the average price.
-2. The single book with the highest price.
-3. Only the books whose price is above the average price across all books.
-4. The average price of all books as a single value.
+WHERE price &gt; (SELECT AVG(price) FROM books);</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>All books, with each book's price compared to the average price.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The single book with the highest price.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Only the books whose price is above the average price across all books.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>The average price of all books as a single value.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Only the books whose price is above the average price across all books.
-
-**Explanation:**
-The subquery `(SELECT AVG(price) FROM books)` runs first and returns a single number — the average price. The outer query then filters `books` to return only rows where `price` is greater than that computed average. This is a scalar subquery: it returns one value used as a comparison threshold.
-
----
-
-#### **Question 2: A `city` column contains some `NULL` values. What does `COALESCE(city, 'Unknown')` return for those rows?**
-1. `NULL` — `COALESCE` does not modify `NULL` values.
-2. An empty string `''`.
-3. `'Unknown'` — `COALESCE` returns the first non-`NULL` argument.
-4. An error, because `NULL` cannot be compared to a string.
-
-**Correct Answer:**
-3. `'Unknown'` — `COALESCE` returns the first non-`NULL` argument.
-
-**Explanation:**
-`COALESCE(city, 'Unknown')` evaluates its arguments left to right and returns the first one that is not `NULL`. If `city` is `NULL`, it moves to the next argument, `'Unknown'`, and returns that. If `city` has a value like `'Chicago'`, it returns `'Chicago'` immediately. This makes `COALESCE` the standard SQL pattern for replacing `NULL` with a default.
 
 ---
 
-#### **Question 3: In a `CASE WHEN` expression, what happens if no condition matches and there is no `ELSE` clause?**
-1. SQL raises a syntax error because `ELSE` is required.
-2. The expression returns `NULL`.
-3. The expression returns `0` for numeric columns and `''` for text columns.
-4. The expression returns the value from the last `WHEN` branch.
+<div class="quiz-container" data-correct="2" data-explanation="`COALESCE(city, &#039;Unknown&#039;)` evaluates its arguments left to right and returns the first one that is not `NULL`. If `city` is `NULL`, it moves to the next argument, `&#039;Unknown&#039;`, and returns that. If `city` has a value like `&#039;Chicago&#039;`, it returns `&#039;Chicago&#039;` immediately. This makes `COALESCE` the standard SQL pattern for replacing `NULL` with a default.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> A `city` column contains some `NULL` values. What does `COALESCE(city, 'Unknown')` return for those rows?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>`NULL` — `COALESCE` does not modify `NULL` values.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>An empty string `''`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>`'Unknown'` — `COALESCE` returns the first non-`NULL` argument.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>An error, because `NULL` cannot be compared to a string.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The expression returns `NULL`.
 
-**Explanation:**
-If a `CASE WHEN` expression evaluates all conditions and none is `TRUE`, and there is no `ELSE` clause, the expression returns `NULL`. This is standard SQL behavior. Adding `ELSE 'Other'` (or another default) is a best practice to ensure you always get a meaningful value rather than a silent `NULL`.
+---
+
+<div class="quiz-container" data-correct="1" data-explanation="If a `CASE WHEN` expression evaluates all conditions and none is `TRUE`, and there is no `ELSE` clause, the expression returns `NULL`. This is standard SQL behavior. Adding `ELSE &#039;Other&#039;` (or another default) is a best practice to ensure you always get a meaningful value rather than a silent `NULL`.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> In a `CASE WHEN` expression, what happens if no condition matches and there is no `ELSE` clause?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>SQL raises a syntax error because `ELSE` is required.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>The expression returns `NULL`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The expression returns `0` for numeric columns and `''` for text columns.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The expression returns the value from the last `WHEN` branch.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
+

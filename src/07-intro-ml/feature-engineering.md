@@ -324,42 +324,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: A dataset has a `color` column with values `"red"`, `"green"`, and `"blue"`. A teammate suggests encoding it as `red=1, green=2, blue=3`. What is the problem with this approach?**
-1. Scikit-learn does not support label encoding for three or more categories.
-2. The encoding implies an ordering (blue > green > red) that doesn't exist, which may mislead algorithms that treat the column numerically.
-3. This encoding requires more memory than one-hot encoding.
-4. Colors cannot be used as features in machine learning models.
+<div class="quiz-container" data-correct="1" data-explanation="Label encoding is appropriate for ordered categories (e.g., `low=1, medium=2, high=3`). For nominal categories with no natural order like colors, label encoding creates a false numeric relationship — the model may learn that `blue` (3) is arithmetically closer to `green` (2) than to `red` (1), even though the three colors are equally unrelated. One-hot encoding avoids this by representing each color as an independent binary column.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> A dataset has a `color` column with values `"red"`, `"green"`, and `"blue"`. A teammate suggests encoding it as `red=1, green=2, blue=3`. What is the problem with this approach?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Scikit-learn does not support label encoding for three or more categories.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>The encoding implies an ordering (blue > green > red) that doesn't exist, which may mislead algorithms that treat the column numerically.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>This encoding requires more memory than one-hot encoding.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Colors cannot be used as features in machine learning models.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The encoding implies an ordering (blue > green > red) that doesn't exist, which may mislead algorithms that treat the column numerically.
-
-**Explanation:**
-Label encoding is appropriate for ordered categories (e.g., `low=1, medium=2, high=3`). For nominal categories with no natural order like colors, label encoding creates a false numeric relationship — the model may learn that `blue` (3) is arithmetically closer to `green` (2) than to `red` (1), even though the three colors are equally unrelated. One-hot encoding avoids this by representing each color as an independent binary column.
 
 ---
 
-#### **Question 2: You are building a k-nearest neighbors model on a dataset where `income` ranges from $20,000 to $200,000 and `age` ranges from 18 to 90. Without scaling, what is the likely effect on the model?**
-1. The model will perform better because larger values provide more signal.
-2. The model's distance calculations will be dominated by `income`, effectively ignoring `age`, even if `age` is an equally important predictor.
-3. The model will automatically normalize both features during training.
-4. No effect — KNN is invariant to feature scale.
+<div class="quiz-container" data-correct="1" data-explanation="KNN computes Euclidean distance between data points. A difference of $10,000 in income contributes far more to the distance than a difference of 10 years in age, simply because of scale. Without normalization, `income` drowns out `age` regardless of its actual predictive importance. Scaling both features to a common range (e.g., 0–1 or z-scores) ensures each feature contributes proportionally.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> You are building a k-nearest neighbors model on a dataset where `income` ranges from $20,000 to $200,000 and `age` ranges from 18 to 90. Without scaling, what is the likely effect on the model?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>The model will perform better because larger values provide more signal.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>The model's distance calculations will be dominated by `income`, effectively ignoring `age`, even if `age` is an equally important predictor.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>The model will automatically normalize both features during training.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>No effect — KNN is invariant to feature scale.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. The model's distance calculations will be dominated by `income`, effectively ignoring `age`, even if `age` is an equally important predictor.
-
-**Explanation:**
-KNN computes Euclidean distance between data points. A difference of $10,000 in income contributes far more to the distance than a difference of 10 years in age, simply because of scale. Without normalization, `income` drowns out `age` regardless of its actual predictive importance. Scaling both features to a common range (e.g., 0–1 or z-scores) ensures each feature contributes proportionally.
 
 ---
 
-#### **Question 3: Why is it critical to fit the `StandardScaler` on the training data only, and then use `transform()` (not `fit_transform()`) on the test data?**
-1. `transform()` is faster than `fit_transform()` for large datasets.
-2. Fitting on the test set would expose training-time statistics to data the model hasn't seen, and in production you won't have access to future data when scaling new inputs.
-3. `fit_transform()` changes the data type, which breaks the test set.
-4. `StandardScaler` can only be fitted once and must be reused for all subsequent data.
+<div class="quiz-container" data-correct="1" data-explanation="`fit()` computes the mean and standard deviation from the data. If you fit on the test set (or the combined dataset), the scaler &quot;knows&quot; the test set&#039;s distribution — a form of data leakage that makes performance estimates too optimistic. In production, when a new record comes in, you scale it using the statistics from the training data. The `fit_transform()` on training data and `transform()` on test data pattern correctly simulates this real-world scenario.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Why is it critical to fit the `StandardScaler` on the training data only, and then use `transform()` (not `fit_transform()`) on the test data?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`transform()` is faster than `fit_transform()` for large datasets.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>Fitting on the test set would expose training-time statistics to data the model hasn't seen, and in production you won't have access to future data when scaling new inputs.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`fit_transform()` changes the data type, which breaks the test set.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`StandardScaler` can only be fitted once and must be reused for all subsequent data.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Fitting on the test set would expose training-time statistics to data the model hasn't seen, and in production you won't have access to future data when scaling new inputs.
-
-**Explanation:**
-`fit()` computes the mean and standard deviation from the data. If you fit on the test set (or the combined dataset), the scaler "knows" the test set's distribution — a form of data leakage that makes performance estimates too optimistic. In production, when a new record comes in, you scale it using the statistics from the training data. The `fit_transform()` on training data and `transform()` on test data pattern correctly simulates this real-world scenario.

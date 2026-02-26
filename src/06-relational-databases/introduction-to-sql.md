@@ -129,47 +129,92 @@ In this lesson, you learned what relational databases are, why they're foundatio
 
 ### Knowledge Check
 
-#### **Question 1: What is the purpose of a foreign key in a relational database?**
-1. It provides a unique identifier for each row in a table.
-2. It stores encrypted passwords for database access.
-3. It references the primary key of another table, creating a link between the two tables.
-4. It defines which columns are required to have a value.
+<div class="quiz-container" data-correct="2" data-explanation="A foreign key is a column in one table that holds a value matching the primary key of a related table. This relationship allows you to connect information across tables — for example, linking each `order` row to the `customer` who placed it — without duplicating data. It is the mechanism that makes the relational model powerful.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What is the purpose of a foreign key in a relational database?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>It provides a unique identifier for each row in a table.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>It stores encrypted passwords for database access.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>It references the primary key of another table, creating a link between the two tables.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>It defines which columns are required to have a value.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. It references the primary key of another table, creating a link between the two tables.
-
-**Explanation:**
-A foreign key is a column in one table that holds a value matching the primary key of a related table. This relationship allows you to connect information across tables — for example, linking each `order` row to the `customer` who placed it — without duplicating data. It is the mechanism that makes the relational model powerful.
 
 ---
 
-#### **Question 2: What does the following SQL query do?**
-```sql
-SELECT name, city
+<div class="quiz-container" data-correct="1" data-explanation="`SELECT` reads data. `FROM customers` specifies the source table. `WHERE city = &#039;Austin&#039;` filters to include only rows where the city column equals &#039;Austin&#039;. The result is a set of rows showing `name` and `city` for every Austin customer — no data is modified.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does the following SQL query do?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>SELECT name, city
 FROM customers
-WHERE city = 'Austin';
-```
-1. It updates the city column to 'Austin' for all customers named 'name'.
-2. It retrieves the name and city columns for all rows in the customers table where city is 'Austin'.
-3. It deletes all customers who do not live in Austin.
-4. It creates a new table containing only customers from Austin.
+WHERE city = &#039;Austin&#039;;</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>It updates the city column to 'Austin' for all customers named 'name'.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>It retrieves the name and city columns for all rows in the customers table where city is 'Austin'.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>It deletes all customers who do not live in Austin.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>It creates a new table containing only customers from Austin.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It retrieves the name and city columns for all rows in the customers table where city is 'Austin'.
-
-**Explanation:**
-`SELECT` reads data. `FROM customers` specifies the source table. `WHERE city = 'Austin'` filters to include only rows where the city column equals 'Austin'. The result is a set of rows showing `name` and `city` for every Austin customer — no data is modified.
 
 ---
 
-#### **Question 3: Why is SQLite a good choice for learning SQL in a data science context?**
-1. SQLite is the only database that supports Python.
-2. SQLite requires no server installation or configuration, is built into Python's standard library, and supports standard SQL that transfers to other databases.
-3. SQLite is faster than all other database systems for large datasets.
-4. SQLite is only suitable for learning — it is never used in production applications.
+<div class="quiz-container" data-correct="1" data-explanation="SQLite&#039;s key advantage for learning is its zero-configuration setup — you can create and query a database with a single line of Python without installing anything. The SQL syntax is standard, so skills learned in SQLite transfer directly to PostgreSQL, MySQL, and cloud data warehouses. And contrary to option 4, SQLite is extensively used in production — it powers the storage layer of iOS apps, Android apps, web browsers, and many more applications.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> Why is SQLite a good choice for learning SQL in a data science context?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>SQLite is the only database that supports Python.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>SQLite requires no server installation or configuration, is built into Python's standard library, and supports standard SQL that transfers to other databases.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>SQLite is faster than all other database systems for large datasets.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>SQLite is only suitable for learning — it is never used in production applications.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. SQLite requires no server installation or configuration, is built into Python's standard library, and supports standard SQL that transfers to other databases.
-
-**Explanation:**
-SQLite's key advantage for learning is its zero-configuration setup — you can create and query a database with a single line of Python without installing anything. The SQL syntax is standard, so skills learned in SQLite transfer directly to PostgreSQL, MySQL, and cloud data warehouses. And contrary to option 4, SQLite is extensively used in production — it powers the storage layer of iOS apps, Android apps, web browsers, and many more applications.

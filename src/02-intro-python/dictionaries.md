@@ -233,42 +233,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: How do you safely retrieve a value from a dictionary without raising an error if the key doesn't exist?**
-1. Use square bracket notation: `d["key"]`
-2. Use the `get()` method: `d.get("key")`
-3. Use the `find()` method: `d.find("key")`
-4. Use the `fetch()` method: `d.fetch("key")`
+<div class="quiz-container" data-correct="1" data-explanation="Using `d[&quot;key&quot;]` raises a `KeyError` if the key is not present. The `get()` method avoids this by returning `None` (or a custom default value) when the key doesn&#039;t exist, making your code more robust and error-tolerant.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> How do you safely retrieve a value from a dictionary without raising an error if the key doesn't exist?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>Use square bracket notation: `d["key"]`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>Use the `get()` method: `d.get("key")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>Use the `find()` method: `d.find("key")`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>Use the `fetch()` method: `d.fetch("key")`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. Use the `get()` method: `d.get("key")`
-
-**Explanation:**
-Using `d["key"]` raises a `KeyError` if the key is not present. The `get()` method avoids this by returning `None` (or a custom default value) when the key doesn't exist, making your code more robust and error-tolerant.
 
 ---
 
-#### **Question 2: What does the `.items()` method return when iterating over a dictionary?**
-1. Only the keys of the dictionary.
-2. Only the values of the dictionary.
-3. Both the keys and values as key-value tuples.
-4. The number of items in the dictionary.
+<div class="quiz-container" data-correct="2" data-explanation="The `.items()` method returns each entry as a `(key, value)` tuple. When used in a `for` loop — `for key, value in d.items()` — you can unpack both the key and value in each iteration, making it easy to process all entries.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does the `.items()` method return when iterating over a dictionary?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Only the keys of the dictionary.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Only the values of the dictionary.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Both the keys and values as key-value tuples.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>The number of items in the dictionary.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Both the keys and values as key-value tuples.
-
-**Explanation:**
-The `.items()` method returns each entry as a `(key, value)` tuple. When used in a `for` loop — `for key, value in d.items()` — you can unpack both the key and value in each iteration, making it easy to process all entries.
 
 ---
 
-#### **Question 3: What happens when you assign a value to a key that already exists in a dictionary?**
-1. Python raises a `KeyError`.
-2. A new key is created and both values are kept.
-3. The existing value is overwritten with the new value.
-4. The new value is added to a list alongside the old value.
+<div class="quiz-container" data-correct="2" data-explanation="Dictionary keys must be unique. If you write `d[&quot;age&quot;] = 30` and `&quot;age&quot;` already exists, Python silently replaces the old value with `30`. No error is raised, and no duplicate key is created.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What happens when you assign a value to a key that already exists in a dictionary?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>Python raises a `KeyError`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>A new key is created and both values are kept.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>The existing value is overwritten with the new value.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>The new value is added to a list alongside the old value.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. The existing value is overwritten with the new value.
-
-**Explanation:**
-Dictionary keys must be unique. If you write `d["age"] = 30` and `"age"` already exists, Python silently replaces the old value with `30`. No error is raised, and no duplicate key is created.

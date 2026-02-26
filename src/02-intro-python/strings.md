@@ -214,51 +214,96 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What does the following code output?**
-```python
-word = "Python"
-print(word[1:4])
-```
-1. `Pyt`
-2. `yth`
-3. `ytho`
-4. `ython`
+<div class="quiz-container" data-correct="1" data-explanation="String slicing with `[1:4]` extracts characters at indices 1, 2, and 3 (the end index 4 is **exclusive**). In `&quot;Python&quot;`, index 1 is `y`, index 2 is `t`, and index 3 is `h`, giving `&quot;yth&quot;`.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What does the following code output?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>word = &quot;Python&quot;
+print(word[1:4])</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>`Pyt`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>`yth`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>`ytho`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>`ython`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `yth`
-
-**Explanation:**
-String slicing with `[1:4]` extracts characters at indices 1, 2, and 3 (the end index 4 is **exclusive**). In `"Python"`, index 1 is `y`, index 2 is `t`, and index 3 is `h`, giving `"yth"`.
 
 ---
 
-#### **Question 2: What does the `strip()` method do?**
-1. Removes all vowels from a string.
-2. Splits a string into a list of words.
-3. Removes leading and trailing whitespace from a string.
-4. Replaces all spaces inside a string with underscores.
+<div class="quiz-container" data-correct="2" data-explanation="The `strip()` method removes spaces, tabs, and newlines from the beginning and end of a string. It does not affect whitespace in the middle. This is especially useful when cleaning data loaded from CSV files or user input.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> What does the `strip()` method do?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>Removes all vowels from a string.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>Splits a string into a list of words.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>Removes leading and trailing whitespace from a string.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>Replaces all spaces inside a string with underscores.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. Removes leading and trailing whitespace from a string.
-
-**Explanation:**
-The `strip()` method removes spaces, tabs, and newlines from the beginning and end of a string. It does not affect whitespace in the middle. This is especially useful when cleaning data loaded from CSV files or user input.
 
 ---
 
-#### **Question 3: What is the output of the following code?**
-```python
-text = "apple,banana,cherry"
-items = text.split(",")
-print(items[2])
-```
-1. `apple`
-2. `banana`
-3. `cherry`
-4. `apple,banana`
+<div class="quiz-container" data-correct="2" data-explanation="`split(&quot;,&quot;)` divides the string at each comma, producing the list `[&#039;apple&#039;, &#039;banana&#039;, &#039;cherry&#039;]`. Indexing with `[2]` accesses the third element (index starts at 0), which is `&#039;cherry&#039;`.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the output of the following code?
+  </div>
+  <div class="quiz-subquestion">
+    <pre><code>text = &quot;apple,banana,cherry&quot;
+items = text.split(&quot;,&quot;)
+print(items[2])</code></pre>
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>`apple`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>`banana`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>`cherry`</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>`apple,banana`</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-3. `cherry`
-
-**Explanation:**
-`split(",")` divides the string at each comma, producing the list `['apple', 'banana', 'cherry']`. Indexing with `[2]` accesses the third element (index starts at 0), which is `'cherry'`.

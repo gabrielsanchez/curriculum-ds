@@ -259,42 +259,87 @@ Practice the concepts from this lesson using this [notebook](#). After completin
 
 ### Knowledge Check
 
-#### **Question 1: What does `sqlite3.connect("store.db")` do if the file `store.db` does not yet exist?**
-1. It raises a `FileNotFoundError`.
-2. It creates a new, empty database file called `store.db` and returns a connection to it.
-3. It connects to an in-memory database and ignores the filename.
-4. It prompts you to create a new database interactively.
+<div class="quiz-container" data-correct="1" data-explanation="SQLite&#039;s behavior is to create the database file if it doesn&#039;t exist. This is by design — it makes getting started extremely simple. If you pass `&quot;:memory:&quot;` instead of a filename, it creates a temporary database in RAM instead.">
+  <div class="quiz-question">
+    <strong>Question 1:</strong> What does `sqlite3.connect("store.db")` do if the file `store.db` does not yet exist?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="0">
+      <label>It raises a `FileNotFoundError`.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="1">
+      <label>It creates a new, empty database file called `store.db` and returns a connection to it.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="2">
+      <label>It connects to an in-memory database and ignores the filename.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-1" value="3">
+      <label>It prompts you to create a new database interactively.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It creates a new, empty database file called `store.db` and returns a connection to it.
-
-**Explanation:**
-SQLite's behavior is to create the database file if it doesn't exist. This is by design — it makes getting started extremely simple. If you pass `":memory:"` instead of a filename, it creates a temporary database in RAM instead.
 
 ---
 
-#### **Question 2: Why should you use `?` placeholders instead of f-strings when inserting data into a SQLite query?**
-1. F-strings are slower than `?` placeholders for large datasets.
-2. `?` placeholders prevent SQL injection by letting the database driver safely handle the values, while f-strings insert them as raw strings.
-3. SQLite does not support f-strings in Python 3.
-4. `?` placeholders automatically convert Python types to SQL types.
+<div class="quiz-container" data-correct="1" data-explanation="SQL injection is a security vulnerability where malicious input in a value (like `&#039;; DROP TABLE customers; --`) is interpreted as SQL code. Using `?` placeholders tells the `sqlite3` driver to treat the value as data — not as SQL — no matter what it contains. Always use parameterized queries (`?`) instead of string formatting when inserting user-supplied or external data.">
+  <div class="quiz-question">
+    <strong>Question 2:</strong> Why should you use `?` placeholders instead of f-strings when inserting data into a SQLite query?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="0">
+      <label>F-strings are slower than `?` placeholders for large datasets.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="1">
+      <label>`?` placeholders prevent SQL injection by letting the database driver safely handle the values, while f-strings insert them as raw strings.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="2">
+      <label>SQLite does not support f-strings in Python 3.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-2" value="3">
+      <label>`?` placeholders automatically convert Python types to SQL types.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. `?` placeholders prevent SQL injection by letting the database driver safely handle the values, while f-strings insert them as raw strings.
-
-**Explanation:**
-SQL injection is a security vulnerability where malicious input in a value (like `'; DROP TABLE customers; --`) is interpreted as SQL code. Using `?` placeholders tells the `sqlite3` driver to treat the value as data — not as SQL — no matter what it contains. Always use parameterized queries (`?`) instead of string formatting when inserting user-supplied or external data.
 
 ---
 
-#### **Question 3: What is the purpose of calling `conn.commit()` after executing INSERT statements?**
-1. It closes the database connection safely.
-2. It permanently saves the changes to the database file. Without it, changes are lost when the connection closes.
-3. It verifies that the inserted data passes all constraints.
-4. It refreshes the connection to apply the new schema.
+<div class="quiz-container" data-correct="1" data-explanation="SQLite (like most databases) uses **transactions** — a group of changes that are applied together. Changes made within a transaction are held in memory until you call `commit()`, which writes them permanently to disk. If you close the connection without committing, the changes are rolled back and lost. The `with` context manager handles this automatically.">
+  <div class="quiz-question">
+    <strong>Question 3:</strong> What is the purpose of calling `conn.commit()` after executing INSERT statements?
+  </div>
+  <div class="quiz-options">
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="0">
+      <label>It closes the database connection safely.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="1">
+      <label>It permanently saves the changes to the database file. Without it, changes are lost when the connection closes.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="2">
+      <label>It verifies that the inserted data passes all constraints.</label>
+    </label>
+    <label class="quiz-option">
+      <input type="radio" name="quiz-3" value="3">
+      <label>It refreshes the connection to apply the new schema.</label>
+    </label>
+  </div>
+  <button class="quiz-check-btn">Check Answer</button>
+  <div class="quiz-feedback"></div>
+</div>
 
-**Correct Answer:**
-2. It permanently saves the changes to the database file. Without it, changes are lost when the connection closes.
-
-**Explanation:**
-SQLite (like most databases) uses **transactions** — a group of changes that are applied together. Changes made within a transaction are held in memory until you call `commit()`, which writes them permanently to disk. If you close the connection without committing, the changes are rolled back and lost. The `with` context manager handles this automatically.
