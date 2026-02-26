@@ -43,6 +43,8 @@ Navigate to [colab.research.google.com](https://colab.research.google.com). You'
 
 Select **New notebook** to create a blank notebook. A new tab will open with a single empty code cell.
 
+![Google Colab](<colab.png>)
+
 ## The Notebook Interface
 
 A Colab notebook has three main areas:
@@ -64,8 +66,6 @@ A Colab notebook has three main areas:
 - **Menu bar**: File operations, runtime control, settings
 - **+ Code / + Text**: Add a new code or markdown cell below the selected cell
 - **Cells**: The content area where you write and run code or formatted text
-
-![Google Colab](<colab.png>)
 
 ## Code Cells
 

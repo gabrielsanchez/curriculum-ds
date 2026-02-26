@@ -35,24 +35,11 @@ By the end of this lesson, you will have learned how to:
 
 ## Introduction
 
-Every day, enormous amounts of data are generated — by sensors, transactions, social media, medical devices, satellites, and billions of connected devices. This data is valuable, but only if someone can make sense of it.
+Every day, enormous amounts of data are generated — by sensors, transactions, social media, medical devices, satellites, and millions of connected devices. This data is valuable, but only if someone can make sense of it.
 
 **Data science** is the field dedicated to extracting meaning from data. It combines three areas of expertise:
 
-```
-         Programming
-              ▲
-              │
-              │
-   Statistics─┼─ Domain Knowledge
-              │
-              ▼
-         Data Science
-```
-
-- **Programming** to collect, store, clean, and process data at scale
-- **Statistics** to summarize data, quantify uncertainty, and build predictive models
-- **Domain knowledge** to ask the right questions and interpret results meaningfully
+![data science](datascience.png)
 
 No one is equally strong in all three areas — and that's fine. Teams of data scientists, engineers, and domain experts collaborate on real projects.
 
@@ -74,29 +61,9 @@ The most important and time-consuming part of data science is **data preparation
 
 Every data science project — regardless of domain — follows a similar sequence of steps. Understanding this lifecycle is more important than knowing any specific algorithm:
 
-```
-1. Define the Problem
-        │
-        ▼
-2. Collect Data
-        │
-        ▼
-3. Clean & Prepare Data
-        │
-        ▼
-4. Explore & Visualize (EDA)
-        │
-        ▼
-5. Build & Evaluate Models
-        │
-        ▼
-6. Communicate Results
-        │
-        ▼
-7. Deploy & Monitor
-```
+![Cycle](cycle.png)
 
-This is not a rigid waterfall — you'll often cycle back. EDA reveals cleaning problems. Model evaluation reveals missing features. Stakeholder feedback reframes the problem. The lifecycle is iterative.
+This is not a rigid waterfall — you'll often cycle back. Data analysis reveals cleaning problems. Model evaluation reveals missing features. Stakeholder feedback reframes the problem. The lifecycle is iterative.
 
 ### Step 1: Define the Problem
 
@@ -160,9 +127,9 @@ Throughout this curriculum, you'll work with a specific set of tools. All are fr
 
 You don't need to install anything. All work in this course is done in Google Colab — a free, cloud-based Python environment that runs in your browser.
 
-## What This Curriculum Covers
+## What This Course Covers
 
-The curriculum is structured as a progression from fundamentals to advanced topics:
+This course is structured as a progression from fundamentals to advanced topics:
 
 | Module | Content |
 |--------|---------|
