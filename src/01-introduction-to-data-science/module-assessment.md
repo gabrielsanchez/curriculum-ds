@@ -2,7 +2,7 @@
 
 ## Overview
 
-You've completed the first module of the data science curriculum. You've learned what data science is and where it fits in the broader technology landscape, how to use Google Colab and Jupyter Notebooks to write and run code, how to save your work to GitHub and understand the commit workflow, and how to use AI coding assistants effectively and responsibly. This assessment asks you to demonstrate all of those skills by completing a structured notebook and submitting it to GitHub.
+Congrats! You've now completed the first module! You've learned what data science is and where it fits in the broader technology landscape, how to use Google Colab and Jupyter Notebooks to write and run code, how to save your work to GitHub and understand the commit workflow, and how to use AI coding assistants effectively and responsibly. This assessment asks you to demonstrate all of those skills by completing a structured notebook and submitting it to GitHub.
 
 ## Learning Objectives
 

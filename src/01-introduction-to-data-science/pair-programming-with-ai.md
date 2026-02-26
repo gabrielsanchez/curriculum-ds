@@ -178,15 +178,6 @@ The biggest risk with AI assistants for learners is the **illusion of understand
 
 Following this loop, AI accelerates learning rather than replacing it.
 
-## Academic Integrity
-
-Different instructors have different policies about AI use. In general:
-- **AI for learning and checking work:** usually acceptable
-- **AI for completing assessments you're supposed to do independently:** usually not acceptable
-- **Submitting AI-generated code without understanding it:** always a problem — it defeats the purpose of the assessment
-
-When in doubt, ask your instructor. And regardless of policy, always be able to explain any code you submit.
-
 ## Conclusion
 
 AI coding assistants are powerful tools — not magic, not cheating, and not a replacement for skill. Used well, they help you write boilerplate faster, understand error messages more quickly, and access documentation without leaving your notebook. Used poorly, they create an illusion of productivity while preventing real learning. The goal is to use AI to go further and faster, while maintaining the understanding needed to work independently. In the next lesson — the **Module Assessment** — you'll apply the conceptual and practical skills from this module to demonstrate readiness for Python fundamentals.
