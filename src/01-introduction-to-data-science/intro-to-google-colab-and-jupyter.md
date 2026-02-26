@@ -82,10 +82,8 @@ Run a cell by:
 - Clicking the **▶ play button** to the left of the cell
 
 Output appears directly below the cell:
-```
-Hello, data science!
-4
-```
+
+![code cell output](hellodata.png)
 
 The last expression in a cell is displayed as output automatically — you don't need `print()` for simple values.
 
@@ -106,6 +104,8 @@ This is a **bold** word and this is *italic*.
 
 Shift + Enter renders the markdown. Markdown cells are used for section titles, explanations, and documentation — a well-organized notebook alternates code and markdown to tell a story.
 
+![markdown cells](md-cells.png)
+
 ## Essential Keyboard Shortcuts
 
 | Action | Shortcut |
@@ -124,21 +124,7 @@ Shift + Enter renders the markdown. Markdown cells are used for section titles, 
 
 Variables defined in one cell are available in all subsequent cells — they persist in the kernel's memory for the entire session:
 
-```python
-# Cell 1
-x = 10
-name = "data science"
-```
-
-```python
-# Cell 2 — x and name are still available
-print(f"{name}: {x * 2}")
-```
-
-Output:
-```
-data science: 20
-```
+![variable persistence](persistence.png)
 
 **Important:** Cells can be run in any order, and variables reflect the last time each cell was executed — not the order they appear on screen. Always run cells top-to-bottom when starting fresh to avoid confusion.
 
@@ -153,7 +139,7 @@ After a restart, you must rerun all cells from the beginning.
 
 ## Installing Libraries
 
-Colab comes with most data science libraries pre-installed (pandas, numpy, matplotlib, seaborn, scikit-learn). If you need a library that isn't included, install it with `!pip install`:
+Colab comes with many data science libraries pre-installed (pandas, numpy, matplotlib, seaborn, scikit-learn). If you need a library that isn't included, install it with `!pip install`:
 
 ```python
 !pip install plotly
