@@ -49,21 +49,23 @@ A Colab notebook has three main areas:
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  File  Edit  View  Insert  Runtime  Tools  Help  │  ← Menu bar
+│  File  Edit  View  Insert  Runtime  Tools  Help │  ← Menu bar
 ├──────┬──────────────────────────────────────────┤
-│      │  + Code   + Text                          │  ← Add cell buttons
+│      │  + Code   + Text                         │  ← Add cell buttons
 │ File │  ─────────────────────────────────────── │
-│  Nav │  [ ] Code cell                            │  ← Active cell
-│      │                                           │
-│      │  [ ] Code cell                            │
-│      │                                           │
-│      │  ─── Markdown cell ─────────────────────  │
+│  Nav │  [ ] Code cell                           │  ← Active cell
+│      │                                          │
+│      │  [ ] Code cell                           │
+│      │                                          │
+│      │  ─── Markdown cell ───────────────────── │
 └──────┴──────────────────────────────────────────┘
 ```
 
 - **Menu bar**: File operations, runtime control, settings
 - **+ Code / + Text**: Add a new code or markdown cell below the selected cell
 - **Cells**: The content area where you write and run code or formatted text
+
+![Google Colab](<colab.png>)
 
 ## Code Cells
 
