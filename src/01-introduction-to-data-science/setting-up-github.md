@@ -48,7 +48,7 @@ Git can feel intimidating at first — but for data science notebooks, you only 
 
 1. Go to [github.com](https://github.com)
 2. Click **Sign up** and follow the prompts
-3. Choose a professional username — this becomes part of your public profile URL (e.g., `github.com/yourname`)
+3. Choose a professional username — this becomes part of your public profile URL (e.g., `github.com/yourusername`)
 4. Verify your email address
 
 ## Step 2: Create Your First Repository
@@ -56,12 +56,14 @@ Git can feel intimidating at first — but for data science notebooks, you only 
 A repository holds one project — typically one directory of related files.
 
 1. On GitHub, click the **+** icon (top right) → **New repository**
-2. Name it something descriptive, e.g., `data-science-curriculum`
+2. Name it something descriptive, e.g., `data-science-course`
 3. Set it to **Public** (so it's viewable as a portfolio)
 4. Check **Add a README file**
 5. Click **Create repository**
 
-Your new repository is now live at `https://github.com/yourname/data-science-curriculum`.
+![Github repository](github-repo.png)
+
+Your new repository is now live at `https://github.com/yourusername/data-science-course`.
 
 ## Step 3: Save a Colab Notebook to GitHub
 
@@ -69,6 +71,9 @@ The easiest way to save a notebook from Colab to GitHub is through the built-in 
 
 1. Open your notebook in Colab
 2. Go to **File → Save a copy in GitHub**
+
+![Save to Github](save-to-github.png)
+
 3. Authorize GitHub access if prompted (first time only)
 4. Select your repository and branch (use `main`)
 5. Add a commit message describing what you're saving (e.g., `"Add Module 1 notebook"`)
@@ -173,10 +178,10 @@ For each module assessment, you'll:
 
 1. Complete the Colab notebook
 2. Save it to your GitHub repository using **File → Save a copy in GitHub**
-3. Copy the URL of the notebook file on GitHub (e.g., `https://github.com/yourname/repo/blob/main/module1.ipynb`)
-4. Submit that URL to your instructor
+3. Copy the URL of the notebook file on GitHub (e.g., `https://github.com/yourusername/repo/blob/main/module1.ipynb`)
+4. Submit the URL
 
-The URL lets instructors view your notebook, outputs, and commit history without needing to run any code.
+The URL lets graders view your notebook, outputs, and commit history without needing to run any code.
 
 ## Conclusion
 
@@ -186,42 +191,38 @@ GitHub is where your data science work lives. Every notebook you complete in thi
 
 ### Knowledge Check
 
-#### **Question 1: You've finished a notebook in Colab and want to save it to GitHub. You go to File → Save a copy in GitHub and complete the process. What actually happened behind the scenes?**
-1. Colab uploaded the notebook to GitHub using FTP (File Transfer Protocol).
-2. Colab executed a `git add`, `git commit`, and `git push` on your behalf — creating a new commit in your repository with the notebook as its content.
-3. Colab saved the notebook as a private gist, not directly to your repository.
-4. GitHub downloaded the notebook from Google Drive and imported it automatically.
+```quiz
+type: "multipleChoice"
+question: "You've finished a notebook in Colab and want to save it to GitHub. You go to File → Save a copy in GitHub and complete the process. What actually happened behind the scenes?"
+answers:
+  - "Colab uploaded the notebook to GitHub using FTP (File Transfer Protocol)."
+  - "Colab executed a `git add`, `git commit`, and `git push` on your behalf — creating a new commit in your repository with the notebook as its content."
+  - "Colab saved the notebook as a private gist, not directly to your repository."
+  - "GitHub downloaded the notebook from Google Drive and imported it automatically."
+correct: 1
+explanation: "The 'Save a copy in GitHub' feature is a convenience wrapper around the standard Git workflow. Colab stages the `.ipynb` file, creates a commit with the message you provided, and pushes it to the specified branch of your repository. You can verify this by checking the commit history on GitHub — you'll see a new commit with your message and the notebook file added or updated."
+```
 
-**Correct Answer:**
-2. Colab executed a `git add`, `git commit`, and `git push` on your behalf — creating a new commit in your repository with the notebook as its content.
+```quiz
+type: "multipleChoice"
+question: "What is the difference between `git commit` and `git push`?"
+answers:
+  - "`git commit` saves changes to GitHub; `git push` saves changes locally."
+  - "`git commit` creates a local snapshot of staged changes with a message; `git push` sends those local commits to the remote repository on GitHub so others can see them."
+  - "`git commit` and `git push` do the same thing — either one saves your work to GitHub."
+  - "`git push` must be run before `git commit`, or the commit won't be saved."
+correct: 1
+explanation: "Git operates in two stages. `git commit` saves a snapshot to your **local** repository — at this point, the change exists only on your machine (or your Colab session). `git push` transmits those local commits to the **remote** repository on GitHub, making them visible to collaborators and backed up in the cloud. It's common to make many local commits and push them all at once. Forgetting to push is a frequent mistake — your work appears saved locally but isn't on GitHub."
+```
 
-**Explanation:**
-The "Save a copy in GitHub" feature is a convenience wrapper around the standard Git workflow. Colab stages the `.ipynb` file, creates a commit with the message you provided, and pushes it to the specified branch of your repository. You can verify this by checking the commit history on GitHub — you'll see a new commit with your message and the notebook file added or updated.
-
----
-
-#### **Question 2: What is the difference between `git commit` and `git push`?**
-1. `git commit` saves changes to GitHub; `git push` saves changes locally.
-2. `git commit` creates a local snapshot of staged changes with a message; `git push` sends those local commits to the remote repository on GitHub so others can see them.
-3. `git commit` and `git push` do the same thing — either one saves your work to GitHub.
-4. `git push` must be run before `git commit`, or the commit won't be saved.
-
-**Correct Answer:**
-2. `git commit` creates a local snapshot of staged changes with a message; `git push` sends those local commits to the remote repository on GitHub so others can see them.
-
-**Explanation:**
-Git operates in two stages. `git commit` saves a snapshot to your **local** repository — at this point, the change exists only on your machine (or your Colab session). `git push` transmits those local commits to the **remote** repository on GitHub, making them visible to collaborators and backed up in the cloud. It's common to make many local commits and push them all at once. Forgetting to push is a frequent mistake — your work appears saved locally but isn't on GitHub.
-
----
-
-#### **Question 3: Your instructor asks you to submit your Module 2 notebook. Which submission is most appropriate?**
-1. Attach the `.ipynb` file as an email attachment.
-2. Share a screenshot of the notebook outputs.
-3. Submit the GitHub URL pointing to the notebook file in your repository (e.g., `github.com/yourname/curriculum/blob/main/module2.ipynb`).
-4. Share your Google Drive link so the instructor can open it in Colab.
-
-**Correct Answer:**
-3. Submit the GitHub URL pointing to the notebook file in your repository (e.g., `github.com/yourname/curriculum/blob/main/module2.ipynb`).
-
-**Explanation:**
-A GitHub URL gives instructors access to the complete notebook — code, outputs, and markdown — rendered directly in the browser without needing to run it. It also shows the commit history, which provides evidence of when the work was done and how it evolved. Google Drive links require Drive permissions to be set correctly and don't display notebooks as well as GitHub. Email attachments don't include commit history and create version management problems.
+```quiz
+type: "multipleChoice"
+question: "Your instructor asks you to submit your Module 2 notebook. Which submission is most appropriate?"
+answers:
+  - "Attach the `.ipynb` file as an email attachment."
+  - "Share a screenshot of the notebook outputs."
+  - "Submit the GitHub URL pointing to the notebook file in your repository (e.g., `github.com/yourname/curriculum/blob/main/module2.ipynb`)."
+  - "Share your Google Drive link so the instructor can open it in Colab."
+correct: 2
+explanation: "A GitHub URL gives instructors access to the complete notebook — code, outputs, and markdown — rendered directly in the browser without needing to run it. It also shows the commit history, which provides evidence of when the work was done and how it evolved. Google Drive links require Drive permissions to be set correctly and don't display notebooks as well as GitHub. Email attachments don't include commit history and create version management problems."
+```
