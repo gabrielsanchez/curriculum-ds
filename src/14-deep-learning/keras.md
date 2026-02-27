@@ -37,7 +37,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/02_keras_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Loading and Preparing MNIST
 
@@ -330,6 +330,10 @@ Convolutional Neural Networks (CNNs) exploit this structure explicitly, which is
 You now have a complete Keras workflow: normalize data, build a Sequential model with Dense layers and ReLU activations, compile with Adam and sparse categorical cross-entropy, train with early stopping, and evaluate on a held-out test set. The 97.7% accuracy on MNIST represents a strong result for a fully connected network. In the next lesson, you'll learn **Convolutional Neural Networks** — the architecture that learns spatial features in images and that powers modern computer vision systems.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/02_keras_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

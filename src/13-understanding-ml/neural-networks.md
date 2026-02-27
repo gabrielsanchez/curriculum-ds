@@ -35,7 +35,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/06_neural-networks_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## The Neural Network Architecture
 
@@ -339,6 +339,10 @@ An 8.8% accuracy gap from one missing preprocessing step. Without scaling, the o
 Neural networks offer unmatched flexibility — they can learn arbitrary mappings from inputs to outputs, given enough data. On the breast cancer dataset (455 training samples), the MLP achieves 97.4% accuracy and AUC 0.998, competitive with kNN, SVM, and gradient boosting. The key lessons carry through from previous algorithms: **scaling is non-negotiable** (8.8% accuracy gap without it), and the dataset is too small to demonstrate the true advantage of deep networks. In the next lesson, the module assessment brings together all five algorithms — kNN, SVM, Random Forests, Gradient Boosting, and Neural Networks — for a head-to-head comparison, helping you synthesize which algorithm to reach for in different problem contexts.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/06_neural-networks_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

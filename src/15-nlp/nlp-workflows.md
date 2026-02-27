@@ -35,7 +35,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/03_nlp-workflows_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Workflow 1: Text Classification
 
@@ -547,6 +547,10 @@ The workflow you've built in this module — data → preprocessing → model �
 End-to-end NLP workflows follow consistent patterns regardless of task: prepare text, choose a representation (TF-IDF for speed/interpretability, BERT for accuracy), train or fine-tune, evaluate with task-appropriate metrics. The Hugging Face `pipeline` API makes the advanced capabilities (NER, summarization, zero-shot classification) accessible in a few lines, while scikit-learn's `Pipeline` makes the classical approach production-ready. The key judgment call in any NLP project is whether the task is generic enough for a pre-built pipeline, specialized enough to need fine-tuning, or high-volume enough to justify the simpler and faster TF-IDF approach.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/03_nlp-workflows_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

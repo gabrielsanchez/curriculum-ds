@@ -37,7 +37,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/05_optimization-regularization_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Diagnosing the Problem First
 
@@ -467,6 +467,10 @@ When a model overfits, apply these techniques in order of increasing complexity:
 Overfitting is the central challenge of deep learning, and the techniques in this lesson — dropout, batch normalization, learning rate scheduling, and data augmentation — are the standard tools for addressing it. Applied together, they improved Fashion-MNIST accuracy from 91.9% to 93.6% — without changing the underlying architecture. These techniques compose: in production deep learning systems, all of them are typically applied simultaneously. Module 15 applies this full toolkit to NLP, introducing Transformers and pre-trained models (BERT) for text classification, named entity recognition, and question answering.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/05_optimization-regularization_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

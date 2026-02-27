@@ -39,7 +39,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/04_embeddings-transformers_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Part 1: Static Word Embeddings
 
@@ -453,6 +453,10 @@ No training data required. The model uses its pre-trained knowledge of language 
 Word embeddings (Word2Vec, GloVe) solved the synonym problem of TF-IDF by giving semantically similar words similar vector representations. Transformers (BERT, DistilBERT) solved the context problem by making word representations depend on surrounding text. Fine-tuned DistilBERT achieves 94.2% on the 4-class task vs. 90.9% for TF-IDF — a meaningful improvement that becomes even larger on tasks with subtler category boundaries. The Hugging Face ecosystem makes both pre-trained inference (via `pipeline()`) and fine-tuning accessible without deep framework expertise. In the next lesson, you'll put these tools together into complete NLP workflows for text classification, named entity recognition, and summarization — the pipeline structure that will carry directly into module 16's sentiment analysis case study.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/04_embeddings-transformers_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

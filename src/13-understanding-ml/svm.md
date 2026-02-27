@@ -31,7 +31,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/03_svm_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## How SVMs Work
 
@@ -318,6 +318,10 @@ A 35% accuracy gap from one missing preprocessing step. Without scaling, the `me
 SVM with an RBF kernel achieves 98.2% accuracy and AUC 0.998 on the breast cancer dataset — the best result so far, surpassing logistic regression (95.6%), decision trees (93.0%), and kNN (97.4%). The critical lessons are the same as kNN: **scaling is non-negotiable** (a 35% accuracy gap without it), and hyperparameters (C and gamma) must be tuned together. SVM's geometric foundation — maximizing the margin, storing only support vectors — makes it memory-efficient and robust to outliers, but expensive to train on large datasets. In the next lesson, you'll learn **Random Forests**, which achieve competitive performance by a completely different mechanism: averaging hundreds of decision trees.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/03_svm_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

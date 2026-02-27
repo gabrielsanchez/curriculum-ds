@@ -29,7 +29,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/05_gradient-boosting_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## How Gradient Boosting Works
 
@@ -357,6 +357,10 @@ XGBoost achieves the same accuracy as the scikit-learn implementation, with addi
 Gradient Boosting achieves AUC 0.999 on the breast cancer dataset — the highest in this module. Its sequential error-correction strategy gives it an edge over random forests on structured tabular data, particularly when tuned carefully. The key trade-offs are tuning effort (learning rate and n_estimators must be balanced) and training time (sequential tree building is slower than parallel bagging). For production-scale work, use XGBoost or LightGBM instead of scikit-learn's implementation. In the next lesson, you'll learn **Neural Networks** — the final algorithm in this module — which takes a completely different approach, learning hierarchical representations through interconnected layers of artificial neurons.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/05_gradient-boosting_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

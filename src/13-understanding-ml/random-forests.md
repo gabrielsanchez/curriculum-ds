@@ -29,7 +29,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/04_random-forests_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Why Single Trees Fail
 
@@ -332,6 +332,10 @@ Random Forest achieves 95.6% accuracy and AUC 0.994, matching logistic regressio
 Random Forests demonstrate that combining many imperfect models can surpass any single model. On the breast cancer dataset, 200 trees achieve 95.6% accuracy and AUC 0.994 — better than a single decision tree (93.0%) and competitive with logistic regression (95.6% / AUC 0.993), with the added benefit of feature importances. The key insight is **bagging + feature randomness**: each tree sees different data and considers different features, so their errors are largely independent and average out. In the next lesson, you'll learn **Gradient Boosting** — which also uses ensembles of trees but builds them sequentially rather than in parallel, targeting the specific mistakes of previous trees.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/04_random-forests_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

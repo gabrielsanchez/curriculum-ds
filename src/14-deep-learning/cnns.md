@@ -35,7 +35,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/03_cnns_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Why Convolutions?
 
@@ -321,6 +321,10 @@ The pre-trained MobileNetV2 has already learned to detect edges, textures, and s
 CNNs outperform dense networks on image tasks by exploiting spatial structure — weight sharing, local connectivity, and pooling together learn a hierarchy of visual features that no hand-engineered feature set can match. On Fashion-MNIST, the CNN improves accuracy from 88.6% to 92.4%. On real-world image tasks with hundreds of classes and high-resolution images, CNNs (or Transformer-based vision models) are essentially the only practical approach. In the next lesson, you'll learn **Recurrent Neural Networks** — the architecture designed for sequential data like text, time series, and audio, where the order of elements carries meaning.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/03_cnns_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

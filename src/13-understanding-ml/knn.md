@@ -29,7 +29,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/02_knn_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## How kNN Works
 
@@ -264,6 +264,10 @@ kNN (k=7) achieves 97.4% accuracy and recall of 95.3% on malignant — better th
 kNN is one of the most transparent algorithms in machine learning — it's easy to explain ("we looked at the 7 most similar patients in our training data, 6 of them were benign, so we predict benign"). On the breast cancer dataset, kNN with k=7 and standard scaling achieves 97.4% accuracy and AUC 0.993, matching logistic regression. The critical lesson here is scaling: unscaled kNN drops to 92.1%, a 5% penalty for one missing preprocessing step. In the next lesson, you'll learn **Support Vector Machines** — which share kNN's focus on geometry but find the single most informative boundary rather than looking at all neighbors.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/02_knn_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

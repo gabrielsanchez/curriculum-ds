@@ -35,7 +35,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/04_rnns_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Why Sequences Are Different
 
@@ -380,6 +380,10 @@ Transformers learn richer representations and train faster (parallelizable), but
 RNNs — specifically LSTMs and GRUs — address a fundamental limitation of fixed-size architectures by maintaining a hidden state that carries information across variable-length sequences. On the IMDB sentiment task, a Bidirectional LSTM achieves 88.5%, outperforming the order-agnostic dense baseline (87.2%). The lesson also introduced the broader NLP pipeline: tokenization, padding, embedding, and sequence classification. In the next lesson, you'll learn **optimization and regularization techniques** — dropout, batch normalization, learning rate scheduling, and data augmentation — which are essential for training the deeper, more capable models that push past these accuracy ceilings.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/14-deep-learning/04_rnns_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

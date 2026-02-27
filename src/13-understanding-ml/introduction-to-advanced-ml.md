@@ -27,7 +27,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/01_introduction-to-advanced-ml_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Why Learn More Algorithms?
 
@@ -194,6 +194,10 @@ The most common mistake is reaching for the most sophisticated algorithm first. 
 In this lesson, you established the baseline performance on the breast cancer dataset (logistic regression: 95.6% accuracy, AUC 0.993), got an overview of the five advanced algorithms this module covers, and learned the framework for deciding when each is worth trying. In the next lesson, you'll start with the most conceptually transparent of the five: **k-Nearest Neighbors**, an algorithm with almost no training step and predictions driven entirely by similarity to known examples.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/01_introduction-to-advanced-ml_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

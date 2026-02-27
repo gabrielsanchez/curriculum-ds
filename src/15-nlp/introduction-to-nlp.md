@@ -35,7 +35,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/01_introduction-to-nlp_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## What Is NLP?
 
@@ -190,6 +190,10 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 NLP unlocks a category of problems that structured data cannot address: understanding customer feedback at scale, extracting information from unstructured documents, classifying support tickets, summarizing research literature. The challenge — converting variable-length, ambiguous, context-dependent text into numerical features — has been transformed by pre-trained Transformer models, which allow you to achieve state-of-the-art results on most tasks with very little labeled data. In the next lesson, you'll build the classical foundation: cleaning text, computing TF-IDF features, and training logistic regression classifiers — the approach that dominated NLP before 2018 and still works well as a fast, interpretable baseline.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/01_introduction-to-nlp_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 

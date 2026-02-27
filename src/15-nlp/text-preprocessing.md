@@ -39,7 +39,7 @@ By the end of this lesson, you will have learned how to:
 
 ## Starter Code
 
-This lesson encourages experimentation. Use the included [*Colaboratory notebook*](#) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/02_text-preprocessing_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
 
 ## Dataset: 20 Newsgroups
 
@@ -490,6 +490,10 @@ These limitations motivate word embeddings and Transformer models — covered in
 TF-IDF + logistic regression achieves 85.6% accuracy on a 20-class newsgroup classification task with less than 30 lines of code — a strong baseline that should be built before any more complex approach. The preprocessing pipeline (stopwords → bigrams → sublinear TF) adds meaningful incremental gains, and the classifier's coefficients provide interpretable insight into what drives each prediction. In the next lesson, you'll learn how word embeddings (Word2Vec, GloVe) and Transformer models (BERT) overcome TF-IDF's limitations — learning dense semantic representations that understand that "car" and "automobile" are related, that context determines word meaning, and that linguistic patterns transfer across tasks.
 
 ## Practice
+
+### Coding Assessment
+
+Practice the concepts from this lesson using this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/15-nlp/02_text-preprocessing_practice.ipynb). After completing the exercises, save your notebook to GitHub and submit the link for grading.
 
 ### Knowledge Check
 
