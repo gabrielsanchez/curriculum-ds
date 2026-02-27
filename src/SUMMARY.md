@@ -87,6 +87,7 @@
 	- [Additional Regression Methods](./11-ml-regression/additional-regression-methods.md)
 	- [Regularization](./11-ml-regression/regularization.md)
 	- [Model Evaluation for Regression](./11-ml-regression/model-evaluation.md)
+	- [Module Assessment](./11-ml-regression/module-assessment.md)
 
 - [Capstone I: Regression](./12-capstone-regression/README.md)
 	- [Intro to Capstone](./12-capstone-regression/intro-to-capstone.md)
@@ -108,17 +109,20 @@
 	- [CNNs](./14-deep-learning/cnns.md)
 	- [RNNs](./14-deep-learning/rnns.md)
 	- [Model Optimization & Regularization](./14-deep-learning/optimization-regularization.md)
+	- [Module Assessment](./14-deep-learning/module-assessment.md)
 
 - [NLP (Natural Language Processing)](./15-nlp/README.md)
 	- [Introduction to NLP](./15-nlp/introduction-to-nlp.md)
 	- [Text Preprocessing](./15-nlp/text-preprocessing.md)
 	- [Word Embeddings or Transformer Models](./15-nlp/embeddings-transformers.md)
 	- [NLP Workflows](./15-nlp/nlp-workflows.md)
+	- [Module Assessment](./15-nlp/module-assessment.md)
 
 - [Case Study: Sentiment Analysis using Deep Learning](./16-sentiment/README.md)
 	- [Problem Definition & Data Collection](./16-sentiment/problem-definition-data-collection.md)
 	- [NLP Preprocessing & EDA](./16-sentiment/preprocessing-eda.md)
 	- [Model Building & Evaluation](./16-sentiment/model-building-evaluation.md)
+	- [Module Assessment](./16-sentiment/module-assessment.md)
 
 - [Final Capstone](./17-final-capstone/README.md)
 	- [End-to-End Project (topic TBD)](./17-final-capstone/end-to-end-project.md)
