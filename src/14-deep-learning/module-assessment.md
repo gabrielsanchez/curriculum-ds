@@ -15,7 +15,7 @@ By the end of this assessment, you will have demonstrated the ability to:
 
 ## Starter Code
 
-Use the included [*Colaboratory notebook*](#) to complete this assessment.
+Use the included [*Colaboratory notebook*](#) to complete this assessment. [usbmit the link to the AI Grader for grading](https://ai-grader-pql9.onrender.com/).
 
 ---
 

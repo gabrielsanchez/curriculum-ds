@@ -54,7 +54,7 @@ p    3916    ← poisonous
 
 ## Coding Assessment
 
-Practice the concepts from this module using this [notebook](#). After completing all exercises, save your notebook to GitHub and submit the link for grading.
+Practice the concepts from this module using this [notebook](#). After completing all exercises, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
 
 The notebook walks you through the following tasks:
 
