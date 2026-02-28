@@ -1,4 +1,4 @@
-# 09 Machine Learning: Classification
+# Machine Learning: Classification
 
 This module teaches you how to solve classification problems — predicting which discrete category a sample belongs to. You'll start from the first principles of what classification is, implement logistic regression as the primary binary classification algorithm, learn a comprehensive evaluation toolkit (confusion matrices, precision, recall, F1, AUC), and extend to multi-label and multi-class settings.
 

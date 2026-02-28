@@ -1,4 +1,4 @@
-# 15 NLP (Natural Language Processing)
+# NLP (Natural Language Processing)
 
 This module introduces NLP as a discipline and builds a complete toolkit for practical text analysis — from classical bag-of-words preprocessing through state-of-the-art Transformer models. The module bridges module 14's deep learning foundations (RNNs, embeddings) to module 16's sentiment analysis case study, providing the preprocessing, representation, and workflow knowledge needed to tackle real text data.
 

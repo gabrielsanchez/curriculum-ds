@@ -1,4 +1,4 @@
-# 13 Understanding ML Models
+# Understanding ML Models
 
 This module introduces five advanced machine learning algorithms and teaches when each one is worth the additional complexity over logistic regression and decision trees. All algorithm lessons use the breast cancer dataset from scikit-learn — a 569-sample binary classification task — enabling direct head-to-head comparison.
 

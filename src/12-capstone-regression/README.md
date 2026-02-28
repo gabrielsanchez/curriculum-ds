@@ -1,4 +1,4 @@
-# 12 Capstone I: Regression
+# Capstone I: Regression
 
 This capstone is the first student-directed project in the curriculum. Rather than walking through a provided dataset with step-by-step instructions, you choose a dataset, define a regression problem, and execute the full workflow independently — from EDA through final model evaluation.
 

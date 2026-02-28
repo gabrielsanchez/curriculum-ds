@@ -1,4 +1,4 @@
-# 14 Deep Learning
+# Deep Learning
 
 This module transitions from scikit-learn's `MLPClassifier` to TensorFlow/Keras — the standard deep learning framework — and introduces three foundational architectures: Dense networks, Convolutional Neural Networks (CNNs), and Recurrent Neural Networks (RNNs). The module concludes with a practical guide to optimization and regularization: the techniques that separate a model that generalizes from one that memorizes.
 

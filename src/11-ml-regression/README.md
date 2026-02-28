@@ -1,4 +1,4 @@
-# 11 Machine Learning: Regression
+# Machine Learning: Regression
 
 This module covers regression — predicting a continuous numeric value from features. Building on the data preparation skills from module 08 and the supervised learning foundation from module 09, you'll learn how linear regression works, how to handle non-linearity, how to prevent overfitting with regularization, and how to evaluate models rigorously.
 

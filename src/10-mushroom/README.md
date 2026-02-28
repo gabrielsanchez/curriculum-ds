@@ -1,4 +1,4 @@
-# 10 Case Study: Mushroom Identification
+# Case Study: Mushroom Identification
 
 This case study applies the full classification pipeline — EDA, cleaning, feature engineering, and model selection — to the UCI Mushroom Dataset, a benchmark problem with clear real-world stakes: predicting whether a mushroom is edible or poisonous from its physical features.
 
