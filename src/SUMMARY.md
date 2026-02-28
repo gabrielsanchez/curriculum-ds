@@ -3,14 +3,14 @@
 - [Introduction](./introduction.md)
 
 - [Introduction to Data Science](./01-introduction-to-data-science/README.md)
-	- [Intro to Data Science](./01-introduction-to-data-science/intro-to-data-science.md)
-	- [Intro to Google Colab and Jupyter Notebooks](./01-introduction-to-data-science/intro-to-google-colab-and-jupyter.md)
+	- [Introduction to Data Science](./01-introduction-to-data-science/intro-to-data-science.md)
+	- [Introduction to Google Colab and Jupyter Notebooks](./01-introduction-to-data-science/intro-to-google-colab-and-jupyter.md)
 	- [Setting Up GitHub](./01-introduction-to-data-science/setting-up-github.md)
 	- [Pair Programming with AI](./01-introduction-to-data-science/pair-programming-with-ai.md)
 	- [Module Assessment](./01-introduction-to-data-science/module-assessment.md)
 
 - [Introduction to Python for Data Science](./02-intro-python/README.md)
-	- [Intro to Python](./02-intro-python/intro-to-python.md)
+	- [Introduction to Python](./02-intro-python/intro-to-python.md)
 	- [Functions](./02-intro-python/functions.md)
 	- [Strings](./02-intro-python/strings.md)
 	- [Conditional Logic](./02-intro-python/conditional-logic.md)
@@ -92,7 +92,7 @@
 	- [Module Assessment](./11-ml-regression/module-assessment.md)
 
 - [Capstone I: Regression](./12-capstone-regression/README.md)
-	- [Intro to Capstone](./12-capstone-regression/intro-to-capstone.md)
+	- [Introduction](./12-capstone-regression/intro-to-capstone.md)
 	- [Project Planning & Dataset Exploration](./12-capstone-regression/project-planning-dataset-exploration.md)
 	- [Modeling & Evaluation](./12-capstone-regression/modeling-evaluation.md)
 
@@ -127,5 +127,5 @@
 	- [Module Assessment](./16-sentiment/module-assessment.md)
 
 - [Final Capstone](./17-final-capstone/README.md)
-	- [End-to-End Project (topic TBD)](./17-final-capstone/end-to-end-project.md)
+	- [Project](./17-final-capstone/end-to-end-project.md)
 
