@@ -35,6 +35,8 @@ Most data science hiring decisions come down to one question: can you actually d
 
 Kaggle is the fastest path to building that evidence. It solves two problems simultaneously: finding good datasets and finding community. Every Kaggle dataset comes with discussion threads, existing notebooks, and often data dictionaries. Every competition exposes you to how practitioners at all levels approach the same problem. Studying top solutions after a competition closes is one of the most efficient forms of ML education available.
 
+![kaggle](kaggle.png)
+
 This capstone is your opportunity to produce the kind of work you would genuinely share with a hiring manager or collaborator. Treat it accordingly.
 
 ## Introducing Kaggle
@@ -361,43 +363,3 @@ You now have the tools, the framework, and the platform. Kaggle gives you access
 
 Data science as a field is too broad for any single curriculum to cover completely. But the workflow is transferable: the way you approached the mushroom dataset in module 10 is the same way you approach a Kaggle competition, a new dataset at a job, or a research question you generate yourself. The tools change; the process does not.
 
-## Practice
-
-### Knowledge Check
-
-**Question 1:** You submit predictions to a Kaggle competition and your public leaderboard score is much better than your local cross-validation score. What does this most likely indicate?
-
-- A) Your model is underfitting the training data
-- B) Your model has overfit to the public leaderboard's subset of test rows
-- C) Cross-validation is unreliable and should not be trusted
-- D) You selected the wrong evaluation metric locally
-
-**Correct Answer:** B
-
-**Explanation:** The public leaderboard scores only a random subset of the test set (often 20–30%). If you make many submissions and select the one with the best public score, you can inadvertently overfit to that particular subset. The private leaderboard — scored after the competition closes on the remaining rows — is considered the true evaluation. This phenomenon is called "public LB overfitting" and is one of the most common mistakes in Kaggle competitions.
-
----
-
-**Question 2:** You are building a portfolio project using a credit card fraud dataset where 0.17% of transactions are fraudulent. Which evaluation approach is most appropriate?
-
-- A) Report accuracy on the full test set
-- B) Report AUC-ROC and precision-recall curve; use stratified cross-validation
-- C) Oversample the training set until classes are exactly 50/50, then report accuracy
-- D) Use only the fraudulent transactions as your dataset to avoid the imbalance
-
-**Correct Answer:** B
-
-**Explanation:** With severe class imbalance, accuracy is misleading — a model that predicts "not fraud" for every transaction achieves 99.83% accuracy while catching zero fraud cases. AUC-ROC summarizes performance across all classification thresholds, and the precision-recall curve is especially informative when the positive class is rare. Stratified cross-validation ensures each fold preserves the original class ratio. Oversampling is a valid technique, but reporting accuracy on an oversampled test set produces inflated and unreliable estimates.
-
----
-
-**Question 3:** A classmate shows you two GitHub repositories. Repository A contains 15 notebooks, each a brief experiment that stops after printing model accuracy. Repository B contains two notebooks, each with a full workflow, written interpretations of every visualization, documented cleaning decisions, and a conclusion that honestly discusses limitations. Which portfolio is stronger, and why?
-
-- A) Repository A, because breadth of experience across 15 projects signals more versatility
-- B) Repository B, because depth and documentation demonstrate the ability to actually do the work end-to-end
-- C) They are equivalent; the number of projects is what matters most
-- D) Repository A, because employers prefer to see many quick experiments over lengthy analyses
-
-**Correct Answer:** B
-
-**Explanation:** Quantity of notebooks is not a reliable signal of skill. A notebook that stops at model training without interpretation leaves the reader unable to assess whether the practitioner understood what they built. Repository B demonstrates judgment (cleaning decisions), communication (written interpretations), and execution (complete workflow). These are the three things a hiring manager is looking for. Two excellent projects are routinely more compelling than fifteen incomplete ones.
