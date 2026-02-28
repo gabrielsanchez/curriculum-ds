@@ -4,6 +4,8 @@
 
 Congrats! You've now completed the first module! You've learned what data science is and where it fits in the broader technology landscape, how to use Google Colab and Jupyter Notebooks to write and run code, how to save your work to GitHub and understand the commit workflow, and how to use AI coding assistants effectively and responsibly. This assessment asks you to demonstrate all of those skills by completing a structured notebook and submitting it to GitHub.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/01-introduction-to-data-science/01-introduction-to-data-science-module-assessment_starter.ipynb).
+
 ## Learning Objectives
 
 By the end of this assessment, you will have demonstrated the ability to:

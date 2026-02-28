@@ -4,6 +4,8 @@
 
 This assessment brings together everything you've learned in module 09: binary classification, model evaluation metrics, and extending classifiers to multi-class settings. You'll work with the **mushroom dataset** — a preview of the case study in module 10. Your goal is to build and compare multiple classifiers, evaluate them rigorously, and justify your choices.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/09-ml-classification/09-ml-classification-module-assessment_starter.ipynb).
+
 ## Learning Objective
 
 By the end of this assessment, you will have demonstrated the ability to:

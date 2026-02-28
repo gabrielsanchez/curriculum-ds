@@ -4,6 +4,8 @@
 
 In this module, you learned the foundational concepts and practical skills of machine learning: what ML is and how it differs from traditional programming, the distinction between supervised and unsupervised learning, how to source and evaluate data, how to clean raw data for ML, and how to engineer features that models can actually use. This assessment asks you to demonstrate all of those skills together — building a complete data preparation pipeline from a raw dataset to a processed feature matrix ready for a model.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/07-intro-ml/07-intro-ml-module-assessment_starter.ipynb).
+
 ## Learning Objectives
 
 By the end of this assessment, you will have demonstrated the ability to:

@@ -4,6 +4,8 @@
 
 Congratulations on completing the Introduction to Python for Data Science module! You've covered a lot of ground — from variables and data types, through functions, strings, conditional logic, lists, and dictionaries, to the fundamentals of object-oriented programming. This assessment is your opportunity to demonstrate that you can apply these skills together to solve realistic data problems.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/02-intro-python/02-intro-python-module-assessment_starter.ipynb).
+
 ## Learning Objective
 
 By the end of this assessment, you will have demonstrated your ability to:
@@ -35,7 +37,7 @@ This module assessment is a coding project completed in a Google Colaboratory no
 
 ## Coding Assessment
 
-Complete the project in this [notebook](#). The notebook contains a series of guided tasks. After completing all tasks, save your notebook to GitHub and submit it to the [AI Grader](https://ai-grader-pql9.onrender.com/) for grading.
+Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/02-intro-python/02-intro-python-module-assessment_starter.ipynb). The notebook contains a series of guided tasks. After completing all tasks, save your notebook to GitHub and submit it to the [AI Grader](https://ai-grader-pql9.onrender.com/) for grading.
 
 ### Task Overview
 

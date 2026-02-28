@@ -4,6 +4,8 @@
 
 Congratulations on completing the Manipulating Data with Pandas module! You've learned how to load data from files, explore DataFrames, select and filter rows and columns, transform values with mapping functions, and summarize data with grouping and sorting. This assessment brings all of those skills together in a realistic data wrangling project.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/03-pandas/03-pandas-module-assessment_starter.ipynb).
+
 ## Learning Objective
 
 By the end of this assessment, you will have demonstrated your ability to:
@@ -38,7 +40,7 @@ This module assessment is a coding project completed in a Google Colaboratory no
 
 ## Coding Assessment
 
-Complete the project in this [notebook](#). The notebook contains a series of guided tasks. After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
+Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/03-pandas/03-pandas-module-assessment_starter.ipynb). The notebook contains a series of guided tasks. After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
 
 ### Task Overview
 

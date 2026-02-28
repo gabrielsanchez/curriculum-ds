@@ -14,7 +14,7 @@ By the end of this assessment, you will have:
 
 ## Starter Code
 
-Use the included [*Colaboratory notebook*](#) to complete this assessment. All code templates are provided — your task is to complete the exercises, interpret the results, and answer the reflection questions. [Submit the link to the AI Grader for grading](https://ai-grader-pql9.onrender.com/)
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/13-understanding-ml/13-understanding-ml-module-assessment_starter.ipynb). All code templates are provided — your task is to complete the exercises, interpret the results, and answer the reflection questions. [Submit the link to the AI Grader for grading](https://ai-grader-pql9.onrender.com/)
 
 ---
 

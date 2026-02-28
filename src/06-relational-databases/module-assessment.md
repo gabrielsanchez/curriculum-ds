@@ -4,6 +4,8 @@
 
 Congratulations on completing the Relational Databases module! You've built a SQLite database from scratch, mastered `SELECT` queries with filtering, aggregation, and joins, used advanced techniques like `CASE`, `COALESCE`, and subqueries, and integrated SQL with Python and Pandas. This assessment brings all of those skills together in a single end-to-end project.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/06-relational-databases/06-relational-databases-module-assessment_starter.ipynb).
+
 ## Learning Objective
 
 By the end of this assessment, you will have demonstrated your ability to:
@@ -37,7 +39,7 @@ This module assessment is a coding project completed in a Google Colaboratory no
 
 ## Coding Assessment
 
-Complete the project in this [notebook](#). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
+Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/06-relational-databases/06-relational-databases-module-assessment_starter.ipynb). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
 
 ### Task Overview
 

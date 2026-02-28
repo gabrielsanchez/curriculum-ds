@@ -15,7 +15,7 @@ By the end of this assessment, you will have demonstrated the ability to:
 
 ## Starter Code
 
-Use the included [*Colaboratory notebook*](#) to complete this assessment.
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/11-ml-regression/11-ml-regression-module-assessment_starter.ipynb).
 
 ---
 

@@ -4,6 +4,8 @@
 
 Congratulations on completing the Exploratory Data Analysis module! You've built the full EDA toolkit: summary statistics, histograms, box plots, correlation matrices, and outlier detection and treatment. This assessment brings all of those skills together in a single, realistic end-to-end EDA project on a new dataset.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/05-eda/05-eda-module-assessment_starter.ipynb).
+
 ## Learning Objective
 
 By the end of this assessment, you will have demonstrated your ability to:
@@ -37,7 +39,7 @@ This module assessment is a coding project completed in a Google Colaboratory no
 
 ## Coding Assessment
 
-Complete the project in this [notebook](#). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
+Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/05-eda/05-eda-module-assessment_starter.ipynb). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
 
 ### Task Overview
 

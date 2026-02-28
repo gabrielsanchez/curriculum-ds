@@ -4,6 +4,8 @@
 
 Congratulations on completing the Data Visualization module! You've learned the principles of choosing the right chart for the right question, built static charts with Matplotlib, and created interactive visualizations with Plotly. This assessment brings those skills together in a project where you'll analyze a real dataset and communicate your findings through multiple visualizations.
 
+Complete the assessment using this [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/04-data-visualization/04-data-disualization-module-assessment_starter.ipynb).
+
 ## Learning Objective
 
 By the end of this assessment, you will have demonstrated your ability to:
@@ -37,7 +39,7 @@ This module assessment is a coding project completed in a Google Colaboratory no
 
 ## Coding Assessment
 
-Complete the project in this [notebook](#). After completing all tasks, save your notebook to GitHub and submit the link to the [AI Grader](https://ai-grader-pql9.onrender.com/) for grading.
+Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/04-data-visualization/04-data-disualization-module-assessment_starter.ipynb). After completing all tasks, save your notebook to GitHub and submit the link to the [AI Grader](https://ai-grader-pql9.onrender.com/) for grading.
 
 ### Task Overview
 
