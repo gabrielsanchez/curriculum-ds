@@ -65,16 +65,18 @@ Each module ends with a **Module Assessment** — a coding challenge in a Jupyte
 
 You can submit your completed assessment notebooks to the **[AI Grader](https://ai-grader-pql9.onrender.com/)** for instant feedback. The AI Grader reviews your code, checks your outputs, and provides specific, actionable feedback so you can improve before moving on.
 
-![AI Grader](ai-grader.png)
+![feedback](feedback.png)
 
 To use the AI Grader:
 
 1. Complete your module assessment notebook.
 2. Visit [https://ai-grader-pql9.onrender.com/](https://ai-grader-pql9.onrender.com/).
+
+![AI Grader](ai-grader.png)
+
 3. Paste your notebook's Github URL. Select the module and submit.
 4. Review the feedback and revise as needed.
 
-![feedback](feedback.png)
 
 ---
 
@@ -86,7 +88,7 @@ Within each module:
 
 1. Read through the lesson pages in the book.
 2. Open the corresponding starter notebook in Google Colab.
-3. Complete the exercises and check your work against the practice notebook.
+3. Complete the exercises in the lesson practice notebook.
 4. Complete the module assessment and submit it to the AI Grader.
 
-Ready to begin? Start with [Module 01: Introduction to Data Science](./01-introduction-to-data-science/README.md).
+Ready to begin? Let's get started!
