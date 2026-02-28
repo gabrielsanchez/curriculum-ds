@@ -1,5 +1,7 @@
 # Summary
 
+- [Introduction](./introduction.md)
+
 - [Introduction to Data Science](./01-introduction-to-data-science/README.md)
 	- [Intro to Data Science](./01-introduction-to-data-science/intro-to-data-science.md)
 	- [Intro to Google Colab and Jupyter Notebooks](./01-introduction-to-data-science/intro-to-google-colab-and-jupyter.md)
