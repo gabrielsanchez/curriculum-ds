@@ -91,4 +91,8 @@ Within each module:
 3. Complete the exercises in the lesson practice notebook.
 4. Complete the module assessment and submit it to the AI Grader.
 
-Ready to begin? Let's get started!
+---
+
+## License
+
+This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).

@@ -4,6 +4,8 @@
 
 In module 09, you learned how to build binary classifiers, evaluate them with precision, recall, F1, and AUC, and think carefully about what different types of errors cost. Now you'll apply all of that to a real-world dataset that makes the stakes viscerally clear: a mushroom that is predicted "edible" when it is actually poisonous can cause serious harm. This case study walks you through the full classification workflow — from a raw CSV of single-letter codes to a tuned model — and forces you to think about model quality in terms of real-world consequences, not just accuracy scores.
 
+This lesson encourages experimentation. Use the included [*Colaboratory notebook*](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/10-mushroom/01_mushroom-case-study_starter.ipynb) to run the code as you learn, or read the lesson and then freely experiment with the notebook's code.
+
 ## Learning Objectives
 
 By the end of this case study, you will have learned how to:
