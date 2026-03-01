@@ -37,7 +37,7 @@ This module assessment is a coding project completed in a Google Colaboratory no
 
 ## Coding Assessment
 
-Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/02-intro-python/02-intro-python-module-assessment_starter.ipynb). The notebook contains a series of guided tasks. After completing all tasks, save your notebook to GitHub and submit it to the [AI Grader](https://ai-grader-pql9.onrender.com/) for grading.
+Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/02-intro-python/02-intro-python-module-assessment_starter.ipynb). The notebook contains a series of guided tasks. After completing all tasks, save your notebook to GitHub and submit it to the [AI Grader](https://ai-grader-production-07a3.up.railway.app/) for grading.
 
 ### Task Overview
 

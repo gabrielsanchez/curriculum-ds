@@ -63,14 +63,14 @@ All notebooks are designed to run in [Google Colaboratory](https://colab.researc
 
 Each module ends with a **Module Assessment** — a coding challenge in a Jupyter notebook that tests the skills covered in that module.
 
-You can submit your completed assessment notebooks to the **[AI Grader](https://ai-grader-pql9.onrender.com/)** for instant feedback. The AI Grader reviews your code, checks your outputs, and provides specific, actionable feedback so you can improve before moving on.
+You can submit your completed assessment notebooks to the **[AI Grader](https://ai-grader-production-07a3.up.railway.app/)** for instant feedback. The AI Grader reviews your code, checks your outputs, and provides specific, actionable feedback so you can improve before moving on.
 
 ![feedback](feedback.png)
 
 To use the AI Grader:
 
 1. Complete your module assessment notebook.
-2. Visit [https://ai-grader-pql9.onrender.com/](https://ai-grader-pql9.onrender.com/).
+2. Visit [https://ai-grader-production-07a3.up.railway.app/](https://ai-grader-production-07a3.up.railway.app/).
 
 ![AI Grader](ai-grader.png)
 

@@ -57,7 +57,7 @@ Output:
 
 ## Coding Assessment
 
-Practice the concepts from this module using this [notebook](#). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
+Practice the concepts from this module using this [notebook](#). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-production-07a3.up.railway.app/).
 
 ### Task 1: Baseline Model
 

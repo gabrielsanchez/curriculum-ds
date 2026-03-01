@@ -126,7 +126,7 @@ These are open-ended reflection questions — there are no trick answers. Though
 
 1. Save your completed notebook to GitHub using **File → Save a copy in GitHub**
 2. Copy the URL of the notebook file on GitHub
-3. Submit the URL to the [AI Grader](https://ai-grader-pql9.onrender.com/)
+3. Submit the URL to the [AI Grader](https://ai-grader-production-07a3.up.railway.app/)
 
 ## Knowledge Check
 

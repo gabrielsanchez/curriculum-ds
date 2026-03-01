@@ -39,7 +39,7 @@ This module assessment is a coding project completed in a Google Colaboratory no
 
 ## Coding Assessment
 
-Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/05-eda/05-eda-module-assessment_starter.ipynb). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-pql9.onrender.com/).
+Complete the project in this [notebook](https://colab.research.google.com/github/gabrielsanchez/curriculum-ds/blob/main/notebooks/05-eda/05-eda-module-assessment_starter.ipynb). After completing all tasks, save your notebook to GitHub and [submit the link for grading](https://ai-grader-production-07a3.up.railway.app/).
 
 ### Task Overview
 
