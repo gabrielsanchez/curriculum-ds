@@ -61,12 +61,12 @@
 	- [Introduction to Feature Engineering](./07-intro-ml/feature-engineering.md)
 	- [Module Assessment](./07-intro-ml/module-assessment.md)
 
-- [Case Study: House Rental Dataset](./08-house-rental/README.md)
-	- [Introduction to the Case Study](./08-house-rental/introduction-to-case-study.md)
-	- [Exploratory Data Analysis](./08-house-rental/eda.md)
-	- [Data Cleaning](./08-house-rental/data-cleaning.md)
-	- [Feature Engineering](./08-house-rental/feature-engineering.md)
-	- [Summary](./08-house-rental/summary.md)
+- [Case Study: Census Income](./08-census/README.md)
+	- [Introduction to the Case Study](./08-census/introduction-to-case-study.md)
+	- [Exploratory Data Analysis](./08-census/eda.md)
+	- [Data Cleaning](./08-census/data-cleaning.md)
+	- [Feature Engineering](./08-census/feature-engineering.md)
+	- [Summary](./08-census/summary.md)
 
 - [Machine Learning: Classification](./09-ml-classification/README.md)
 	- [Introduction to Classification](./09-ml-classification/introduction-to-classification.md)
