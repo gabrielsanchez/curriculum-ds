@@ -121,10 +121,11 @@
 	- [Module Assessment](./15-nlp/module-assessment.md)
 
 - [Case Study: Sentiment Analysis using Deep Learning](./16-sentiment/README.md)
-	- [Problem Definition & Data Collection](./16-sentiment/problem-definition-data-collection.md)
-	- [NLP Preprocessing & EDA](./16-sentiment/preprocessing-eda.md)
-	- [Model Building & Evaluation](./16-sentiment/model-building-evaluation.md)
-	- [Module Assessment](./16-sentiment/module-assessment.md)
+	- [Introduction to the Case Study](./16-sentiment/introduction-to-case-study.md)
+	- [Exploratory Data Analysis](./16-sentiment/eda.md)
+	- [Text Preprocessing](./16-sentiment/text-preprocessing.md)
+	- [Model Building](./16-sentiment/model-building.md)
+	- [Summary](./16-sentiment/summary.md)
 
 - [Final Capstone](./17-final-capstone/README.md)
 	- [Project](./17-final-capstone/end-to-end-project.md)
